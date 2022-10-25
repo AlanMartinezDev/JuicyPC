@@ -11,62 +11,64 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<!-- inicio de header -->
-		<nav class="navbar navbar-expand-lg bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="/">JuicyPC</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<!--
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li><li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                        -->
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
-							<ul class="dropdown-menu">
-								<li>
-									<a class="dropdown-item" href="#">Ordenadores premontados</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">Portátiles</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">Móviles</a>
-								</li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">Componentes</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">Periféricos</a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Monta tu PC</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Centro de ayuda</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/cuenta">Cuenta</a>
-						</li>
-						<!--
-						<li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
-                        -->
-					</ul>
-					<form class="d-flex" role="search">
-						<input class="form-control me-2" type="search" placeholder="Busca en JuicyPC..." aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Buscar</button>
-					</form>
+		<div class="container">
+			<!-- inicio de header -->
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="/">JuicyPC</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<!--
+							<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li><li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+							-->
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item" href="/tienda/premontados">Ordenadores premontados</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/tienda/portatiles">Portátiles</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/tienda/moviles">Móviles</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li>
+										<a class="dropdown-item" href="/tienda/componentes">Componentes</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/tienda/perifericos">Periféricos</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Monta tu PC</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Centro de ayuda</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/cuenta">Cuenta</a>
+							</li>
+							<!--
+							<li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
+							-->
+						</ul>
+						<form class="d-flex" role="search">
+							<input class="form-control me-2" type="search" placeholder="Busca en JuicyPC..." aria-label="Search">
+							<button class="btn btn-outline-success" type="submit">Buscar</button>
+						</form>
+					</div>
 				</div>
-			</div>
-		</nav>
+			</nav>
 		<!-- fin de header -->
+		</div>
 		<div class="container"> @yield('content') </div>
 		<!-- inicio de footer -->
 		<div class="container">

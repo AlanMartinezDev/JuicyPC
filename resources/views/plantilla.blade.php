@@ -48,10 +48,10 @@
 								</ul>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Monta tu PC</a>
+								<a class="nav-link" href="/monta-tu-pc">Monta tu PC</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Centro de ayuda</a>
+								<a class="nav-link" href="/centro-de-ayuda">Centro de ayuda</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/cuenta">Cuenta</a>
@@ -73,7 +73,7 @@
 		<!-- inicio de footer -->
 		<div class="container">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-				<p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
+				<p class="col-md-4 mb-0 text-muted">&copy; 2022 JuicyPC</p>
 				<a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
 					<svg class="bi me-2" width="40" height="32">
 						<use xlink:href="#bootstrap" />
@@ -81,19 +81,16 @@
 				</a>
 				<ul class="nav col-md-4 justify-content-end">
 					<li class="nav-item">
-						<a href="#" class="nav-link px-2 text-muted">Home</a>
+						<a href="/tienda" class="nav-link px-2 text-muted">Tienda</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link px-2 text-muted">Features</a>
+						<a href="/monta-tu-pc" class="nav-link px-2 text-muted">Monta tu PC</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link px-2 text-muted">Pricing</a>
+						<a href="/centro-de-ayuda" class="nav-link px-2 text-muted">Centro de ayuda</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link px-2 text-muted">FAQs</a>
-					</li>
-					<li class="nav-item">
-						<a href="#" class="nav-link px-2 text-muted">About</a>
+						<a href="/cuenta" class="nav-link px-2 text-muted">Cuenta</a>
 					</li>
 				</ul>
 			</footer>

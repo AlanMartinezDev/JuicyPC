@@ -11,7 +11,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container p-2">
 			<!-- inicio de header -->
 			<nav class="navbar navbar-expand-lg">
 				<div class="container-fluid">
@@ -67,8 +67,8 @@
 					</div>
 				</div>
 			</nav>
-		<!-- fin de header -->
 		</div>
+		<!-- fin de header -->
 		<div class="container"> @yield('content') </div>
 		<!-- inicio de footer -->
 		<div class="container">

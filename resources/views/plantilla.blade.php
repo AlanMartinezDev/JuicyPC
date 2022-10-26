@@ -21,9 +21,6 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<!--
-							<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li><li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-							-->
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
 								<ul class="dropdown-menu">
@@ -56,9 +53,6 @@
 							<li class="nav-item">
 								<a class="nav-link" href="/cuenta">Cuenta</a>
 							</li>
-							<!--
-							<li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
-							-->
 						</ul>
 						<form class="d-flex" role="search">
 							<input class="form-control me-2" type="search" placeholder="Busca en JuicyPC..." aria-label="Search">
@@ -73,15 +67,30 @@
 		<!-- inicio de footer -->
 		<div class="container">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-				<p class="col-md-4 mb-0 text-muted">&copy; 2022 JuicyPC</p>
-				<a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-					<svg class="bi me-2" width="40" height="32">
-						<use xlink:href="#bootstrap" />
-					</svg>
-				</a>
+				<p class="col-md-4 mb-0 text-muted"><a class="nav-link" href="/">&copy; 2022 JuicyPC</a></p>
 				<ul class="nav col-md-4 justify-content-end">
-					<li class="nav-item">
-						<a href="/tienda" class="nav-link px-2 text-muted">Tienda</a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle px-2 text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="/tienda/premontados">Ordenadores premontados</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="/tienda/portatiles">Portátiles</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="/tienda/moviles">Móviles</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li>
+								<a class="dropdown-item" href="/tienda/componentes">Componentes</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="/tienda/perifericos">Periféricos</a>
+							</li>
+						</ul>
 					</li>
 					<li class="nav-item">
 						<a href="/monta-tu-pc" class="nav-link px-2 text-muted">Monta tu PC</a>

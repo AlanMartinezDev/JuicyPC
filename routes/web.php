@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/cuenta', function () {
     return view('cuenta');
 });
+
+Route::get('/registro', function () {
+    return view('registro');
+});
+
+Route::get('/centro-de-ayuda', function () {
+    return view('ayuda');
+});

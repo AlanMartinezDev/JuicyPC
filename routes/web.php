@@ -28,3 +28,20 @@ Route::get('/registro', function () {
 Route::get('/centro-de-ayuda', function () {
     return view('ayuda');
 });
+
+//login
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::get('/secreta', function(){
+        return "Estas autentificado";
+    });
+
+    Route::get('/secreta2', function(){
+        return "Estas autentificado2";
+    });
+
+});

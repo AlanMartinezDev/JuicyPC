@@ -22,6 +22,5 @@
         <div class="col-3">
             <a href="/"><img src="https://img.pccomponentes.com/pcblog/1666303200000/oferta-500x500-min.jpg" class="img-fluid" alt="Portátil"></a>
         </div>
-        pepe
     </div>
 @endsection

@@ -45,3 +45,19 @@ Route::group(['middleware'=>['auth','is_admin']], function(){
     });
 
 });
+
+Route::group(['middleware'=>['auth','role:normal']], function(){
+
+    Route::get('/accesonormal', function(){
+        echo "Estas autentificado i tienes rol normal";
+    });
+
+});
+
+Route::group(['middleware'=>['auth','role:admin']], function(){
+
+    Route::get('/accesoadmin', function(){
+        echo "Estas autentificado i tienes rol admin";
+    });
+
+});

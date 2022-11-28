@@ -5,7 +5,7 @@
     </div>
     <div class="row">
         <div class="col-16">
-            <a href="/"><img src="https://img.pccomponentes.com/pcblog/1666303200000/1560x349-1.jpg" class="img-fluid" alt="PC"></a>
+            <a href="/"><img src="https://img.pccomponentes.com/pcblog/1668639600000/1560x349.jpg" class="img-fluid" alt="PC"></a>
         </div>
     </div>
     <div class="row p-2"></div>

@@ -44,6 +44,10 @@
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('username') }}" required autocomplete="address" autofocus>
+                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Home Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">

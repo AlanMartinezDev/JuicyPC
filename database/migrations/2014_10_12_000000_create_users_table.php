@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('username')->nullable();
-            $table->string('address')->nullable();
+            $table->string('username');
+            $table->string('address');
             $table->double('accountBalance')->default(1500);
         });
     }

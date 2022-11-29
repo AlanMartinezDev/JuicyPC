@@ -50,9 +50,24 @@
 							<li class="nav-item">
 								<a class="nav-link" href="/centro-de-ayuda">Centro de ayuda</a>
 							</li>
+							@if(isset( auth::user()->name ))
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth::user()->name }} </a>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item" href="/cuenta">Cuenta</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+									</li>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+								</ul>
+							</li>
+							@else
 							<li class="nav-item">
 								<a class="nav-link" href="/cuenta">Cuenta</a>
 							</li>
+							@endif
 						</ul>
 						<form class="d-flex" role="search">
 							<input class="form-control me-2" type="search" placeholder="Busca en JuicyPC..." aria-label="Search">

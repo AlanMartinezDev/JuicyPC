@@ -37,7 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware'=>['auth','is_admin']], function(){
 
     Route::get('/cuenta', function(){
-        return "Estas autentificado";
+        return view('cuenta');
     });
 
     Route::get('/secreta2', function(){

@@ -23,8 +23,10 @@
                 <div class="col-md-6">
                     <label for="inputState" class="form-label">Region</label>
                     <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                    <option selected>Choose Region...</option>
+                    <option selected>Spain</option>
+                    <option selected>Portugal</option>
+                    <option selected>Andorra</option>
                     </select>
                 </div>
                 <!--

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('username');
             $table->string('address');
-            $table->double('accountBalance');
+            $table->double('accountBalance')->default(1500);
         });
     }
 

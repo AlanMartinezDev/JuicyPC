@@ -37,7 +37,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware'=>['auth','is_admin']], function(){
 
     Route::get('/cuenta', function(){
-        return view('cuenta');
+        $user = auth()->user();
+        return view('cuenta',compact('user'));
     });
 
     Route::get('/secreta2', function(){

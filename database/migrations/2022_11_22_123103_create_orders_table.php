@@ -21,7 +21,6 @@ class CreateOrdersTable extends Migration
             $table->string('status');
             $table->set('shippingType',['Fast', 'Standard']);
             $table->double('shippingCost');
-            $table->set('shippingRegion',['Spain', 'Portugal','Andorra']);
         });
     }
 

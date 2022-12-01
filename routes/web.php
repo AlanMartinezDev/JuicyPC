@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +63,5 @@ Route::group(['middleware'=>['auth','role:admin']], function(){
     });
 
 });
+
+Route::post('/cuenta/{id}',[UserController::class,'update']);

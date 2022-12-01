@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-8">
-            <div class="row justify-content-center fs-4 fw-bold">DATOS DE LA CUENTA</div>
+            <div class="row justify-content-center fs-4 fw-bold">DATOS DE LA CUENTA</div><br>
             <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post">
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Name</label>
@@ -72,9 +72,26 @@
             
         </div>
         <div class="col-4">
+            <form action="/cuenta/{{ $user->id }}" method="post">
             <div class="row justify-content-center fs-4 fw-bold">SALDO</div>
+            <br>
+                <div class="input-group mb-3 justify-content-center">
+                    <span class="input-group-text">Account balance:</span>
+                    <span class="input-group-text">{{ $user->accountBalance}}$</span>
+                </div><br>
+                <!--IMPLEMENTAR FORMULARIO PARA AÑADIR BALANCE A LA CUENTA-->
+                <div class="row g-0 text-center justify-content-center">
+                    <div><label for="accountBalance" class="form-label fw-bold">Add balance to your account</label></div>
+                    <div class="col-6 col-md-4"><input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0"></div>
+                    <div><label class="form-label"></label></div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+            @csrf
+            </form>
         </div>
-    </div>
     <!--
     <div class="row ">
         <div class="col">

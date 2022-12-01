@@ -89,6 +89,20 @@ class UserController extends Controller
         return redirect('/cuenta');
     }
 
+    public function updateBalance(Request $request, $id)
+    {
+        $request->validate([
+            'accountBalance' => ['nullable','integer']
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->accountBalance += $request->accountBalance;
+        
+        $user->save();
+        //dd($user->username);
+        return redirect('/cuenta');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

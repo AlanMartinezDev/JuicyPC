@@ -65,4 +65,4 @@ Route::group(['middleware'=>['auth','role:admin']], function(){
 });
 
 Route::post('/cuenta/{id}',[UserController::class,'update']);
-Route::post('/cuenta/{id}',[UserController::class,'updateBalance']);
+Route::post('/cuenta2/{id}',[UserController::class,'updateBalance']);

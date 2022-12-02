@@ -82,7 +82,12 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->username = $request->username;
         $user->address = $request->address;
-        $user->shippingRegion = $request->shippingRegion;
+        if($request->shippingRegion == 'Choose Region...'){ 
+            $user->shippingRegion = $user->shippingRegion;
+        } 
+        else {
+            $user->shippingRegion = $request->shippingRegion;
+        }
         if($request->password != "") $user->password = Hash::make($request->password);
         $user->save();
         //dd($user->username);

@@ -72,6 +72,7 @@
             
         </div>
         <div class="col-4">
+            <br><br><br>
             <form action="/cuenta/{{ $user->id }}" method="post">
             <div class="row justify-content-center fs-4 fw-bold">SALDO</div>
             <br>

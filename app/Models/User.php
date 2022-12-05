@@ -23,6 +23,7 @@ class User extends Authenticatable
         'address',
         'email',
         'password',
+        'accountBalance',
     ];
 
     /**
@@ -49,5 +50,15 @@ class User extends Authenticatable
         // role_id = 0, normal
         // role_id = 1, Admin
         return $this->role_id == 1;
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function cart()
+    {
+        return $this->hasOne(ShoppingCart::class);
     }
 }

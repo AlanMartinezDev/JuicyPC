@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('address')->nullable();
             $table->double('accountBalance')->default(1500);
-            $table->set('shippingRegion',['Spain', 'Portugal','Andorra'])->nullable();
+            $table->set('shippingRegion',['España', 'Portugal','Andorra'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

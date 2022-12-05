@@ -94,3 +94,4 @@ Route::group(['middleware'=>['auth','role:admin']], function(){
 
 Route::post('/cuenta/{id}',[UserController::class,'update']);
 Route::post('/cuenta2/{id}',[UserController::class,'updateBalance']);
+Route::get('/eliminarCuenta/{id}',[UserController::class, 'destroy']);

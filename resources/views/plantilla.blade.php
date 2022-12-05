@@ -23,7 +23,8 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown d-flex ms-3">
+								<i class="fa-solid fa-shop align-self-center" style="color:grey;"></i>
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
 								<ul class="dropdown-menu">
 									<li>
@@ -48,19 +49,21 @@
 										<a class="dropdown-item" href="/moviles">Móviles</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="/moviles">Tablets</a>
+										<a class="dropdown-item" href="/tablets">Tablets</a>
 									</li>
 								</ul>
 							</li>
-							<li class="nav-item d-flex me-2">
-								<a class="nav-link" href="/carrito">Carrito</a>
+							<li class="nav-item d-flex ms-3">
 								<i class="fa-solid fa-cart-shopping align-self-center" style="color:grey;"></i>
+								<a class="nav-link" href="/carrito">Carrito</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item d-flex ms-3" style="color:grey;">
+								<i class="fa-solid fa-headset align-self-center"></i>
 								<a class="nav-link" href="/centro-de-ayuda">Centro de ayuda</a>
 							</li>
 							@if(isset( auth::user()->name ))
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown d-flex ms-3">
+								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth::user()->name }} </a>
 								<ul class="dropdown-menu">
 									<li>

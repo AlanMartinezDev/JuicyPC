@@ -1,12 +1,12 @@
 @extends('plantilla')
 @section('content')
     <div class="row">
-        <h1>Mi cuenta</h1>
+        <h1>Cuenta</h1>
     </div>
 
     <div class="row">
         <div class="col-5">
-            <div class="row justify-content-center fs-4 fw-bold">Datos de mi cuenta</div><br>
+            <div class="row justify-content-center fs-4 fw-bold">Datos de tu cuenta</div><br>
             <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post">
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Nombre</label>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" value="{{ $user->email }}" disabled>
+                    <input type="email" class="form-control" id="inputEmail4" value="{{ $user->email }}" title="Tu email no es modificable una vez creada la cuenta" style="cursor:not-allowed;" disabled>
                 </div>
                 <div class="col-md-6">
                     <label for="inputState" class="form-label">Región</label>
@@ -65,7 +65,8 @@
                     <input type="password" class="form-control" id="inputPassword3" name="cpassword">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Actualizar datos</button>
+                    <button type="submit" class="btn btn-outline-primary me-3">Actualizar datos</button>
+                    <button type="submit" class="btn btn-outline-danger">Eliminar cuenta</button>
                 </div>
                 @csrf
             </form>
@@ -87,7 +88,7 @@
                         <input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0">
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary">Actualizar saldo</button>
+                        <button type="submit" class="btn btn-outline-primary">Actualizar saldo</button>
                     </div>
                 </div>
             </div>

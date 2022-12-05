@@ -28,4 +28,10 @@ class Product extends Model
         return $this->belongsToMany(
             Category::class,'product_cat');
     }
+
+    public function order()
+    {
+        return $this->belongsToMany(
+            Order::class,'order_product');
+    }
 }

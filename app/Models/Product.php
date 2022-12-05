@@ -17,15 +17,21 @@ class Product extends Model
         'image'
     ];
 
-    public function store()
+    public function stores()
     {
         return $this->belongsToMany(
             Store::class,'product_store');
     }
 
-    public function category()
+    public function categories()
     {
         return $this->belongsToMany(
             Category::class,'product_cat');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(
+            Order::class,'order_product');
     }
 }

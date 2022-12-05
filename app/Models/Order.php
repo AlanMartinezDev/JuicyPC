@@ -16,7 +16,7 @@ class Order extends Model
         'shippingCost'
     ];
 
-    public function product()
+    public function products()
     {
         return $this->belongsToMany(
             Product::class,'order_product');

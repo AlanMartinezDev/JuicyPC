@@ -8,4 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'status',
+        'shippingType',
+        'shippingCost'
+    ];
+
+    public function product()
+    {
+        return $this->belongsToMany(
+            Product::class,'order_product');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(
+            User::class);
+    }
 }

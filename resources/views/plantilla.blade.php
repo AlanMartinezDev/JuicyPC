@@ -25,27 +25,33 @@
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
 								<ul class="dropdown-menu">
 									<li>
-										<a class="dropdown-item" href="/tienda/premontados">Ordenadores premontados</a>
+										<a class="dropdown-item" href="/componentes">Componentes</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="/tienda/portatiles">Portátiles</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/tienda/moviles">Móviles</a>
+										<a class="dropdown-item" href="/perifericos">Periféricos</a>
 									</li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
 									<li>
-										<a class="dropdown-item" href="/tienda/componentes">Componentes</a>
+										<a class="dropdown-item" href="/ordenadores">Ordenadores</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="/tienda/perifericos">Periféricos</a>
+										<a class="dropdown-item" href="/portatiles">Portátiles</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li>
+										<a class="dropdown-item" href="/moviles">Móviles</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/moviles">Tablets</a>
 									</li>
 								</ul>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/monta-tu-pc">Monta tu PC</a>
+								<a class="nav-link" href="/carrito">Carrito</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/centro-de-ayuda">Centro de ayuda</a>
@@ -83,40 +89,6 @@
 		<div class="container">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 				<p class="col-md-4 mb-0 text-muted"><a class="nav-link" href="/">&copy; 2022 JuicyPC</a></p>
-				<ul class="nav col-md-4 justify-content-end">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle px-2 text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="/tienda/premontados">Ordenadores premontados</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/portatiles">Portátiles</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/moviles">Móviles</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/componentes">Componentes</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/perifericos">Periféricos</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a href="/monta-tu-pc" class="nav-link px-2 text-muted">Monta tu PC</a>
-					</li>
-					<li class="nav-item">
-						<a href="/centro-de-ayuda" class="nav-link px-2 text-muted">Centro de ayuda</a>
-					</li>
-					<li class="nav-item">
-						<a href="/cuenta" class="nav-link px-2 text-muted">Cuenta</a>
-					</li>
-				</ul>
 			</footer>
 		</div>
 		<!-- fin de footer -->

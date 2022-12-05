@@ -76,7 +76,8 @@
 								</ul>
 							</li>
 							@else
-							<li class="nav-item">
+							<li class="nav-item d-flex ms-3">
+								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
 								<a class="nav-link" href="/cuenta">Cuenta</a>
 							</li>
 							@endif

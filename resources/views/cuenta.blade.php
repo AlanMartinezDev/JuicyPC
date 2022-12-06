@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-5">
-            <div class="row justify-content-center fs-4 fw-bold">Datos de tu cuenta</div><br>
+            <div class="row justify-content-center fs-4">Datos de tu cuenta</div><br>
             <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post">
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Nombre</label>
@@ -94,15 +94,15 @@
         <div class="col-4"></div>
         <div class="col-3 align-self-center">
             <form action="/cuenta2/{{ $user->id }}" method="post">
-            <div class="row fs-4 fw-bold justify-content-center mb-3">Saldo</div>
+            <div class="row fs-4 justify-content-center mb-3">Saldo</div>
                 <div class="input-group mb-3 justify-content-center">
                     <span class="input-group-text">Saldo de la cuenta:</span>
-                    <span class="input-group-text">{{ $user->accountBalance}}$</span>
+                    <span class="input-group-text" title="Añade saldo en el campo inferior" style="cursor:not-allowed;">{{ $user->accountBalance}}$</span>
                 </div>
                 <!--IMPLEMENTAR FORMULARIO PARA AÑADIR BALANCE A LA CUENTA-->
                 <div class="row g-0 justify-content-center text-center">
                     <div>
-                        <label for="accountBalance" class="form-label fw-bold">Añade saldo a tu cuenta</label>
+                        <label for="accountBalance" class="form-label">Añade saldo a tu cuenta</label>
                     </div>
                     <div class="col-6 col-md-4 mb-3">
                         <input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0">

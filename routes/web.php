@@ -38,7 +38,9 @@ Route::get('/carrito', function () {
 Route::get('/componentes',[ProductController::class,'index']);
 Route::get('/componentes/new',[ProductController::class,'create']);
 Route::post('/componentes/save',[ProductController::class,'store']);
-Route::get('/componentes/update/{id}',[ProductController::class,'update']);
+Route::get('/componentes/update/{id}',[ProductController::class,'edit']);
+Route::post('/componentes/update/{id}',[ProductController::class,'update']);
+Route::get('/componentes/delete/{id}',[ProductController::class,'destroy']);
 
 Route::get('/perifericos',[ProductController::class,'index']);
 

@@ -16,7 +16,7 @@
                                     <a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a>
                                 </div>
                                 <div class="col">
-                                    <a href="/componentes/update/{{ $component->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
+                                    <a href="/componentes/editar/{{ $component->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
                                 </div>
                             </div>
                         </div>

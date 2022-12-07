@@ -58,7 +58,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $components = Product::All();
+        return view('categorias.componentes.update',compact('components'));
     }
 
     /**

@@ -7,11 +7,21 @@
                 <div class="col-4">
                     <form action="/componentes/save" method="post">
                         @csrf
-                        <input type="text" class="form-control mb-2" name="brand" placeholder="Marca" aria-label="Marca">
-                        <input type="text" class="form-control mb-2" name="name" placeholder="Nombre" aria-label="Nombre">
-                        <input type="text" class="form-control mb-2" name="description" placeholder="Descripción del producto" aria-label="Descripción del producto">
-                        <input type="number" class="form-control mb-2" name="price" placeholder="Precio (sin €)" aria-label="Precio">
-                        <input type="text" class="form-control mb-2" name="image" placeholder="Imagen (link)" aria-label="Imagen (link)">
+                        <label for="brand" class="form-label">Marca</label>
+                        <input type="text" class="form-control mb-2" name="brand" id="brand" aria-label="Marca">
+
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control mb-2" name="name" id="name" aria-label="Nombre">
+
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea class="form-control mb-2" name="description" id="description" aria-label="Descripción del producto" rows="3"></textarea>
+                        
+                        <label for="price" class="form-label">Precio</label>
+                        <input type="number" class="form-control mb-2" name="price" id="price" aria-label="Precio">
+                        
+                        <label for="image" class="form-label">Imagen</label>
+                        <input type="text" class="form-control mb-2" name="image" id="image" aria-label="Imagen (link)">
+                        
                         <button type="submit" class="btn btn-outline-dark">Guardar producto</button>
                     </form>
                 </div>

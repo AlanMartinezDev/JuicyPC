@@ -30,6 +30,34 @@ Route::get('/centro-de-ayuda', function () {
     return view('ayuda');
 });
 
+Route::get('/carrito', function () {
+    return view('carrito');
+});
+
+Route::get('/ordenadores', function () {
+    return view('categorias.ordenadores');
+});
+
+Route::get('/portatiles', function () {
+    return view('categorias.portatiles');
+});
+
+Route::get('/moviles', function () {
+    return view('categorias.moviles');
+});
+
+Route::get('/componentes', function () {
+    return view('categorias.componentes');
+});
+
+Route::get('/perifericos', function () {
+    return view('categorias.perifericos');
+});
+
+Route::get('/tablets', function () {
+    return view('categorias.tablets');
+});
+
 //login
 Auth::routes();
 
@@ -66,3 +94,4 @@ Route::group(['middleware'=>['auth','role:admin']], function(){
 
 Route::post('/cuenta/{id}',[UserController::class,'update']);
 Route::post('/cuenta2/{id}',[UserController::class,'updateBalance']);
+Route::get('/eliminarCuenta/{id}',[UserController::class, 'destroy']);

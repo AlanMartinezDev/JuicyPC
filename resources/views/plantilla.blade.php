@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,8 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 		<!-- JavaScript Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+		<!-- Font Awesome CDN Kit -->
+		<script src="https://kit.fontawesome.com/3e35ab0863.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div class="container p-2">
@@ -21,37 +23,47 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown d-flex ms-3">
+								<i class="fa-solid fa-shop align-self-center" style="color:grey;"></i>
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
 								<ul class="dropdown-menu">
 									<li>
-										<a class="dropdown-item" href="/tienda/premontados">Ordenadores premontados</a>
+										<a class="dropdown-item" href="/componentes">Componentes</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="/tienda/portatiles">Portátiles</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/tienda/moviles">Móviles</a>
+										<a class="dropdown-item" href="/perifericos">Periféricos</a>
 									</li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
 									<li>
-										<a class="dropdown-item" href="/tienda/componentes">Componentes</a>
+										<a class="dropdown-item" href="/ordenadores">Ordenadores</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="/tienda/perifericos">Periféricos</a>
+										<a class="dropdown-item" href="/portatiles">Portátiles</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li>
+										<a class="dropdown-item" href="/moviles">Móviles</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="/tablets">Tablets</a>
 									</li>
 								</ul>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/monta-tu-pc">Monta tu PC</a>
+							<li class="nav-item d-flex ms-3">
+								<i class="fa-solid fa-cart-shopping align-self-center" style="color:grey;"></i>
+								<a class="nav-link" href="/carrito">Carrito</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item d-flex ms-3" style="color:grey;">
+								<i class="fa-solid fa-headset align-self-center"></i>
 								<a class="nav-link" href="/centro-de-ayuda">Centro de ayuda</a>
 							</li>
 							@if(isset( auth::user()->name ))
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown d-flex ms-3">
+								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth::user()->name }} </a>
 								<ul class="dropdown-menu">
 									<li>
@@ -64,7 +76,8 @@
 								</ul>
 							</li>
 							@else
-							<li class="nav-item">
+							<li class="nav-item d-flex ms-3">
+								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
 								<a class="nav-link" href="/cuenta">Cuenta</a>
 							</li>
 							@endif
@@ -83,40 +96,6 @@
 		<div class="container">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 				<p class="col-md-4 mb-0 text-muted"><a class="nav-link" href="/">&copy; 2022 JuicyPC</a></p>
-				<ul class="nav col-md-4 justify-content-end">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle px-2 text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="/tienda/premontados">Ordenadores premontados</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/portatiles">Portátiles</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/moviles">Móviles</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/componentes">Componentes</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="/tienda/perifericos">Periféricos</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a href="/monta-tu-pc" class="nav-link px-2 text-muted">Monta tu PC</a>
-					</li>
-					<li class="nav-item">
-						<a href="/centro-de-ayuda" class="nav-link px-2 text-muted">Centro de ayuda</a>
-					</li>
-					<li class="nav-item">
-						<a href="/cuenta" class="nav-link px-2 text-muted">Cuenta</a>
-					</li>
-				</ul>
 			</footer>
 		</div>
 		<!-- fin de footer -->

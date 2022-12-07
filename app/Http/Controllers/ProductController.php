@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $components = Product::All();
+        return view('categorias.componentes.index',compact('components'));
     }
 
     /**

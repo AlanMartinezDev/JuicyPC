@@ -66,6 +66,11 @@
 								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth::user()->name }} </a>
 								<ul class="dropdown-menu">
+									@if( auth::user()->role == 'admin' )
+										<li>
+											<a class="dropdown-item" href="/panel-de-admin">Administración</a>
+										</li>
+									@endif
 									<li>
 										<a class="dropdown-item" href="/cuenta">Cuenta</a>
 									</li>

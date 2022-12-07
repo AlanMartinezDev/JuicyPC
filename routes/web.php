@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,19 @@ Route::get('/carrito', function () {
     return view('carrito');
 });
 
+Route::get('/componentes',[ProductController::class,'index']);
+
+Route::get('/perifericos',[ProductController::class,'index']);
+
+Route::get('/ordenadores',[ProductController::class,'index']);
+
+Route::get('/portatiles',[ProductController::class,'index']);
+
+Route::get('/moviles',[ProductController::class,'index']);
+
+Route::get('/tablets',[ProductController::class,'index']);
+
+/*
 Route::get('/ordenadores', function () {
     return view('categorias.ordenadores');
 });
@@ -46,6 +60,7 @@ Route::get('/moviles', function () {
     return view('categorias.moviles');
 });
 
+
 Route::get('/componentes', function () {
     return view('categorias.componentes');
 });
@@ -57,7 +72,7 @@ Route::get('/perifericos', function () {
 Route::get('/tablets', function () {
     return view('categorias.tablets');
 });
-
+*/
 //login
 Auth::routes();
 

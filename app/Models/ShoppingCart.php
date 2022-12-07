@@ -11,12 +11,11 @@ class ShoppingCart extends Model
 
     protected $fillable = [
         'quantity',
-        'product_id',
+        'product_id'
     ];
 
     public function user()
     {
-        return $this->hasOne(
-            User::class);
+        return $this->hasOne(User::class);
     }
 }

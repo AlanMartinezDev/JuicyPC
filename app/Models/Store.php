@@ -12,10 +12,10 @@ class Store extends Model
     protected $fillable = [
         'name',
         'address',
-        'contact',
+        'contact'
     ];
 
-    public function product()
+    public function products()
     {
         return $this->belongsToMany(
             Product::class,'product_store');

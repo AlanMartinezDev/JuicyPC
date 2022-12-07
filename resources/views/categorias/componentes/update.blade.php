@@ -27,9 +27,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-2">
-            
-        </div>
     </div>
     @else
         <script>window.location = "/componentes";</script>

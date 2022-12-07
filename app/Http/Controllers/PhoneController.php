@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('categorias.componentes.new');
+        //
     }
 
     /**
@@ -36,21 +36,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        /*$request->validate(
-            [ 'realname' => 'required | max:75',
-              'heroname' => 'required | max:25 | unique:superheroes,heroname,'.$id,
-              'gender' => 'required | in:male,female',
-              'planet_id' => 'required | exists:planets,id' ]
-        );*/
-
-        $components = new Product;
-        $components->brand = $request->brand;
-        $components->name = $request->name;
-        $components->description = $request->description;
-        $components->price = $request->price;
-        $components->image = $request->image;
-        $components->save();
-        return redirect('/componentes');
+        //
     }
 
     /**
@@ -72,8 +58,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $components = Product::All();
-        return view('categorias.componentes.update',compact('components'));
+        //
     }
 
     /**

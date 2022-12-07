@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,8 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 		<!-- JavaScript Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+		<!-- Font Awesome CDN Kit -->
+		<script src="https://kit.fontawesome.com/3e35ab0863.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div class="container p-2">
@@ -21,7 +23,8 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown d-flex ms-3">
+								<i class="fa-solid fa-shop align-self-center" style="color:grey;"></i>
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
 								<ul class="dropdown-menu">
 									<li>
@@ -46,20 +49,28 @@
 										<a class="dropdown-item" href="/moviles">Móviles</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="/moviles">Tablets</a>
+										<a class="dropdown-item" href="/tablets">Tablets</a>
 									</li>
 								</ul>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item d-flex ms-3">
+								<i class="fa-solid fa-cart-shopping align-self-center" style="color:grey;"></i>
 								<a class="nav-link" href="/carrito">Carrito</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item d-flex ms-3" style="color:grey;">
+								<i class="fa-solid fa-headset align-self-center"></i>
 								<a class="nav-link" href="/centro-de-ayuda">Centro de ayuda</a>
 							</li>
 							@if(isset( auth::user()->name ))
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown d-flex ms-3">
+								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth::user()->name }} </a>
 								<ul class="dropdown-menu">
+									@if( auth::user()->role == 'admin' )
+										<li>
+											<a class="dropdown-item" href="/panel-de-admin">Administración</a>
+										</li>
+									@endif
 									<li>
 										<a class="dropdown-item" href="/cuenta">Cuenta</a>
 									</li>
@@ -70,7 +81,8 @@
 								</ul>
 							</li>
 							@else
-							<li class="nav-item">
+							<li class="nav-item d-flex ms-3">
+								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
 								<a class="nav-link" href="/cuenta">Cuenta</a>
 							</li>
 							@endif

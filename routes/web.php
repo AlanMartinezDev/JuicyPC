@@ -36,6 +36,7 @@ Route::get('/carrito', function () {
 });
 
 Route::get('/componentes',[ProductController::class,'index']);
+Route::get('/componentes/update/{id}',[ProductController::class,'update']);
 
 Route::get('/perifericos',[ProductController::class,'index']);
 

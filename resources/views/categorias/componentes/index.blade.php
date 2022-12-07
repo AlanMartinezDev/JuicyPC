@@ -9,13 +9,13 @@
                 @foreach($components as $component)
                 <div class="col">
                     <div class="card">
-                        <img src="https://thumb.pccomponentes.com/w-530-530/articles/82/825624/1666-asus-tuf-gaming-b550-plus-wifi-ii.jpg" class="card-img-top" alt="...">
+                        <img src="{{ $component->image }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $component->brand }} - {{ $component->name }}</h5>
                             <p class="card-text">{{ $component->description }}</p>
                             <p class="card-text">{{ $component->price }}€</p>
                             <div class="row">
-                                @if( auth::user()->role == 'admin' )
+                                @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                                     <div class="col">
                                         <a href="/componentes/update/{{ $component->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
                                     </div>
@@ -34,7 +34,7 @@
                 @endforeach
             </div>
         </div>
-        @if( auth::user()->role == 'admin' )
+        @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
         <div class="col-2">
             <a href="/componentes/new" type="button" class="btn btn-outline-dark">Crear producto</a>
         </div>

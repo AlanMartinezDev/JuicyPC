@@ -70,9 +70,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $components = Product::All();
+        $components = Product::findOrFail($id);
         return view('categorias.componentes.update',compact('components'));
     }
 
@@ -83,9 +83,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $components = Product::findOrFail($id);
+        $components->brand = $request->brand;
+        $components->name = $request->name;
+        $components->description = $request->description;
+        $components->price = $request->price;
+        $components->image = $request->image;
+        $components->save();
+        return redirect('/componentes');
     }
 
     /**
@@ -94,8 +101,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $components = Product::findOrFail($id);
+        $components->delete();
+        return redirect('/componentes');
     }
 }

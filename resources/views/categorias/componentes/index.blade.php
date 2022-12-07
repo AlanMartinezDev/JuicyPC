@@ -23,14 +23,14 @@
                             <p class="card-text">{{ $component->price }}€</p>
                             <div class="row">
                                 @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
-                                    <div class="col">
+                                    <div class="col d-flex justify-content-center">
                                         <a href="/componentes/update/{{ $component->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
                                     </div>
-                                    <div class="col">
+                                    <div class="col d-flex justify-content-center">
                                         <a href="/componentes/delete/{{ $component->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
                                     </div>
                                 @else
-                                    <div class="col">
+                                    <div class="col d-flex justify-content-end">
                                         <a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a>
                                     </div>
                                 @endif

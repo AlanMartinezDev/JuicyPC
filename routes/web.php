@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ComponentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,20 +27,24 @@ Route::get('/registro', function () {
     return view('registro');
 });
 
-Route::get('/centro-de-ayuda', function () {
-    return view('ayuda');
-});
-
 Route::get('/carrito', function () {
     return view('carrito');
 });
 
-Route::get('/componentes',[ProductController::class,'index']);
-Route::get('/componentes/new',[ProductController::class,'create']);
-Route::post('/componentes/save',[ProductController::class,'store']);
-Route::get('/componentes/update/{id}',[ProductController::class,'edit']);
-Route::post('/componentes/update/{id}',[ProductController::class,'update']);
-Route::get('/componentes/delete/{id}',[ProductController::class,'destroy']);
+Route::get('/centro-de-ayuda', function () {
+    return view('ayuda');
+});
+
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+Route::get('/componentes',[ComponentController::class,'index']);
+Route::get('/componentes/new',[ComponentController::class,'create']);
+Route::post('/componentes/save',[ComponentController::class,'store']);
+Route::get('/componentes/update/{id}',[ComponentController::class,'edit']);
+Route::post('/componentes/update/{id}',[ComponentController::class,'update']);
+Route::get('/componentes/delete/{id}',[ComponentController::class,'destroy']);
 
 Route::get('/perifericos',[ProductController::class,'index']);
 

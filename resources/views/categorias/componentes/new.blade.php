@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('content')
-    @if( auth::user()->role == 'admin' )
+    @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
     <div class="row">
         <div class="col-10">
             <div class="row g-3">

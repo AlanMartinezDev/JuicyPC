@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Cat;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ComponentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
-        /*$components = Product::All();
-        return view('categorias.componentes.index',compact('components'));*/
+        $components = Product::All();
+        $product->load("categories");
+        return view('categorias.componentes.index',compact('components', 'product'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.componentes.new');
     }
 
     /**
@@ -36,7 +38,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$request->validate(
+            [ 'realname' => 'required | max:75',
+              'heroname' => 'required | max:25 | unique:superheroes,heroname,'.$id,
+              'gender' => 'required | in:male,female',
+              'planet_id' => 'required | exists:planets,id' ]
+        );*/
+
+        $components = new Product;
+        $components->brand = $request->brand;
+        $components->name = $request->name;
+        $components->description = $request->description;
+        $components->price = $request->price;
+        $components->image = $request->image;
+        $components->save();
+        return redirect('/componentes');
     }
 
     /**
@@ -56,9 +72,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $components = Product::findOrFail($id);
+        return view('categorias.componentes.update',compact('components'));
     }
 
     /**
@@ -68,9 +85,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $components = Product::findOrFail($id);
+        $components->brand = $request->brand;
+        $components->name = $request->name;
+        $components->description = $request->description;
+        $components->price = $request->price;
+        $components->image = $request->image;
+        $components->save();
+        return redirect('/componentes');
     }
 
     /**
@@ -79,8 +103,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $components = Product::findOrFail($id);
+        $components->delete();
+        return redirect('/componentes');
     }
 }

@@ -68,7 +68,7 @@
 								<ul class="dropdown-menu">
 									@if( auth::user()->role == 'admin' )
 										<li>
-											<a class="dropdown-item" href="/panel-de-admin">Administración</a>
+											<a class="dropdown-item" href="/admin">Administración</a>
 										</li>
 									@endif
 									<li>

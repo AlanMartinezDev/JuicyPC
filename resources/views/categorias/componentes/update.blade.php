@@ -19,7 +19,7 @@
                         <label for="price" class="form-label">Precio</label>
                         <input type="number" class="form-control mb-2" name="price" id="price" value="{{ $components->price }}" aria-label="Precio">
                         
-                        <label for="image" class="form-label">Imagen</label>
+                        <label for="image" class="form-label">Imagen (url)</label>
                         <input type="text" class="form-control mb-2" name="image" id="image" value="{{ $components->image }}" aria-label="Imagen (link)">
 
                         <button type="submit" class="btn btn-outline-dark">Actualizar producto</button>

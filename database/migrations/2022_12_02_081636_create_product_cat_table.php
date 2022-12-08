@@ -18,6 +18,7 @@ class CreateProductCatTable extends Migration
             $table->timestamps();
             $table->foreignId('product_id')->constrained();
             $table->foreignId('cat_id')->constrained();
+            $table->unique(['product_id','cat_id']);
         });
     }
 

@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('content')
-    @if( auth::user()->role == 'admin' )
+    @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
     <div class="row">
         <div class="col-10">
             <div class="row g-3">
@@ -19,7 +19,7 @@
                         <label for="price" class="form-label">Precio</label>
                         <input type="number" class="form-control mb-2" name="price" id="price" aria-label="Precio">
                         
-                        <label for="image" class="form-label">Imagen</label>
+                        <label for="image" class="form-label">Imagen (url)</label>
                         <input type="text" class="form-control mb-2" name="image" id="image" aria-label="Imagen (link)">
                         
                         <button type="submit" class="btn btn-outline-dark">Guardar producto</button>

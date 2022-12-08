@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $component->brand }} {{ $component->name }}</h5>
                             <p class="card-text">{{ $component->description }}</p>
-                            <p class="card-text">{{ $component->price }}€</p>
+                            <p class="card-text fw-bold">{{ $component->price }}€</p>
                             <div class="row">
                                 @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                                     <div class="col d-flex justify-content-center">

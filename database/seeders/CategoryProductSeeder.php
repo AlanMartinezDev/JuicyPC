@@ -15,12 +15,12 @@ class CategoryProductSeeder extends Seeder
     public function run()
     {
         //CÓDIGO PARA BORRAR TODOS LOS ARCHIVOS QUE HAYAN EN LA TABLA
-        //php artisan db:seed --class="ProductSeeder"
-        /*
+        //php artisan db:seed --class="CategoryProductSeeder"
+        
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;'); // Desactivamos la revisión de claves foráneas
-        DB::table('products')->truncate();
+        DB::table('product_cat')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;'); // Reactivamos la revisión de claves foráneas
-       */
+       
       
         DB::table('product_cat')->insert([
             'product_id' => '1',

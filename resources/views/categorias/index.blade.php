@@ -2,41 +2,38 @@
 @section('content')
     <div class="row">
         <div class="row mb-3">
-            <h1>Productos</h1>
+            <h1>Categorías</h1>
         </div>
         <div class="col">
         <div class="row mb-3 justify-content-center">
-            @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
+            <!--@if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                 <div class="col-2">
                     <a href="{{ route('productos.create') }}" type="button" class="btn btn-outline-dark">Crear producto</a>
                 </div>
-            @endif
+            @endif-->
         </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-4 g-4">
-                @foreach($products as $product)
+                @foreach($cats as $cat)
                 <div class="col">
                     <div class="card">
-                        <img src="{{ $product->image }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product->brand }} {{ $product->name }}</h5>
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text fw-bold">{{ $product->price }}€</p>
+                            <h5 class="card-title justify-content-center"><a href="/categorias/show/{{ $cat->id }}">{{ $cat->name }}</a></h5>
                             <div class="row">
-                                @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
+                                <!--@if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/productos/update/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
+                                        <a href="/productos/update/{{ $cat->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
                                     </div>
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/productos/delete/{{ $product->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
+                                        <a href="/productos/delete/{{ $cat->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
                                     </div>
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-success btn-sm">Ver producto</a>
+                                        <a href="/productos/show/{{ $cat->id }}" type="button" class="btn btn-outline-success btn-sm">Ver producto</a>
                                     </div>
                                 @else
                                     <div class="col d-flex justify-content-end">
                                         <a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a>
                                     </div>
-                                @endif
+                                @endif-->
                             </div>
                         </div>
                     </div>

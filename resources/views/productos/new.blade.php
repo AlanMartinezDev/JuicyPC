@@ -5,7 +5,7 @@
         <div class="col-10">
             <div class="row g-3">
                 <div class="col-4">
-                    <form action="/save" method="post">
+                    <form action="{{ route('productos.store') }}" method="post">
                         @csrf
                         <label for="brand" class="form-label">Marca</label>
                         <input type="text" class="form-control mb-2" name="brand" id="brand" aria-label="Marca">
@@ -29,6 +29,6 @@
         </div>
     </div>
     @else
-        <script>window.location = "/componentes";</script>
+        <script>window.location = "{{ url('/') }}";</script>
     @endif
 @endsection

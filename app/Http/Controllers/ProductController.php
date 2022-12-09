@@ -44,27 +44,15 @@ class ProductController extends Controller
               'gender' => 'required | in:male,female',
               'planet_id' => 'required | exists:planets,id' ]
         );*/
-        /*
-        $components = new Product;
-        $components->brand = $request->brand;
-        $components->name = $request->name;
-        $components->description = $request->description;
-        $components->price = $request->price;
-        $components->image = $request->image;
-        $components->save();
-        */
-
-        $request->validate([
-            'brand' => 'required | min:3',
-            'name' => 'required | min:3', 
-            'description' => 'required | min:3',
-            'price' => 'required | min:3',
-            'image' => 'required | min:3',          
-        ]);
-
-        Product::create($request->all());
-     
-        return redirect()->route('productos.index')->with('success','Product added successfuly.');
+        
+        $products = new Product;
+        $products->brand = $request->brand;
+        $products->name = $request->name;
+        $products->description = $request->description;
+        $products->price = $request->price;
+        $products->image = $request->image;
+        $products->save();
+        return redirect('/productos');
     }
 
     /**
@@ -86,8 +74,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $components = Product::findOrFail($id);
-        return view('productos.update',compact('components'));
+        $products = Product::findOrFail($id);
+        return view('productos.update',compact('products'));
     }
 
     /**
@@ -99,14 +87,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $components = Product::findOrFail($id);
-        $components->brand = $request->brand;
-        $components->name = $request->name;
-        $components->description = $request->description;
-        $components->price = $request->price;
-        $components->image = $request->image;
-        $components->save();
-        return redirect('productos.index');
+        $products = Product::findOrFail($id);
+        $products->brand = $request->brand;
+        $products->name = $request->name;
+        $products->description = $request->description;
+        $products->price = $request->price;
+        $products->image = $request->image;
+        $products->save();
+        return redirect('/productos');
     }
 
     /**
@@ -117,8 +105,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $components = Product::findOrFail($id);
-        $components->delete();
-        return redirect('productos.index');
+        $products = Product::findOrFail($id);
+        $products->delete();
+        return redirect('/productos');
     }
 }

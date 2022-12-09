@@ -8,7 +8,7 @@
         <div class="row mb-3 justify-content-center">
             @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                 <div class="col-2">
-                    <a href="/new" type="button" class="btn btn-outline-dark">Crear producto</a>
+                    <a href="{{ route('productos.create') }}" type="button" class="btn btn-outline-dark">Crear producto</a>
                 </div>
             @endif
         </div>

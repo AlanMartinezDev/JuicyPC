@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Cat;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -46,7 +46,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        //$category->load("components");
+        //return view('categorias.componentes.index',compact('category'));
     }
 
     /**

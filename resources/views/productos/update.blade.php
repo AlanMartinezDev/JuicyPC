@@ -5,7 +5,7 @@
         <div class="col-10">
             <div class="row g-3">
                 <div class="col-6">
-                    <form action="/componentes/update/{{ $components->id }}" method="post">
+                    <form action="/productos/update/{{ $components->id }}" method="post">
                         @csrf
                         <label for="brand" class="form-label">Marca</label>
                         <input type="text" class="form-control mb-2" name="brand" id="brand" value="{{ $components->brand }}" aria-label="Marca">

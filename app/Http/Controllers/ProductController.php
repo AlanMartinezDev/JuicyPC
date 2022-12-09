@@ -15,9 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categoria = Cat::All();
-        $components = Product::All();
-        return view('categorias.componentes.index',compact('components','categoria'));
+        //$categoria = Cat::All();
+        $products = Product::All();
+        return view('productos.index',compact('products'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('categorias.componentes.new');
+        return view('productos.new');
     }
 
     /**
@@ -44,7 +44,7 @@ class ProductController extends Controller
               'gender' => 'required | in:male,female',
               'planet_id' => 'required | exists:planets,id' ]
         );*/
-
+        /*
         $components = new Product;
         $components->brand = $request->brand;
         $components->name = $request->name;
@@ -52,7 +52,19 @@ class ProductController extends Controller
         $components->price = $request->price;
         $components->image = $request->image;
         $components->save();
-        return redirect('/componentes');
+        */
+
+        $request->validate([
+            'brand' => 'required | min:3',
+            'name' => 'required | min:3', 
+            'description' => 'required | min:3',
+            'price' => 'required | min:3',
+            'image' => 'required | min:3',          
+        ]);
+
+        Product::create($request->all());
+     
+        return redirect()->route('productos.index')->with('success','Product added successfuly.');
     }
 
     /**
@@ -75,7 +87,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $components = Product::findOrFail($id);
-        return view('categorias.componentes.update',compact('components'));
+        return view('productos.update',compact('components'));
     }
 
     /**
@@ -94,7 +106,7 @@ class ProductController extends Controller
         $components->price = $request->price;
         $components->image = $request->image;
         $components->save();
-        return redirect('/componentes');
+        return redirect('productos.index');
     }
 
     /**
@@ -107,6 +119,6 @@ class ProductController extends Controller
     {
         $components = Product::findOrFail($id);
         $components->delete();
-        return redirect('/componentes');
+        return redirect('productos.index');
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,49 +40,13 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/componentes',[ComponentController::class,'index']);
-Route::get('/componentes/new',[ComponentController::class,'create']);
-Route::post('/componentes/save',[ComponentController::class,'store']);
-Route::get('/componentes/update/{id}',[ComponentController::class,'edit']);
-Route::post('/componentes/update/{id}',[ComponentController::class,'update']);
-Route::get('/componentes/delete/{id}',[ComponentController::class,'destroy']);
+Route::get('/',[ProductController::class,'index']);
+Route::get('/new',[ProductController::class,'create']);
+Route::post('/save',[ProductController::class,'store']);
+Route::get('/productos/update/{id}',[ProductController::class,'edit']);
+Route::post('/productos/update/{id}',[ProductController::class,'update']);
+Route::get('/productos/delete/{id}',[ProductController::class,'destroy']);
 
-Route::get('/perifericos',[ProductController::class,'index']);
-
-Route::get('/ordenadores',[ProductController::class,'index']);
-
-Route::get('/portatiles',[ProductController::class,'index']);
-
-Route::get('/moviles',[ProductController::class,'index']);
-
-Route::get('/tablets',[ProductController::class,'index']);
-
-/*
-Route::get('/ordenadores', function () {
-    return view('categorias.ordenadores');
-});
-
-Route::get('/portatiles', function () {
-    return view('categorias.portatiles');
-});
-
-Route::get('/moviles', function () {
-    return view('categorias.moviles');
-});
-
-
-Route::get('/componentes', function () {
-    return view('categorias.componentes');
-});
-
-Route::get('/perifericos', function () {
-    return view('categorias.perifericos');
-});
-
-Route::get('/tablets', function () {
-    return view('categorias.tablets');
-});
-*/
 //login
 Auth::routes();
 

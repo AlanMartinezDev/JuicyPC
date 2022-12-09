@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Cat;
 
 class CategorySeeder extends Seeder
 {
@@ -21,29 +22,33 @@ class CategorySeeder extends Seeder
         DB::table('cats')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;'); // Reactivamos la revisión de claves foráneas
        
+        $cats = [
+            [
+                'name' => 'Componentes',
+            ],
 
-        DB::table('cats')->insert([
-            'name' => 'Componentes',
-        ]);
+            [
+                'name' => 'Periféricos',
+            ],
 
-        DB::table('cats')->insert([
-            'name' => 'Periféricos',
-        ]);
+            [
+                'name' => 'Ordenadores',
+            ],
 
-        DB::table('cats')->insert([
-            'name' => 'Ordenadores',
-        ]);
+            [
+                'name' => 'Portátiles',
+            ],
 
-        DB::table('cats')->insert([
-            'name' => 'Portátiles',
-        ]);
+            [
+                'name' => 'Móviles',
+            ],
 
-        DB::table('cats')->insert([
-            'name' => 'Móviles',
-        ]);
+            [
+                'name' => 'Tablets',
+            ],
+        ];
 
-        DB::table('cats')->insert([
-            'name' => 'Tablets',
-        ]);
+        Cat::insert($cats);
+
     }
 }

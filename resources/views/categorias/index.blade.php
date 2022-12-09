@@ -15,9 +15,10 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-4 g-4">
                 @foreach($cats as $cat)
                 <div class="col">
-                    <div class="card">
+                    <div class="card text-center">
+                        <img src="{{ $cat->image }}" class="card-img-top w-75 d-block ms-auto me-auto" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title justify-content-center"><a href="/categorias/show/{{ $cat->id }}">{{ $cat->name }}</a></h5>
+                            <h5 class="card-title d-flex justify-content-center"><a href="/categorias/show/{{ $cat->id }}" class="text-decoration-none">{{ $cat->name }}</a></h5>
                             <div class="row">
                                 <!--@if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                                     <div class="col d-flex justify-content-center">

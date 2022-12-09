@@ -27,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('productos.new');
+        $cats = Cat::All();
+        return view('productos.new',compact('cats'));
     }
 
     /**
@@ -77,7 +78,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $products = Product::findOrFail($id);
-        return view('productos.update',compact('products'));
+        $cats = Cat::All();
+        return view('productos.update',compact('products','cats'));
     }
 
     /**

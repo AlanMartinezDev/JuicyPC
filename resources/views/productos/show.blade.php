@@ -14,7 +14,7 @@
         Precio: {{ $product->price }}
     </li>
     <li>
-        Imagen: <img src="{{ $product->image }}" alt="">
+        Imagen: <img src="{{ $product->image }}" class="w-25" alt="">
     </li>
     <li>
         Categoría: {{ $cat->name }} 

@@ -21,6 +21,12 @@
                         
                         <label for="image" class="form-label">Imagen (url)</label>
                         <input type="text" class="form-control mb-2" name="image" id="image" aria-label="Imagen (link)">
+
+                        <select name="" id="">
+                            @foreach($cats as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                            @endforeach
+                        </select>
                         
                         <button type="submit" class="btn btn-outline-dark">Guardar producto</button>
                     </form>

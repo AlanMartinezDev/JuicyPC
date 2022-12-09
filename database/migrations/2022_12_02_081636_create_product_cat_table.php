@@ -16,8 +16,8 @@ class CreateProductCatTable extends Migration
         Schema::create('product_cat', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('product_id')->constrained();
-            $table->foreignId('cat_id')->constrained();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cat_id')->constrained()->onDelete('cascade');
             $table->unique(['product_id','cat_id']);
         });
     }

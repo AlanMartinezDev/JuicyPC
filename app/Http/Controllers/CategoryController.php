@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Product;
+use App\Models\Cat;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Cat::All();
+        return view('categorias.index',compact('cats'));
     }
 
     /**
@@ -44,9 +46,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Cat $cats)
     {
-        //
+        $cats->load("products");
+        //dd($cats);
+        return view('categorias.show',compact('cats'));
     }
 
     /**

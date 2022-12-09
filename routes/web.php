@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,20 @@ use App\Http\Controllers\ComponentController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
+
+//login
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/productos',[App\Http\Controllers\ProductController::class, 'index'])->name('productos.index');
+Route::get('/productos/show/{product}',[App\Http\Controllers\ProductController::class, 'show'])->name('productos.show');
+Route::get('/categorias',[App\Http\Controllers\CategoryController::class, 'index'])->name('categorias.index');
+Route::get('/categorias/show/{cats}',[App\Http\Controllers\CategoryController::class, 'show'])->name('categorias.show');
 
 Route::get('/cuenta', function () {
     return view('cuenta');
-});
-
-Route::get('/registro', function () {
-    return view('registro');
 });
 
 Route::get('/carrito', function () {
@@ -35,87 +41,28 @@ Route::get('/centro-de-ayuda', function () {
     return view('ayuda');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
-
-Route::get('/componentes',[ComponentController::class,'index']);
-Route::get('/componentes/new',[ComponentController::class,'create']);
-Route::post('/componentes/save',[ComponentController::class,'store']);
-Route::get('/componentes/update/{id}',[ComponentController::class,'edit']);
-Route::post('/componentes/update/{id}',[ComponentController::class,'update']);
-Route::get('/componentes/delete/{id}',[ComponentController::class,'destroy']);
-
-Route::get('/perifericos',[ProductController::class,'index']);
-
-Route::get('/ordenadores',[ProductController::class,'index']);
-
-Route::get('/portatiles',[ProductController::class,'index']);
-
-Route::get('/moviles',[ProductController::class,'index']);
-
-Route::get('/tablets',[ProductController::class,'index']);
-
-/*
-Route::get('/ordenadores', function () {
-    return view('categorias.ordenadores');
-});
-
-Route::get('/portatiles', function () {
-    return view('categorias.portatiles');
-});
-
-Route::get('/moviles', function () {
-    return view('categorias.moviles');
-});
-
-
-Route::get('/componentes', function () {
-    return view('categorias.componentes');
-});
-
-Route::get('/perifericos', function () {
-    return view('categorias.perifericos');
-});
-
-Route::get('/tablets', function () {
-    return view('categorias.tablets');
-});
-*/
-//login
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::group(['middleware'=>['auth','is_admin']], function(){
+Route::group(['middleware'=>['auth']], function(){
 
     Route::get('/cuenta', function(){
         $user = auth()->user();
         return view('cuenta',compact('user'));
     });
 
-    Route::get('/secreta2', function(){
-        return "Estas autentificado2";
+    
+    Route::post('/cuenta/{id}',[UserController::class,'update']);
+    Route::post('/cuenta2/{id}',[UserController::class,'updateBalance']);
+    Route::get('/eliminarCuenta/{id}',[UserController::class, 'destroy']);
+
+    Route::group(['middleware'=>['auth','role:admin']], function(){
+
+        Route::get('/admin', function () {
+            return view('admin');
+        });
+
+        Route::get('/productos/create',[App\Http\Controllers\ProductController::class,'create'])->name('productos.create');
+        Route::post('/productos/save',[App\Http\Controllers\ProductController::class,'store'])->name('productos.store');
+        Route::get('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('productos.index');
+        Route::post('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('productos.update');
+        Route::get('/productos/delete/{id}',[App\Http\Controllers\ProductController::class,'destroy'])->name('productos.destroy');    
     });
-
 });
-
-Route::group(['middleware'=>['auth','role:normal']], function(){
-
-    Route::get('/accesonormal', function(){
-        echo "Estas autentificado i tienes rol normal";
-    });
-
-});
-
-Route::group(['middleware'=>['auth','role:admin']], function(){
-
-    Route::get('/accesoadmin', function(){
-        echo "Estas autentificado i tienes rol admin";
-    });
-
-});
-
-Route::post('/cuenta/{id}',[UserController::class,'update']);
-Route::post('/cuenta2/{id}',[UserController::class,'updateBalance']);
-Route::get('/eliminarCuenta/{id}',[UserController::class, 'destroy']);

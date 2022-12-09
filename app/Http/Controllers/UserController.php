@@ -82,7 +82,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->username = $request->username;
         $user->address = $request->address;
-        if($request->shippingRegion == 'Choose Region...'){ 
+        if($request->shippingRegion == 'Escoge una región...'){ 
             $user->shippingRegion = $user->shippingRegion;
         } 
         else {

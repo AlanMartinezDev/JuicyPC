@@ -17,49 +17,27 @@
 			<!-- inicio de header -->
 			<nav class="navbar navbar-expand-lg">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="/">JuicyPC</a>
+					<a class="navbar-brand" href="{{ url('/') }}">JuicyPC</a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item dropdown d-flex ms-3">
+							<li class="nav-item d-flex ms-3">
 								<i class="fa-solid fa-shop align-self-center" style="color:grey;"></i>
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Tienda </a>
-								<ul class="dropdown-menu">
-									<li>
-										<a class="dropdown-item" href="/componentes">Componentes</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/perifericos">Periféricos</a>
-									</li>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<li>
-										<a class="dropdown-item" href="/ordenadores">Ordenadores</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/portatiles">Portátiles</a>
-									</li>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<li>
-										<a class="dropdown-item" href="/moviles">Móviles</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="/tablets">Tablets</a>
-									</li>
-								</ul>
+								<a class="nav-link" href="{{ url('/productos') }}">Productos</a>
+							</li>
+							<li class="nav-item d-flex ms-3">
+								<i class="fa-solid fa-tags align-self-center" style="color:grey;"></i>
+								<a class="nav-link" href="{{ url('/categorias') }}">Categorías</a>
 							</li>
 							<li class="nav-item d-flex ms-3">
 								<i class="fa-solid fa-cart-shopping align-self-center" style="color:grey;"></i>
-								<a class="nav-link" href="/carrito">Carrito</a>
+								<a class="nav-link" href="{{ url('/carrito') }}">Carrito</a>
 							</li>
 							<li class="nav-item d-flex ms-3" style="color:grey;">
 								<i class="fa-solid fa-headset align-self-center"></i>
-								<a class="nav-link" href="/centro-de-ayuda">Centro de ayuda</a>
+								<a class="nav-link" href="{{ url('/centro-de-ayuda') }}">Centro de ayuda</a>
 							</li>
 							@if(isset( auth::user()->name ))
 							<li class="nav-item dropdown d-flex ms-3">
@@ -68,14 +46,14 @@
 								<ul class="dropdown-menu">
 									@if( auth::user()->role == 'admin' )
 										<li>
-											<a class="dropdown-item" href="/admin">Administración</a>
+											<a class="dropdown-item" href="{{ url('/admin') }}">Administración</a>
 										</li>
 									@endif
 									<li>
-										<a class="dropdown-item" href="/cuenta">Cuenta</a>
+										<a class="dropdown-item" href="{{ url('/cuenta') }}">Cuenta</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+										<a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
 									</li>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
 								</ul>
@@ -83,7 +61,7 @@
 							@else
 							<li class="nav-item d-flex ms-3">
 								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
-								<a class="nav-link" href="/cuenta">Cuenta</a>
+								<a class="nav-link" href="{{ url('/cuenta') }}">Cuenta</a>
 							</li>
 							@endif
 						</ul>

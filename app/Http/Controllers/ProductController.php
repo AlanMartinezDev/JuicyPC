@@ -15,9 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categoria = Cat::All();
-        $components = Product::All();
-        return view('categorias.componentes.index',compact('components','categoria'));
+        //$categoria = Cat::All();
+        $products = Product::All();
+        return view('productos.index',compact('products'));
     }
 
     /**
@@ -27,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('categorias.componentes.new');
+        $cats = Cat::All();
+        return view('productos.new',compact('cats'));
     }
 
     /**
@@ -44,15 +45,15 @@ class ProductController extends Controller
               'gender' => 'required | in:male,female',
               'planet_id' => 'required | exists:planets,id' ]
         );*/
-
-        $components = new Product;
-        $components->brand = $request->brand;
-        $components->name = $request->name;
-        $components->description = $request->description;
-        $components->price = $request->price;
-        $components->image = $request->image;
-        $components->save();
-        return redirect('/componentes');
+        
+        $products = new Product;
+        $products->brand = $request->brand;
+        $products->name = $request->name;
+        $products->description = $request->description;
+        $products->price = $request->price;
+        $products->image = $request->image;
+        $products->save();
+        return redirect('/productos');
     }
 
     /**
@@ -63,7 +64,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product->load("cats");
+        //dd($product);
+        return view('productos.show',compact('product'));
     }
 
     /**
@@ -74,8 +77,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $components = Product::findOrFail($id);
-        return view('categorias.componentes.update',compact('components'));
+        $products = Product::findOrFail($id);
+        $cats = Cat::All();
+        return view('productos.update',compact('products','cats'));
     }
 
     /**
@@ -87,14 +91,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $components = Product::findOrFail($id);
-        $components->brand = $request->brand;
-        $components->name = $request->name;
-        $components->description = $request->description;
-        $components->price = $request->price;
-        $components->image = $request->image;
-        $components->save();
-        return redirect('/componentes');
+        $products = Product::findOrFail($id);
+        $products->brand = $request->brand;
+        $products->name = $request->name;
+        $products->description = $request->description;
+        $products->price = $request->price;
+        $products->image = $request->image;
+        $products->save();
+        return redirect('/productos');
     }
 
     /**
@@ -105,8 +109,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $components = Product::findOrFail($id);
-        $components->delete();
-        return redirect('/componentes');
+        $products = Product::findOrFail($id);
+        $products->delete();
+        return redirect('/productos');
     }
 }

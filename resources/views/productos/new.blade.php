@@ -5,7 +5,7 @@
         <div class="col-10">
             <div class="row g-3">
                 <div class="col-4">
-                    <form action="/componentes/save" method="post">
+                    <form action="{{ route('productos.store') }}" method="post">
                         @csrf
                         <label for="brand" class="form-label">Marca</label>
                         <input type="text" class="form-control mb-2" name="brand" id="brand" aria-label="Marca">
@@ -21,6 +21,12 @@
                         
                         <label for="image" class="form-label">Imagen (url)</label>
                         <input type="text" class="form-control mb-2" name="image" id="image" aria-label="Imagen (link)">
+
+                        <select name="" id="">
+                            @foreach($cats as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                            @endforeach
+                        </select>
                         
                         <button type="submit" class="btn btn-outline-dark">Guardar producto</button>
                     </form>
@@ -29,6 +35,6 @@
         </div>
     </div>
     @else
-        <script>window.location = "/componentes";</script>
+        <script>window.location = "{{ url('/') }}";</script>
     @endif
 @endsection

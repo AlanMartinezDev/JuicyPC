@@ -23,7 +23,7 @@ class Product extends Model
             Store::class,'product_store');
     }
 
-    public function categories()
+    public function cats()
     {
         return $this->belongsToMany(
             Cat::class,'product_cat');

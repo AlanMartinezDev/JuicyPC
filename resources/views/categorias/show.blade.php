@@ -20,12 +20,12 @@
                             <div class="col d-flex justify-content-center">
                                 <a href="/productos/delete/{{ $product->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
                             </div>
-                            <div class="col d-flex justify-content-center">
-                                <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-success btn-sm">Ver producto</a>
-                            </div>
                         @else
                             <div class="col d-flex justify-content-end">
                                 <a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a>
+                            </div>
+                            <div class="col d-flex justify-content-center">
+                                <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
                             </div>
                         @endif
                     </div>

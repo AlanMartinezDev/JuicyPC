@@ -113,4 +113,49 @@ class ProductController extends Controller
         $products->delete();
         return redirect('/productos');
     }
+
+    public function editCats(Product $product) 
+    {
+        
+        // Transformem la col·lecció de superpoders en un array amb els id's
+        
+        $arrayId = $product->cats->pluck('id'); // exemple: [1,3,5]
+        
+        $cats = Cat::whereNotIn('id',$arrayId)->get();
+        $cats2 = Cat::All();
+       
+        
+        return view('productos.showCats',compact('product','cats','cats2'));
+    }
+
+    public function attachCats(Request $request, Product $product) 
+    {
+        
+        /*
+        $request->validate([
+            'powers' => 'exists:moves,id',                       
+        ]);
+        */
+
+       $product->cats()->attach($request->cats);
+        
+        return redirect()->route('products.editcats',$product->id);
+
+    }
+
+
+    public function detachCats(Request $request, Product $product) 
+    {
+        /*
+        $request->validate([
+            'moves' => 'exists:moves,id',                       
+        ]);
+        */
+
+        if ($request->has('cats'))
+            $product->cats()->detach($request->cats);
+        
+        return redirect()->route('products.editcats',$product->id);
+
+    }
 }

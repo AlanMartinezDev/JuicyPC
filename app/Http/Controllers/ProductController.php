@@ -63,7 +63,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product->load("cats");
+        //dd($product);
+        return view('productos.show',compact('product'));
     }
 
     /**

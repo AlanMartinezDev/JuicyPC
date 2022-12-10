@@ -33,7 +33,11 @@
 							</li>
 							<li class="nav-item d-flex ms-3">
 								<i class="fa-solid fa-cart-shopping align-self-center" style="color:grey;"></i>
-								<a class="nav-link" href="{{ url('/carrito') }}">Carrito</a>
+								<a class="nav-link" href="{{ url('/carrito') }}">Carrito 
+									@if(count(Cart::getContent()) > 0)
+									({{ count(Cart::getContent()) }})
+									@endif
+								</a>
 							</li>
 							<li class="nav-item d-flex ms-3" style="color:grey;">
 								<i class="fa-solid fa-headset align-self-center"></i>

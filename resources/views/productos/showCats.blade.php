@@ -2,7 +2,7 @@
 @section('content')
 
 <div>    
-    <h2>Moves of {{ $product->name }}</h2>
+    <h2>Categories of {{ $product->name }}</h2>
 </div>
         
   

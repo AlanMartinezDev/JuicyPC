@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,9 @@ Route::get('/centro-de-ayuda', function () {
 });
 
 
+//Rutas store
+
+
 Route::group(['middleware'=>['auth']], function(){
 
     Route::get('/cuenta', function(){
@@ -68,6 +72,7 @@ Route::group(['middleware'=>['auth']], function(){
             return view('admin');
         });
 
+        //Añadir/Editar/Eliminar productos como admin
         Route::get('/productos/create',[App\Http\Controllers\ProductController::class,'create'])->name('productos.create');
         Route::post('/productos/save',[App\Http\Controllers\ProductController::class,'store'])->name('productos.store');
         Route::get('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('productos.index');
@@ -75,10 +80,21 @@ Route::group(['middleware'=>['auth']], function(){
         Route::get('/productos/delete/{id}',[App\Http\Controllers\ProductController::class,'destroy'])->name('productos.destroy');
         
         Route::get('/productos/{product}/cats', [App\Http\Controllers\ProductController::class, 'editCats'])->name('products.editcats');
-
         Route::post('/productos/{product}/assigncats', [App\Http\Controllers\ProductController::class, 'attachCats'])->name('products.assigncats');
-
         Route::post('/productos/{product}/detachcats', [App\Http\Controllers\ProductController::class, 'detachCats'])->name('products.detachcats');
 
+        Route::get('/stores/{store}/stores', [App\Http\Controllers\StoreController::class, 'editProducts'])->name('stores.editproducts');
+        Route::post('/stores/{store}/assignstores', [App\Http\Controllers\StoreController::class, 'attachProducts'])->name('stores.assignproducts');
+        Route::post('/stores/{store}/detachstores', [App\Http\Controllers\StoreController::class, 'detachProducts'])->name('stores.detachproducts');
+
+        //Añadir/Editar/Eliminar store
+        Route::get('/stores/create',[App\Http\Controllers\StoreController::class,'create'])->name('stores.create');
+        Route::post('/stores/save',[App\Http\Controllers\StoreController::class,'store'])->name('stores.store');
+        Route::get('/stores/update/{id}',[App\Http\Controllers\StoreController::class,'edit'])->name('stores.index');
+        Route::post('/stores/update/{id}',[App\Http\Controllers\StoreController::class,'update'])->name('stores.update');
+        Route::get('/stores/delete/{id}',[App\Http\Controllers\StoreController::class,'destroy'])->name('stores.destroy');
+
+        Route::get('/stores',[App\Http\Controllers\StoreController::class, 'index'])->name('stores.index');
+        Route::get('/stores/show/{store}',[App\Http\Controllers\StoreController::class, 'show'])->name('stores.show');
     });
 });

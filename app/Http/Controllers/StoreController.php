@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -14,7 +15,8 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        $stores = Store::All();
+        return view('stores.index',compact('stores'));
     }
 
     /**
@@ -24,7 +26,8 @@ class StoreController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::All();
+        return view('stores.new',compact('products'));
     }
 
     /**
@@ -35,7 +38,19 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$request->validate(
+            [ 'realname' => 'required | max:75',
+              'heroname' => 'required | max:25 | unique:superheroes,heroname,'.$id,
+              'gender' => 'required | in:male,female',
+              'planet_id' => 'required | exists:planets,id' ]
+        );*/
+        
+        $stores = new Store;
+        $stores->name = $request->name;
+        $stores->address = $request->address;
+        $stores->contact = $request->contact;
+        $stores->save();
+        return redirect('/stores');
     }
 
     /**
@@ -46,7 +61,9 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
+        $store->load("products");
+        //dd($product);
+        return view('stores.show',compact('store'));
     }
 
     /**
@@ -55,9 +72,11 @@ class StoreController extends Controller
      * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function edit(Store $store)
+    public function edit($id)
     {
-        //
+        $stores = Store::findOrFail($id);
+        $editstore = Store::All();
+        return view('stores.update',compact('stores','editstore'));
     }
 
     /**
@@ -67,9 +86,14 @@ class StoreController extends Controller
      * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Store $store)
+    public function update(Request $request, $id)
     {
-        //
+        $stores = Store::findOrFail($id);
+        $stores->name = $request->name;
+        $stores->address = $request->address;
+        $stores->contact = $request->contact;
+        $stores->save();
+        return redirect('/stores');
     }
 
     /**
@@ -78,8 +102,57 @@ class StoreController extends Controller
      * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Store $store)
+    public function destroy($id)
     {
-        //
+        $stores = Store::findOrFail($id);
+        $stores->delete();
+        return redirect('/stores');
+    }
+
+    //RELACION N A N
+
+    public function editProducts(Store $store) 
+    {
+        
+        // Transformem la col·lecció de superpoders en un array amb els id's
+        
+        $arrayProducts = $store->products->pluck('id'); // exemple: [1,3,5]
+        
+        $products = Product::whereNotIn('id',$arrayProducts)->get();
+        $products2 = Product::All();
+       
+        
+        return view('stores.showStores',compact('store','products','products2'));
+    }
+
+    public function attachProducts(Request $request, Store $store) 
+    {
+        
+        /*
+        $request->validate([
+            'stock' => 'nullable',                       
+        ]);
+        */
+
+       $store->products()->attach($request->products);
+        
+        return redirect()->route('stores.editproducts',$store->id);
+
+    }
+
+
+    public function detachProducts(Request $request, Store $store) 
+    {
+        /*
+        $request->validate([
+            'moves' => 'exists:moves,id',                       
+        ]);
+        */
+
+        if ($request->has('products'))
+            $store->products()->detach($request->products);
+        
+        return redirect()->route('stores.editproducts',$store->id);
+
     }
 }

@@ -27,6 +27,8 @@
 
                         <button type="submit" class="btn btn-outline-dark">Actualizar producto</button>
                     </form>
+                    <br>
+                        <a href="/productos/{{$products->id}}/cats" type="button" class="btn btn-outline-warning btn-sm">Editar Categorias</a>
                 </div>
             </div>
         </div>

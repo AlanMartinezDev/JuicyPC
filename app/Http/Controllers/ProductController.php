@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Cat;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -107,6 +108,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+
+     //CATEGORIES
+
     public function destroy($id)
     {
         $products = Product::findOrFail($id);
@@ -158,4 +162,5 @@ class ProductController extends Controller
         return redirect()->route('products.editcats',$product->id);
 
     }
+
 }

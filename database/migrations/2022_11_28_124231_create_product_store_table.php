@@ -18,7 +18,6 @@ class CreateProductStoreTable extends Migration
             $table->timestamps();
             $table->foreignId('product_id')->constrained();
             $table->foreignId('store_id')->constrained();
-            $table->integer('stock');
         });
     }
 

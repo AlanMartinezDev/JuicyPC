@@ -22,6 +22,13 @@
             </div>
         </div>
     </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center"><a href="{{ url('/stores') }}" class="text-decoration-none">Almacenes</a></h5>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

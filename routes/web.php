@@ -83,6 +83,12 @@ Route::group(['middleware'=>['auth']], function(){
         Route::get('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('productos.index');
         Route::post('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('productos.update');
         Route::get('/productos/delete/{id}',[App\Http\Controllers\ProductController::class,'destroy'])->name('productos.destroy');
+
+        Route::get('/categorias/create',[App\Http\Controllers\CategoryController::class,'create'])->name('cat.create');
+        Route::post('/categorias/save',[App\Http\Controllers\CategoryController::class,'store'])->name('cat.store');
+        Route::get('/categorias/update/{id}',[App\Http\Controllers\CategoryController::class,'edit'])->name('cat.index');
+        Route::post('/categorias/update/{id}',[App\Http\Controllers\CategoryController::class,'update'])->name('cat.update');
+        Route::get('/categorias/delete/{id}',[App\Http\Controllers\CategoryController::class,'destroy'])->name('cat.destroy');
         
         Route::get('/productos/{product}/cats', [App\Http\Controllers\ProductController::class, 'editCats'])->name('products.editcats');
         Route::post('/productos/{product}/assigncats', [App\Http\Controllers\ProductController::class, 'attachCats'])->name('products.assigncats');

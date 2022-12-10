@@ -4,9 +4,15 @@
         <div class="row mb-3">
             <h1>Carrito</h1>
             <!-- If que muestra el número de veces que hemos añadido un producto sumando el 1 de la función add de
-                    ShoppingCartController.php-->
-            @if(count(Cart::getContent()))
-                <table class="table table-striped">
+                    ShoppingCartController.php-->                
+            @if(Cart::isEmpty())
+                <div class="col-4"></div>
+                <div class="col-4 d-flex justify-content-center">
+                    <a href="/productos" type="button" class="btn btn-outline-primary btn-sm">Carrito vacío. Seguir comprando.</a>
+                </div>
+                <div class="col-4"></div>
+            @elseif(count(Cart::getContent()))
+            <table class="table table-striped">
                     <tr>
                         <td>ID</td>
                         <td>Nombre</td>
@@ -19,7 +25,7 @@
                     @foreach(Cart::getContent() as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
+                        <td><a href="/productos/show/{{ $item->id }}">{{ $item->name }}</a></td>
                         <td>{{ $item->price }}€</td>
                         <td>{{ $item->quantity }}</td>
                         <td>
@@ -34,8 +40,6 @@
                     @endforeach
                 </table>
                 <div class="row">Total: {{ \Cart::getSubTotal() }}€</div>
-            @else
-                <a href="/productos">Carrito vacío. Seguir comprando.</a>
             @endif
         </div>
     </div>

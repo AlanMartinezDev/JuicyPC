@@ -2,9 +2,9 @@
 @section('content')
     <div class="row mb-3">
         <h1>{{ $cats->name }}</h1>
-        @if(count(Cart::getContent()))
+        <!--@if(count(Cart::getContent()))
             <a href="/carrito">Ver carrito. {{ count(Cart::getContent()) }} productos en el carrito.</a>
-        @endif
+        @endif-->
     </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-4 g-4"> 
     @foreach($cats->products as $product)

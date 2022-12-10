@@ -5,9 +5,9 @@
             <h1>Productos</h1>
             <!-- If que muestra el número de veces que hemos añadido un producto sumando el 1 de la función add de
                     ShoppingCartController.php-->
-            @if(count(Cart::getContent()))
+            <!--@if(count(Cart::getContent()))
                 <a href="/carrito">Ver carrito. {{ count(Cart::getContent()) }} productos en el carrito.</a>
-            @endif
+            @endif-->
         </div>
         <div class="col">
         <div class="row mb-3 justify-content-center">

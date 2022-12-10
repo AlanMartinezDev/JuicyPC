@@ -72,6 +72,13 @@ Route::group(['middleware'=>['auth']], function(){
         Route::post('/productos/save',[App\Http\Controllers\ProductController::class,'store'])->name('productos.store');
         Route::get('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('productos.index');
         Route::post('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('productos.update');
-        Route::get('/productos/delete/{id}',[App\Http\Controllers\ProductController::class,'destroy'])->name('productos.destroy');    
+        Route::get('/productos/delete/{id}',[App\Http\Controllers\ProductController::class,'destroy'])->name('productos.destroy');
+        
+        Route::get('/productos/{product}/cats', [App\Http\Controllers\ProductController::class, 'editCats'])->name('products.editcats');
+
+        Route::post('/productos/{product}/assigncats', [App\Http\Controllers\ProductController::class, 'attachCats'])->name('products.assigncats');
+
+        Route::post('/productos/{product}/detachcats', [App\Http\Controllers\ProductController::class, 'detachCats'])->name('products.detachcats');
+
     });
 });

@@ -22,6 +22,7 @@
             </div>
         </div>
     </div>
+    @if(isset( auth::user()->name ) && auth::user()->role == 'admin')
     <div class="col">
         <div class="card">
             <div class="card-body">
@@ -29,6 +30,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 
 @endsection

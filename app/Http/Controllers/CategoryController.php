@@ -26,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::All();
+        return view('categorias.new',compact('products'));
     }
 
     /**
@@ -37,7 +38,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cat = new Cat;
+        $cat->name = $request->name;
+        $cat->image = $request->image;
+        $cat->save();
+        return redirect('/categorias');
     }
 
     /**
@@ -59,9 +64,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $cats = Cat::findOrFail($id);
+        $products = Product::All();
+        return view('categorias.update',compact('products','cats'));
     }
 
     /**
@@ -71,9 +78,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $cats = Cat::findOrFail($id);
+        $cats->name = $request->name;
+        $cats->image = $request->image;
+        $cats->save();
+        return redirect('/categorias');
     }
 
     /**
@@ -82,8 +93,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $cats = Cat::findOrFail($id);
+        $cats->delete();
+        return redirect('/categorias');
     }
 }

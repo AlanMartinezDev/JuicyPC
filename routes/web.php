@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,9 @@ Route::get('/productos/show/{product}',[App\Http\Controllers\ProductController::
 //Rutas de Categorias
 Route::get('/categorias',[App\Http\Controllers\CategoryController::class, 'index'])->name('categorias.index');
 Route::get('/categorias/show/{cats}',[App\Http\Controllers\CategoryController::class, 'show'])->name('categorias.show');
+
+Route::get('/orders/{order}/orders', [App\Http\Controllers\OrderController::class, 'editOrders'])->name('orders.editorders');
+Route::post('/orders/save',[App\Http\Controllers\ShoppingCartController::class,'store'])->name('orders.store');
 
 Route::get('/cuenta', function () {
     return view('cuenta');

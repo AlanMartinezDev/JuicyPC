@@ -18,9 +18,9 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
             //$table->foreign('user_Name')->references('name')->on('users');
             $table->foreignId('user_id')->constrained();
-            $table->string('status');
-            $table->set('shippingType',['Fast', 'Standard']);
-            $table->double('shippingCost');
+            //$table->string('status');
+            //$table->set('shippingType',['Fast', 'Standard']);
+            //$table->double('shippingCost');
         });
     }
 

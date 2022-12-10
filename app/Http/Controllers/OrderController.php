@@ -14,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::All();
+        return view('orders.index',compact('orders'));
     }
 
     /**
@@ -24,7 +25,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $orders = Order::All();
+        return view('orders.new',compact('orders'));
     }
 
     /**
@@ -46,7 +48,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $order->load("products");
+        //dd($product);
+        return view('orders.show',compact('order'));
     }
 
     /**
@@ -81,5 +85,19 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+    
+    public function editOrders(Order $order) 
+    {
+        
+        // Transformem la col·lecció de superpoders en un array amb els id's
+        
+        $arrayProducts = $order->products->pluck('id'); // exemple: [1,3,5]
+        
+        $products = Product::whereNotIn('id',$arrayProducts)->get();
+        $products2 = Product::All();
+       
+        
+        return view('orders.showOrders',compact('order','products','products2'));
     }
 }

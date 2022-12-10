@@ -23,9 +23,11 @@ Route::get('/', function () {
 //login
 Auth::routes();
 
+//Rutas de Productos
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/productos',[App\Http\Controllers\ProductController::class, 'index'])->name('productos.index');
 Route::get('/productos/show/{product}',[App\Http\Controllers\ProductController::class, 'show'])->name('productos.show');
+//Rutas de Categorias
 Route::get('/categorias',[App\Http\Controllers\CategoryController::class, 'index'])->name('categorias.index');
 Route::get('/categorias/show/{cats}',[App\Http\Controllers\CategoryController::class, 'show'])->name('categorias.show');
 
@@ -37,9 +39,16 @@ Route::get('/carrito', function () {
     return view('carrito');
 });
 
+//Rutas carrito
+Route::post('/carrito/add',[App\Http\Controllers\ShoppingCartController::class,'add'])->name('carrito.add');
+Route::post('/carrito/clear',[App\Http\Controllers\ShoppingCartController::class,'clear'])->name('carrito.clear');
+Route::post('/carrito/removeitem',[App\Http\Controllers\ShoppingCartController::class,'removeitem'])->name('carrito.removeitem');
+
+//Rutas centro de ayuda
 Route::get('/centro-de-ayuda', function () {
     return view('ayuda');
 });
+
 
 Route::group(['middleware'=>['auth']], function(){
 

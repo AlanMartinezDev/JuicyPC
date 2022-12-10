@@ -3,6 +3,11 @@
     <div class="row">
         <div class="row mb-3">
             <h1>Productos</h1>
+            <!-- If que muestra el número de veces que hemos añadido un producto sumando el 1 de la función add de
+                    ShoppingCartController.php-->
+            @if(count(Cart::getContent()))
+                <a href="/carrito">Ver carrito. {{ count(Cart::getContent()) }} productos en el carrito.</a>
+            @endif
         </div>
         <div class="col">
         <div class="row mb-3 justify-content-center">
@@ -31,7 +36,12 @@
                                     </div>
                                 @else
                                     <div class="col d-flex justify-content-end">
-                                        <a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a>
+                                        <!--a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a-->
+                                        <form action="{{ route('carrito.add') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $product->id }}">
+                                            <button type="submit" class="btn btn-outline-success btn-sm">Añadir al carrito</button>
+                                        </form>
                                     </div>
                                     <div class="col d-flex justify-content-center">
                                         <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>

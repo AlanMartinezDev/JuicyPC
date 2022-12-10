@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShoppingCart;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Cart;
 
 class ShoppingCartController extends Controller
 {
@@ -12,6 +14,37 @@ class ShoppingCartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function add(Request $request)
+    {
+        $product = Product::find($request->id);
+        Cart::add(
+            $product->id,
+            $product->name,
+            $product->price,
+            1,
+            //array("urlfoto"=>product->image)
+        );
+        //Una vez añadido el producto con los datos de arriba redirije con "back" a la página producto con un mensaje
+        return back()->with('success',"$product->name se ha agregado al carrito.");
+    }
+
+    public function removeitem(Request $request)
+    {
+        //$product = Product::where('id', $request->id)->firstOrFail();
+        Cart::remove([
+            'id' => $request->id,
+        ]);
+        //Aplicamos el mismo proceso que en la función add de arriba
+        return back()->with('success',"Eliminado del carrito.");
+    }
+
+    public function clear()
+    {
+        Cart::clear();
+        return back()->with('success',"El carrito se ha vaciado.");
+    }
+
     public function index()
     {
         //

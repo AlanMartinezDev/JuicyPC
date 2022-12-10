@@ -2,10 +2,14 @@
 @section('content')
     <div class="row mb-3">
         <h1>{{ $cats->name }}</h1>
-        <!--@if(count(Cart::getContent()))
-            <a href="/carrito">Ver carrito. {{ count(Cart::getContent()) }} productos en el carrito.</a>
-        @endif-->
     </div>
+    <div class="row mb-3 justify-content-center">
+            @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
+                <div class="col-2">
+                    <a href="{{ route('productos.create') }}" type="button" class="btn btn-outline-dark">Crear producto</a>
+                </div>
+            @endif
+        </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-4 g-4"> 
     @foreach($cats->products as $product)
         <div class="col">

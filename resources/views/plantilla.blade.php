@@ -39,10 +39,10 @@
 									@endif
 								</a>
 							</li>
-							<li class="nav-item d-flex ms-3" style="color:grey;">
+							<!--li class="nav-item d-flex ms-3" style="color:grey;">
 								<i class="fa-solid fa-headset align-self-center"></i>
 								<a class="nav-link" href="{{ url('/centro-de-ayuda') }}">Centro de ayuda</a>
-							</li>
+							</li-->
 							@if(isset( auth::user()->name ))
 							<li class="nav-item dropdown d-flex ms-3">
 								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>

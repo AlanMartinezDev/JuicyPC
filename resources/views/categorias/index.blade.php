@@ -38,10 +38,10 @@
                                 @endif-->
                                 @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/categorias/update/{{ $cat->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
+                                        <a href="/categorias/update/{{ $cat->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar categoria</a>
                                     </div>
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/categorias/delete/{{ $cat->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
+                                        <a href="/categorias/delete/{{ $cat->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar categoria</a>
                                     </div>
                                 @endif
                                 </div>

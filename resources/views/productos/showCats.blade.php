@@ -38,6 +38,8 @@
 	    	<input type="submit" value="Quitar Categoria" class="btn btn-dark">
     	</form>
 
+      <a href="/productos" class="btn btn-outline-primary mt-3">Ver productos</a>
+
     </div>
     <div class="col-sm">
     	<form method='POST' action="{{ route('products.assigncats',$product->id) }}">

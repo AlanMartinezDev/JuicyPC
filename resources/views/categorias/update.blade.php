@@ -16,6 +16,8 @@
                         <input type="text" class="form-control mb-2" name="image" id="image" value="{{ $cats->image }}" aria-label="Imagen (link)">
 
                         <button type="submit" class="btn btn-outline-dark">Actualizar Categoria</button>
+                        <br>
+                        <a href="/categorias" class="btn btn-outline-primary mt-3">Ver categorias</a>
                     </form>
                 </div>
             </div>

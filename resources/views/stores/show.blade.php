@@ -11,4 +11,6 @@
         Contacto: {{ $stores->contact }}
     </li>
     @endforeach
+
+    <a href="/stores/" class="btn btn-outline-primary mt-3">Volver al listado de almacenes</a>
 @endsection

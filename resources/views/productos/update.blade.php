@@ -29,6 +29,8 @@
                     </form>
                     <br>
                         <a href="/productos/{{$products->id}}/cats" type="button" class="btn btn-outline-warning btn-sm">Editar Categorias</a>
+                    <br>
+                        <a href="/productos" class="btn btn-outline-primary mt-3">Ver productos</a>
                 </div>
             </div>
         </div>

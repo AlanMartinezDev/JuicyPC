@@ -37,7 +37,7 @@
         <br>
 	    	<input type="submit" value="Quitar Producto" class="btn btn-dark">
     	</form>
-
+      <a href="/stores/show/{{ $sto-> id }}" class="btn btn-outline-primary mt-3">Ver almacén</a>
     </div>
     <div class="col-sm">
     	<form method='POST' action="{{ route('stores.assignproducts',$store->id) }}">
@@ -58,7 +58,6 @@
     		<input class="btn btn-dark" value="Asignar Producto" type="submit">
     	</form>
     </div>
-    
   </div>
 
 @endsection

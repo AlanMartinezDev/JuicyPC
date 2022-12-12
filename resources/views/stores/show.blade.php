@@ -1,14 +1,18 @@
 @extends('plantilla')
 @section('content')
+<h5 class="card-title d-flex justify-content-center">{{ $store->name }}</h5><br>
     @foreach($store->products as $stores)
-    <li>
-        Nombre: {{ $stores->name }}
-    </li>
-    <li>
-        Dirección: {{ $stores->address }}
-    </li>
-    <li>
-        Contacto: {{ $stores->contact }}
-    </li>
+    <br><br>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Nombre: {{ $stores->brand }} {{ $stores->name }}</p>
+                <p class="card-text">Precio: {{ $stores->price }}€</p>
+                <img src="{{ $stores->image }}" class="card-img-top w-50 d-block ms-auto me-auto" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
     @endforeach
 @endsection

@@ -105,7 +105,7 @@
                         <label for="accountBalance" class="form-label">Añade saldo a tu cuenta</label>
                     </div>
                     <div class="col-6 col-md-4 mb-3">
-                        <input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0">
+                        <input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0" min="0" max="10000">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-outline-primary">Actualizar saldo</button>

@@ -17,7 +17,7 @@ class ProductStoreSeeder extends Seeder
     public function run()
     {
 
-        
+        //php artisan db:seed --class="ProductStoreSeeder"
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;'); // Desactivamos la revisión de claves foráneas
         DB::table('product_store')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;'); // Reactivamos la revisión de claves foráneas

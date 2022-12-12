@@ -23,15 +23,14 @@
                             <div class="row">
                                 @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/stores/update/{{ $store->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
+                                        <a href="/stores/update/{{ $store->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar almacén</a>
                                     </div>
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/stores/delete/{{ $store->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
+                                        <a href="/stores/delete/{{ $store->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar almacén</a>
                                     </div>
-                                @else
                                     
                                     <div class="col d-flex justify-content-center">
-                                        <a href="/stores/show/{{ $store->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
+                                        <a href="/stores/show/{{ $store->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver almacén</a>
                                     </div>
                                 @endif
                             </div>

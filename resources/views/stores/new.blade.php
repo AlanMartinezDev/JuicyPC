@@ -16,7 +16,7 @@
                         <label for="contact" class="form-label">Contacto</label>
                         <input type="text" class="form-control mb-2" name="contact" id="contact" aria-label="Contacto">
                         
-                        <button type="submit" class="btn btn-outline-dark">Guardar producto</button>
+                        <button type="submit" class="btn btn-outline-dark">Guardar almacén</button>
                     </form>
                 </div>
             </div>

@@ -46,7 +46,7 @@
     		<label>Lista de Productos</label>
     		<select multiple class="form-control" size="10" name="products[]">
           
-    		  @foreach($products2 as $pro) {        
+    		  @foreach($products as $pro) {        
                     <option value="{{ $pro->id }}">
                     {{ $pro->brand }} {{ $pro->name }}                              
                     </option>                         

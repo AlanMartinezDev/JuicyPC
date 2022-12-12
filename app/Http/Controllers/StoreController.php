@@ -113,16 +113,12 @@ class StoreController extends Controller
 
     public function editProducts(Store $store) 
     {
-        
-        // Transformem la col·lecció de superpoders en un array amb els id's
-        
-        $arrayProducts = $store->products->pluck('id'); // exemple: [1,3,5]
+        $arrayProducts = $store->products->pluck('id'); 
         
         $products = Product::whereNotIn('id',$arrayProducts)->get();
-        $products2 = Product::All();
        
         
-        return view('stores.showStores',compact('store','products','products2'));
+        return view('stores.showStores',compact('store','products'));
     }
 
     public function attachProducts(Request $request, Store $store) 
@@ -133,8 +129,8 @@ class StoreController extends Controller
             'stock' => 'nullable',                       
         ]);
         */
-
-       $store->products()->attach($request->products);
+        
+        $store->products()->attach($request->products);
         
         return redirect()->route('stores.editproducts',$store->id);
 

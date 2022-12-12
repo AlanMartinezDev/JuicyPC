@@ -119,17 +119,13 @@ class ProductController extends Controller
     }
 
     public function editCats(Product $product) 
-    {
+    {   
+        $arrayCats = $product->cats->pluck('id');
         
-        // Transformem la col·lecció de superpoders en un array amb els id's
-        
-        $arrayId = $product->cats->pluck('id'); // exemple: [1,3,5]
-        
-        $cats = Cat::whereNotIn('id',$arrayId)->get();
-        $cats2 = Cat::All();
+        $categorias = Cat::whereNotIn('id',$arrayCats)->get();
        
         
-        return view('productos.showCats',compact('product','cats','cats2'));
+        return view('productos.showCats',compact('product','categorias'));
     }
 
     public function attachCats(Request $request, Product $product) 

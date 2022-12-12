@@ -46,9 +46,9 @@
     		<label>Lista de Categorias</label>
     		<select multiple class="form-control" size="10" name="cats[]">
           
-    		  @foreach($cats2 as $cat) {        
+    		  @foreach($categorias as $cat) {        
                     <option value="{{ $cat->id }}">
-                      {{ $cat->name }}                              
+                      {{ $cat->name }}                            
                     </option>                         
                   @endforeach
     		</select>

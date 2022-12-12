@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         //$categoria = Cat::All();
-        $products = Product::All();
+        $products = Product::Paginate(8);
         return view('productos.index',compact('products'));
     }
 

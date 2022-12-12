@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Cat::All();
+        $cats = Cat::Paginate(4);
         return view('categorias.index',compact('cats'));
     }
 

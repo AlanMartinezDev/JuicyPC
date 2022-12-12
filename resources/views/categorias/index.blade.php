@@ -53,4 +53,10 @@
             </div>
         </div>
     </div>
+    <br><br>
+    <div class="row">
+        <div class="col justify-content-center d-flex">
+            {{ $cats->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
 @endsection

@@ -30,6 +30,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/productos',[App\Http\Controllers\ProductController::class, 'index'])->name('productos.index');
 Route::get('/productos/show/{product}',[App\Http\Controllers\ProductController::class, 'show'])->name('productos.show');
+
 //Rutas de Categorias
 Route::get('/categorias',[App\Http\Controllers\CategoryController::class, 'index'])->name('categorias.index');
 Route::get('/categorias/show/{cats}',[App\Http\Controllers\CategoryController::class, 'show'])->name('categorias.show');

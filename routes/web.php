@@ -43,13 +43,15 @@ Route::get('/cuenta', function () {
 });
 
 Route::get('/carrito', function () {
-    return view('carrito');
+    $user = auth()->user();
+    return view('carrito',compact('user'));
 });
 
 //Rutas carrito
 Route::post('/carrito/add',[App\Http\Controllers\ShoppingCartController::class,'add'])->name('carrito.add');
 Route::post('/carrito/clear',[App\Http\Controllers\ShoppingCartController::class,'clear'])->name('carrito.clear');
 Route::post('/carrito/removeitem',[App\Http\Controllers\ShoppingCartController::class,'removeitem'])->name('carrito.removeitem');
+Route::post('/carrito/{id}',[App\Http\Controllers\ShoppingCartController::class,'userBalance'])->name('carrito.balance');
 
 //Rutas centro de ayuda
 Route::get('/centro-de-ayuda', function () {

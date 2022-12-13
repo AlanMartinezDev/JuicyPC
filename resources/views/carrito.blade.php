@@ -41,8 +41,9 @@
                 </table>
                 <div class="row">Total: {{ \Cart::getSubTotal() }}€</div>
                 <div class="row">
-                    <form action="/carrito" method="post" class="mt-3">
-                        <input type="hidden" name="subtotal" value="{{ \Cart::getSubTotal() }}">
+                    <form action="/carrito/{{ $user->id }}" method="post" class="mt-3">
+                        @csrf
+                        <input type="hidden" name="accountBalance" value="{{ \Cart::getSubTotal() }}" id="accountBalance">
                         <input type="submit" class="btn btn-outline-success btn-sm" value="Comprar">
                     </form>
                 </div>

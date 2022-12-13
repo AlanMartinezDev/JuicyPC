@@ -6,6 +6,7 @@ use App\Models\ShoppingCart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Cart;
+use App\Models\User;
 
 class ShoppingCartController extends Controller
 {
@@ -43,6 +44,22 @@ class ShoppingCartController extends Controller
     {
         Cart::clear();
         return back()->with('success',"El carrito se ha vaciado.");
+    }
+
+    public function userBalance(Request $request, $id)
+    {
+        $request->validate([
+            'accountBalance' => ['required','numeric']
+        ]);
+
+        $user = User::findOrFail($id);
+       
+        $user->accountBalance -= $request->accountBalance;
+        
+        $user->save();
+        Cart::clear();
+
+        return redirect('/cuenta');
     }
 
     public function index()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\ShoppingCart;
 
 class UserController extends Controller
 {
@@ -116,8 +117,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = auth()->user();
+        
         $user->delete();
         return redirect('/');
     }
+    
 }

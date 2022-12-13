@@ -19,15 +19,21 @@ use App\Http\Controllers\OrderController;
 |
 */
 
+
+
+//HABILITAMOS LAS RUTAS
+Auth::routes();
+
+//RUTAS GET | PÁGINA PRINCIPAL
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-//login
-Auth::routes();
-
-//Rutas de Productos
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//RUTAS GET | VISUALIZACIÓN DE PRODUCTOS | USUARIO : NORMAL
+
 Route::get('/productos',[App\Http\Controllers\ProductController::class, 'index'])->name('productos.index');
 Route::get('/productos/show/{product}',[App\Http\Controllers\ProductController::class, 'show'])->name('productos.show');
 
@@ -80,22 +86,27 @@ Route::group(['middleware'=>['auth']], function(){
             return view('admin');
         });
 
-        //Añadir/Editar/Eliminar productos como admin
+        //RUTAS GET | CRUD PRODUCTO + RELACIÓN N A N DE PRODUCTOS CON CATEGORÍAS | USUARIO : ADMIN
+
         Route::get('/productos/create',[App\Http\Controllers\ProductController::class,'create'])->name('productos.create');
-        Route::post('/productos/save',[App\Http\Controllers\ProductController::class,'store'])->name('productos.store');
-        Route::get('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('productos.index');
-        Route::post('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('productos.update');
         Route::get('/productos/delete/{id}',[App\Http\Controllers\ProductController::class,'destroy'])->name('productos.destroy');
+        Route::get('/productos/{product}/cats', [App\Http\Controllers\ProductController::class, 'editCats'])->name('products.editcats');
+        Route::get('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('productos.index');
+
+        //RUTAS POST | CRUD PRODUCTO + RELACIÓN N A N DE PRODUCTOS CON CATEGORÍAS | USUARIO : ADMIN
+
+        Route::post('/productos/save',[App\Http\Controllers\ProductController::class,'store'])->name('productos.store');
+        Route::post('/productos/update/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('productos.update');
+        Route::post('/productos/{product}/assigncats', [App\Http\Controllers\ProductController::class, 'attachCats'])->name('products.assigncats');
+        Route::post('/productos/{product}/detachcats', [App\Http\Controllers\ProductController::class, 'detachCats'])->name('products.detachcats');
+
+        //
 
         Route::get('/categorias/create',[App\Http\Controllers\CategoryController::class,'create'])->name('cat.create');
         Route::post('/categorias/save',[App\Http\Controllers\CategoryController::class,'store'])->name('cat.store');
         Route::get('/categorias/update/{id}',[App\Http\Controllers\CategoryController::class,'edit'])->name('cat.index');
         Route::post('/categorias/update/{id}',[App\Http\Controllers\CategoryController::class,'update'])->name('cat.update');
         Route::get('/categorias/delete/{id}',[App\Http\Controllers\CategoryController::class,'destroy'])->name('cat.destroy');
-        
-        Route::get('/productos/{product}/cats', [App\Http\Controllers\ProductController::class, 'editCats'])->name('products.editcats');
-        Route::post('/productos/{product}/assigncats', [App\Http\Controllers\ProductController::class, 'attachCats'])->name('products.assigncats');
-        Route::post('/productos/{product}/detachcats', [App\Http\Controllers\ProductController::class, 'detachCats'])->name('products.detachcats');
 
         Route::get('/stores/{store}/stores', [App\Http\Controllers\StoreController::class, 'editProducts'])->name('stores.editproducts');
         Route::post('/stores/{store}/assignstores', [App\Http\Controllers\StoreController::class, 'attachProducts'])->name('stores.assignproducts');

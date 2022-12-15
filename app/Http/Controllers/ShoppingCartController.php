@@ -56,6 +56,8 @@ class ShoppingCartController extends Controller
        
         if($user->accountBalance >= $request->accountBalance){
             $user->accountBalance -= $request->accountBalance;
+        } else {
+            return back()->with('fail',"No hay saldo suficiente.");
         }
         
         $user->save();

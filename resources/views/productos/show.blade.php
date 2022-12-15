@@ -18,7 +18,7 @@
                 <h5 class="card-title">{{ $product->brand }} {{ $product->name }}</h5>
                 <p class="card-text">{{ $product->description }}</p>
                 <p class="card-text">Categoría: <a href="/categorias/show/{{ $cat->id }}" class="text-decoration-none">{{ $cat->name }}</a></p>
-                <p class="card-text fw-bold">{{ $product->price }}€</p>
+                <p class="card-text fw-bold"><i class="fa-solid fa-sack-dollar"></i> {{ $product->price }}€</p>
                 <div class="row">
                     @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                         <div class="col d-flex justify-content-center">

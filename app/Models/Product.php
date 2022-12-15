@@ -35,7 +35,7 @@ class Product extends Model
             Order::class,'order_product');
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

@@ -34,9 +34,11 @@
 							<li class="nav-item d-flex ms-3">
 								<i class="fa-solid fa-cart-shopping align-self-center" style="color:grey;"></i>
 								<a class="nav-link" href="{{ url('/carrito') }}">Carrito 
+								@if(isset( auth::user()->name ))	
 									@if(count(Cart::getContent()) > 0)
 									({{ count(Cart::getContent()) }})
 									@endif
+								@endif
 								</a>
 							</li>
 							<!--li class="nav-item d-flex ms-3" style="color:grey;">

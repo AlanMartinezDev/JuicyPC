@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cat;
 use App\Models\Store;
+use App\Models\User;
 
 class ProductController extends Controller
 {
@@ -57,11 +58,12 @@ class ProductController extends Controller
         $products->description = $request->description;
         $products->price = $request->price;
         $products->image = $request->image;
+        $products->user_id = auth()->user()->id;
         $products->save();
 
         //REDIRECCIÓN A LA VISTA /productos
 
-        return redirect('/productos');
+        return redirect('/productos/'.$products->id.'/cats');
     }
 
     public function show(Product $product)

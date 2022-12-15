@@ -40,6 +40,17 @@ class ShoppingCartController extends Controller
         return back()->with('success',"Eliminado del carrito.");
     }
 
+    public function additem(Request $request)
+    {
+        $product = Product::find($request->id);
+        $row = Product::get(
+            $id = $product->id,
+        );
+        Cart::update($id, $row->quantity + 1);
+
+        return back()->with('success',"Eliminado del carrito.");
+    }
+
     public function clear()
     {
         Cart::clear();
@@ -54,7 +65,11 @@ class ShoppingCartController extends Controller
 
         $user = User::findOrFail($id);
        
-        $user->accountBalance -= $request->accountBalance;
+        if($user->accountBalance >= $request->accountBalance){
+            $user->accountBalance -= $request->accountBalance;
+        } else {
+            return back()->with('fail',"No hay saldo suficiente.");
+        }
         
         $user->save();
         Cart::clear();

@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->string('brand');
             $table->string('image');
-            $table->foreignId('user_id')->constrained()->default('1');
+            $table->foreignId('user_id')->nullable()->constrained();
         });
     }
 

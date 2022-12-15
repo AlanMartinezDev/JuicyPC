@@ -45,7 +45,8 @@ Route::get('/orders/{order}/orders', [App\Http\Controllers\OrderController::clas
 Route::post('/orders/save',[App\Http\Controllers\ShoppingCartController::class,'store'])->name('orders.store');
 
 Route::get('/cuenta', function () {
-    return view('cuenta');
+    $user = auth()->user();
+    return view('cuenta',compact('user'));
 });
 
 Route::get('/carrito', function () {
@@ -57,6 +58,7 @@ Route::get('/carrito', function () {
 Route::post('/carrito/add',[App\Http\Controllers\ShoppingCartController::class,'add'])->name('carrito.add');
 Route::post('/carrito/clear',[App\Http\Controllers\ShoppingCartController::class,'clear'])->name('carrito.clear');
 Route::post('/carrito/removeitem',[App\Http\Controllers\ShoppingCartController::class,'removeitem'])->name('carrito.removeitem');
+Route::post('/carrito/additem',[App\Http\Controllers\ShoppingCartController::class,'additem'])->name('carrito.additem');
 Route::post('/carrito/{id}',[App\Http\Controllers\ShoppingCartController::class,'userBalance'])->name('carrito.balance');
 
 //Rutas centro de ayuda
@@ -70,11 +72,10 @@ Route::get('/centro-de-ayuda', function () {
 
 Route::group(['middleware'=>['auth']], function(){
 
-    Route::get('/cuenta', function(){
+    Route::get('/cuenta', function () {
         $user = auth()->user();
         return view('cuenta',compact('user'));
     });
-
     
     Route::post('/cuenta/{id}',[UserController::class,'update']);
     Route::post('/cuenta2/{id}',[UserController::class,'updateBalance']);

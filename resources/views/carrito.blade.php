@@ -1,5 +1,6 @@
 @extends('plantilla')
 @section('content')
+@if(isset( auth::user()->name ))
     <div class="row">
         <div class="row mb-3">
             <h1>Carrito</h1>
@@ -29,6 +30,17 @@
                         <td>{{ $item->price }}€</td>
                         <td>{{ $item->quantity }}</td>
                         <td>
+                            <form action="{{ route('carrito.additem') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <input type="hidden" name="quantity" value="{{ $item->quantity }}">
+                                <input type="submit" class="btn btn-outline-primary btn-sm" value="+">
+                            </form>
+                            <form action="{{ route('carrito.removeitem') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <input type="submit" class="btn btn-outline-warning btn-sm" value="-">
+                            </form>
                             <form action="{{ route('carrito.removeitem') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->id }}">
@@ -50,4 +62,7 @@
             @endif
         </div>
     </div>
+    @else
+        <script>window.location = "/cuenta";</script>
+    @endif
 @endsection

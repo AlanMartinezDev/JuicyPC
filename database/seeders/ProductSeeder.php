@@ -30,8 +30,8 @@ class ProductSeeder extends Seeder
             'price' => 136.98,
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'MSI',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1051/10517987/1747-msi-b550-gaming-gen3.jpg'      
-        ],
+            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1051/10517987/1747-msi-b550-gaming-gen3.jpg',     
+        ],/*
         [
             'name' => 'GeForce RTX 4090 GAMING OC 24GB GDDR6X',
             'price' => 3039,
@@ -217,7 +217,7 @@ class ProductSeeder extends Seeder
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Lenovo',
             'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1063/10633682/1862-lenovo-yoga-tab-11-4-128gb-11-2k-gris.jpg'      
-        ],
+        ],*/
         
         ];
         

@@ -45,7 +45,8 @@ Route::get('/orders/{order}/orders', [App\Http\Controllers\OrderController::clas
 Route::post('/orders/save',[App\Http\Controllers\ShoppingCartController::class,'store'])->name('orders.store');
 
 Route::get('/cuenta', function () {
-    return view('cuenta');
+    $user = auth()->user();
+    return view('cuenta',compact('user'));
 });
 
 Route::get('/carrito', function () {
@@ -70,9 +71,8 @@ Route::get('/centro-de-ayuda', function () {
 
 Route::group(['middleware'=>['auth']], function(){
 
-    Route::get('/cuenta', function(){
-        $user = auth()->user();
-        return view('cuenta',compact('user'));
+    Route::get('/', function(){
+        return view('welcome');
     });
 
     

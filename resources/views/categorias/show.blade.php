@@ -16,7 +16,7 @@
             <div class="card">
                 <img src="{{ $product->image }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $product->brand }} {{ $product->name }}</h5>
+                    <h5 class="card-title"><a href="/productos/show/{{ $product->id }}" class="text-decoration-none">{{ $product->brand }} {{ $product->name }}</a></h5>
                     <p class="card-text">{{ $product->description }}</p>
                     <p class="card-text fw-bold">{{ $product->price }}€</p>
                     <div class="row">

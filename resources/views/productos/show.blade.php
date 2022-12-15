@@ -17,7 +17,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $product->brand }} {{ $product->name }}</h5>
                 <p class="card-text">{{ $product->description }}</p>
-                <p class="card-text">Categoría: {{ $cat->name }}</p>
+                <p class="card-text">Categoría: <a href="/categorias/show/{{ $cat->id }}" class="text-decoration-none">{{ $cat->name }}</a></p>
                 <p class="card-text fw-bold">{{ $product->price }}€</p>
                 <div class="row">
                     @if( isset(auth::user()->role) && auth::user()->role == 'admin' )

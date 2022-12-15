@@ -54,7 +54,9 @@ class ShoppingCartController extends Controller
 
         $user = User::findOrFail($id);
        
-        $user->accountBalance -= $request->accountBalance;
+        if($user->accountBalance >= $request->accountBalance){
+            $user->accountBalance -= $request->accountBalance;
+        }
         
         $user->save();
         Cart::clear();

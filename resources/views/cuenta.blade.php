@@ -135,6 +135,18 @@
             </div>
         </div>
     </div>
+
+https://dkx0n05ol7t5q.cloudfront.net/webpack_assets/welcome-pattern.bb4bdce2c77ea74429df.svg
+
+    .d4ba859445ffa2444ba0c0b191e56367-scss {
+    background-image: url(/webpack_assets/welcome-pattern.bb4bdce….svg);
+    background-size: 400px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 -->
 @if($errors->any())
     <ul>

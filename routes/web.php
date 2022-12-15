@@ -71,10 +71,10 @@ Route::get('/centro-de-ayuda', function () {
 
 Route::group(['middleware'=>['auth']], function(){
 
-    Route::get('/', function(){
-        return view('welcome');
+    Route::get('/cuenta', function () {
+        $user = auth()->user();
+        return view('cuenta',compact('user'));
     });
-
     
     Route::post('/cuenta/{id}',[UserController::class,'update']);
     Route::post('/cuenta2/{id}',[UserController::class,'updateBalance']);

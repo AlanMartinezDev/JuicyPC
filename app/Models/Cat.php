@@ -18,4 +18,9 @@ class Cat extends Model
         return $this->belongsToMany(
             Product::class,'product_cat');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

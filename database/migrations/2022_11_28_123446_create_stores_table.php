@@ -19,6 +19,7 @@ class CreateStoresTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('contact');
+            $table->foreignId('user_id')->nullable()->constrained();
         });
     }
 

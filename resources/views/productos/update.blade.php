@@ -24,7 +24,7 @@
                         
                         <label for="image" class="form-label">Imagen (url)</label>
                         <input type="text" class="form-control mb-2" name="image" id="image" value="{{ $products->image }}" aria-label="Imagen (link)">
-                        <p class="card-text fw-bold"><i class="fa-solid fa-circle-user"></i> {{ $products->user->name }}</p>
+                        <p class="card-text fw-bold"><i class="fa-solid fa-circle-user"></i> {{ $products->user->username }}</p>
 
                         <button type="submit" class="btn btn-outline-dark">Actualizar producto</button>
                     </form>

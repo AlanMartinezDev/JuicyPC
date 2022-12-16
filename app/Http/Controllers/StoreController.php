@@ -49,6 +49,7 @@ class StoreController extends Controller
         $stores->name = $request->name;
         $stores->address = $request->address;
         $stores->contact = $request->contact;
+        $stores->user_id = auth()->user()->id;
         $stores->save();
         return redirect('/stores');
     }

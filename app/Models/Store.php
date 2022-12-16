@@ -20,4 +20,9 @@ class Store extends Model
         return $this->belongsToMany(
             Product::class,'product_store');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

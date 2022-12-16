@@ -30,34 +30,46 @@
                         <td>{{ $item->price }}€</td>
                         <td>{{ $item->quantity }}</td>
                         <td>
-                            <form action="{{ route('carrito.additem') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                <input type="hidden" name="quantity" value="{{ $item->quantity }}">
-                                <input type="submit" class="btn btn-outline-primary btn-sm" value="+">
-                            </form>
-                            <form action="{{ route('carrito.subtractitem') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                <input type="submit" class="btn btn-outline-warning btn-sm" value="-">
-                            </form>
-                            <form action="{{ route('carrito.removeitem') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                <input type="submit" class="btn btn-outline-danger btn-sm" value="Eliminar">
-                            </form>
+                            <div class="row">
+                                <div class="col-2 d-flex justify-content-end">
+                                    <form action="{{ route('carrito.additem') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <input type="hidden" name="quantity" value="{{ $item->quantity }}">
+                                    <input type="submit" class="btn btn-outline-primary btn-sm" value="+">
+                                    </form>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center">
+                                    <form action="{{ route('carrito.subtractitem') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <input type="submit" class="btn btn-outline-warning btn-sm" value="-">
+                                    </form>
+                                </div>
+                                <div class="col-2 d-flex justify-content-start">
+                                    <form action="{{ route('carrito.removeitem') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <input type="submit" class="btn btn-outline-danger btn-sm" value="Eliminar">
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                         <td>{{ $item->price * $item->quantity }}€</td>
                     </tr>
                     @endforeach
                 </table>
-                <div class="row">Total: {{ \Cart::getSubTotal() }}€</div>
                 <div class="row">
-                    <form action="/carrito/{{ $user->id }}" method="post" class="mt-3">
-                        @csrf
-                        <input type="hidden" name="accountBalance" value="{{ \Cart::getSubTotal() }}" id="accountBalance">
-                        <input type="submit" class="btn btn-outline-success btn-sm" value="Comprar">
-                    </form>
+                    <div class="col d-flex align-self-center">
+                        Total: {{ \Cart::getSubTotal() }}€
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <form action="/carrito/{{ $user->id }}" method="post" class="mt-3">
+                            @csrf
+                            <input type="hidden" name="accountBalance" value="{{ \Cart::getSubTotal() }}" id="accountBalance">
+                            <input type="submit" class="btn btn-outline-success btn-sm" value="Comprar">
+                        </form>
+                    </div>
                 </div>
             @endif
         </div>

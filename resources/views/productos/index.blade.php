@@ -34,7 +34,7 @@
                                     <div class="col d-flex justify-content-center">
                                         <a href="/productos/delete/{{ $product->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
                                     </div>
-                                @else
+                                @elseif(isset( auth::user()->name ))
                                     <div class="col d-flex justify-content-end">
                                         <!--a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a-->
                                         <form action="{{ route('carrito.add') }}" method="post">
@@ -46,6 +46,10 @@
                                     <div class="col d-flex justify-content-center">
                                         <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
                                     </div>
+                                    @elseif(!isset( auth::user()->name ))
+                                        <div class="col d-flex justify-content-center">
+                                            <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
+                                        </div>
                                 @endif
                             </div>
                         </div>

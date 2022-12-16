@@ -241,7 +241,7 @@ class ProductSeeder extends Seeder
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Lenovo',
             'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1063/10633682/1862-lenovo-yoga-tab-11-4-128gb-11-2k-gris.jpg'      
-        ],
+        ],*/
         
         ];
         

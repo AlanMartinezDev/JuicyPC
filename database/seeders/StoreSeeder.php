@@ -27,24 +27,28 @@ class StoreSeeder extends Seeder
                 'name' => 'Almacén 1',
                 'address' => 'Avenida Cuba',
                 'contact' => 'store1@juicypc.com',
+                'user_id' => 1,
             ],
 
             [
                 'name' => 'Almacén 2',
                 'address' => 'Rambla Manuel Peralta',
                 'contact' => 'store2@juicypc.com',
+                'user_id' => 1,
             ],
 
             [
                 'name' => 'Almacén 3',
                 'address' => 'Avenida Pablo Vallecas',
                 'contact' => 'store3@juicypc.com',
+                'user_id' => 1,
             ],
 
             [
                 'name' => 'Almacén 4',
                 'address' => 'La Cañada Real',
                 'contact' => 'store4@juicypc.com',
+                'user_id' => 1,
             ],
             
             

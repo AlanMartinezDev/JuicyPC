@@ -15,6 +15,7 @@
 
                         <label for="contact" class="form-label">Contacto</label>
                         <input type="text" class="form-control mb-2" name="contact" id="contact" value="{{ $stores->contact }}" aria-label="Contacto">
+                        <p class="card-text fw-bold"><i class="fa-solid fa-circle-user"></i> {{ $stores->user->username }}</p>
 
                         <button type="submit" class="btn btn-outline-dark">Actualizar Store</button>
                     </form>

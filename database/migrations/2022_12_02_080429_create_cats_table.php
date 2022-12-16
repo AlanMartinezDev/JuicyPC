@@ -18,6 +18,7 @@ class CreateCatsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('image');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

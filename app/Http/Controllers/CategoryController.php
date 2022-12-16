@@ -41,6 +41,7 @@ class CategoryController extends Controller
         $cat = new Cat;
         $cat->name = $request->name;
         $cat->image = $request->image;
+        $cat->user_id = auth()->user()->id;
         $cat->save();
         return redirect('/categorias');
     }

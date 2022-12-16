@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'name' => 'Eric',
                 'username' => 'erga916',
                 'email' => 'erga916@vidalibarraquer.net',
-                'address' => 'La Cañada Real',
+                'address' => 'La Cañada Real Nº1',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',
                 'shippingRegion' => 'España',
@@ -36,15 +36,37 @@ class UserSeeder extends Seeder
             ],
 
             [
-                'name' => 'Eric',
-                'username' => 'Musefa',
-                'email' => 'ericgar2003@gmail.com',
+                'name' => 'Jesús',
+                'username' => 'jepa139',
+                'email' => 'jepa139@vidalibarraquer.net',
+                'address' => 'Las Maldivas Nº2',
+                'password' => Hash::make('12345678'),
+                'accountBalance' => '1500',
+                'shippingRegion' => 'España',
+                'role' => 'admin',
+            ],
+
+            [
+                'name' => 'Alan',
+                'username' => 'alma031',
+                'email' => 'alma031@vidalibarraquer.net',
+                'address' => 'Auschwitz Nº3',
+                'password' => Hash::make('12345678'),
+                'accountBalance' => '1500',
+                'shippingRegion' => 'España',
+                'role' => 'admin',
+            ],
+
+            [
+                'name' => 'Usuario Normal',
+                'username' => 'NormalUser',
+                'email' => 'user@gmail.com',
                 'address' => 'Vallecas',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',
                 'shippingRegion' => 'España',
                 'role' => 'normal',
-            ]
+            ],
 
         ];
 

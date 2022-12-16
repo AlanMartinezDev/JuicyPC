@@ -14,6 +14,7 @@
                         
                         <label for="image" class="form-label">Imagen (url)</label>
                         <input type="text" class="form-control mb-2" name="image" id="image" value="{{ $cats->image }}" aria-label="Imagen (link)">
+                        <p class="card-text fw-bold"><i class="fa-solid fa-circle-user"></i> {{ $cats->user->username }}</p>
 
                         <button type="submit" class="btn btn-outline-dark">Actualizar Categoria</button>
                         <br>

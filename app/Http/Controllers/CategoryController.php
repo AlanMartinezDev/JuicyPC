@@ -38,9 +38,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required','string', 'max:255','min:3'],
+            'image' => ['nullable','string', 'max:255','min:3']
+            ]);
+
         $cat = new Cat;
         $cat->name = $request->name;
-        $cat->image = $request->image;
+        if($request->image != '') {
+            $cat->image = $request->image;
+        }
         $cat->user_id = auth()->user()->id;
         $cat->save();
         return redirect('/categorias');
@@ -98,6 +105,6 @@ class CategoryController extends Controller
     {
         $cats = Cat::findOrFail($id);
         $cats->delete();
-        return redirect('/categorias');
+        return back();
     }
 }

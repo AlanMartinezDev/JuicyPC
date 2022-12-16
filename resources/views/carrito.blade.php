@@ -36,7 +36,7 @@
                                 <input type="hidden" name="quantity" value="{{ $item->quantity }}">
                                 <input type="submit" class="btn btn-outline-primary btn-sm" value="+">
                             </form>
-                            <form action="{{ route('carrito.removeitem') }}" method="post">
+                            <form action="{{ route('carrito.subtractitem') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->id }}">
                                 <input type="submit" class="btn btn-outline-warning btn-sm" value="-">

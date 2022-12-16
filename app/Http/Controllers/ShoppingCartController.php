@@ -43,12 +43,25 @@ class ShoppingCartController extends Controller
     public function additem(Request $request)
     {
         $product = Product::find($request->id);
-        $row = Product::get(
-            $id = $product->id,
+        Cart::add(
+            $product->id,
+            $product->name,
+            $product->price,
+            1,
         );
-        Cart::update($id, $row->quantity + 1);
+        return back();
+    }
 
-        return back()->with('success',"Eliminado del carrito.");
+    public function subtractitem(Request $request)
+    {
+        $product = Product::find($request->id);
+        Cart::add(
+            $product->id,
+            $product->name,
+            $product->price,
+            -1,
+        );
+        return back();
     }
 
     public function clear()

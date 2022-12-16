@@ -59,6 +59,7 @@ Route::post('/carrito/add',[App\Http\Controllers\ShoppingCartController::class,'
 Route::post('/carrito/clear',[App\Http\Controllers\ShoppingCartController::class,'clear'])->name('carrito.clear');
 Route::post('/carrito/removeitem',[App\Http\Controllers\ShoppingCartController::class,'removeitem'])->name('carrito.removeitem');
 Route::post('/carrito/additem',[App\Http\Controllers\ShoppingCartController::class,'additem'])->name('carrito.additem');
+Route::post('/carrito/subtractitem',[App\Http\Controllers\ShoppingCartController::class,'subtractitem'])->name('carrito.subtractitem');
 Route::post('/carrito/{id}',[App\Http\Controllers\ShoppingCartController::class,'userBalance'])->name('carrito.balance');
 
 //Rutas centro de ayuda

@@ -17,7 +17,7 @@ class CreateCatsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable()->default('https://cdn-icons-png.flaticon.com/512/316/316313.png');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
         });
     }

@@ -47,7 +47,7 @@ class ProductController extends Controller
             'name' => ['required','string', 'max:255','min:3'],
             'description' => ['required','string', 'max:255','min:3'],
             'price' => ['required','numeric'],
-            'image' => ['required','string', 'max:255','min:3']
+            'image' => ['nullable','string', 'max:255','min:3']
             ]);
         
         //ACCEDEMOS AL MODELO PRODUCTO Y ALMACENAMOS DENTRO DE LA BASE DE DATOS LA INFORMACIÓN RECOGIDA
@@ -57,7 +57,9 @@ class ProductController extends Controller
         $products->name = $request->name;
         $products->description = $request->description;
         $products->price = $request->price;
-        $products->image = $request->image;
+        if($request->image != '') {
+            $products->image = $request->image;
+        }
         $products->user_id = auth()->user()->id;
         $products->save();
 
@@ -98,7 +100,7 @@ class ProductController extends Controller
             'name' => ['required','string', 'max:255','min:3'],
             'description' => ['required','string', 'max:255','min:3'],
             'price' => ['required','numeric'],
-            'image' => ['required','string', 'max:255','min:3']
+            'image' => ['nullable','string', 'max:255','min:3']
             ]);
         
         //ACCEDEMOS AL MODELO PRODUCTO Y ALMACENAMOS DENTRO DE LA BASE DE DATOS LA INFORMACIÓN RECOGIDA
@@ -128,7 +130,7 @@ class ProductController extends Controller
 
         //REDIRECCIÓN A LA VISTA /productos
 
-        return redirect('/productos');
+        return back();
     }
 
     //APARTADO RELACIÓN N A N DE PRODUCTOS CON CATEGORÍAS

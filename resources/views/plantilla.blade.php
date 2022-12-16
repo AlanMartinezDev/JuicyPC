@@ -80,7 +80,7 @@
 			</nav>
 		</div>
 		<!-- fin de header -->
-		<div class="container" style="background: url('https://dkx0n05ol7t5q.cloudfront.net/webpack_assets/welcome-pattern.bb4bdce2c77ea74429df.svg'); background-size: 20rem;"> @yield('content') </div>
+		<div class="container"> @yield('content') </div>
 		<!-- inicio de footer -->
 		<div class="container">
 			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

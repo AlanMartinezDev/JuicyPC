@@ -77,7 +77,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Sentimos que te vayas, esta acción no es reversible y recuerda que cualquier problema puedes solucionarlo en el <a href="/centro-de-ayuda">centro de ayuda</a>.
+                            Sentimos que te vayas, esta acción no es reversible y recuerda que cualquier problema puedes consultarlo por <a href="mailto:soporte@juicypc.com">correo</a>.
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>

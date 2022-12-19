@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
                 'name' => 'Alan',
                 'username' => 'alma031',
                 'email' => 'alma031@vidalibarraquer.net',
-                'address' => 'Auschwitz Nº3',
+                'address' => 'Messi Avenue Nº3',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',
                 'shippingRegion' => 'España',

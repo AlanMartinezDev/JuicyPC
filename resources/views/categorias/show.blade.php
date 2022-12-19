@@ -21,29 +21,29 @@
                     <p class="card-text fw-bold">{{ $product->price }}€</p>
                     <div class="row">
                     @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/productos/update/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
-                                    </div>
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/productos/delete/{{ $product->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
-                                    </div>
-                                @elseif(isset( auth::user()->name ))
-                                    <div class="col d-flex justify-content-end">
-                                        <!--a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a-->
-                                        <form action="{{ route('carrito.add') }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $product->id }}">
-                                            <button type="submit" class="btn btn-outline-success btn-sm">Añadir al carrito</button>
-                                        </form>
-                                    </div>
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
-                                    </div>
-                                    @elseif(!isset( auth::user()->name ))
-                                        <div class="col d-flex justify-content-center">
-                                            <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
-                                        </div>
-                                @endif
+                        <div class="col d-flex justify-content-center">
+                            <a href="/productos/update/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a href="/productos/delete/{{ $product->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
+                        </div>
+                    @elseif(isset( auth::user()->name ))
+                        <div class="col d-flex justify-content-end">
+                            <!--a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a-->
+                            <form action="{{ route('carrito.add') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-outline-success btn-sm">Añadir al carrito</button>
+                            </form>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
+                        </div>
+                    @elseif(!isset( auth::user()->name ))
+                        <div class="col d-flex justify-content-center">
+                            <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
+                        </div>
+                    @endif
                     </div>
                 </div>
             </div>

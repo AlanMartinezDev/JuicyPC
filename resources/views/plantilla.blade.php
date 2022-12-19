@@ -71,10 +71,10 @@
 							</li>
 							@endif
 						</ul>
-						<form class="d-flex" role="search">
+						<!--form class="d-flex" role="search">
 							<input class="form-control me-2" type="search" placeholder="Busca en JuicyPC..." aria-label="Search">
 							<button class="btn btn-outline-success" type="submit">Buscar</button>
-						</form>
+						</form-->
 					</div>
 				</div>
 			</nav>

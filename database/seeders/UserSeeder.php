@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
                 'name' => 'Usuario Normal',
                 'username' => 'NormalUser',
                 'email' => 'user@gmail.com',
-                'address' => 'Snowman Street',
+                'address' => 'Snowman Street Nº4',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',
                 'shippingRegion' => 'España',

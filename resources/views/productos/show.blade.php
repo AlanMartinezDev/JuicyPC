@@ -36,9 +36,6 @@
                             <button type="submit" class="btn btn-outline-success btn-sm">Añadir al carrito</button>
                         </form>
                     </div>
-                    <div class="col d-flex justify-content-center">
-                        <a href="/productos/show/{{ $product->id }}" type="button" class="btn btn-outline-warning btn-sm">Ver producto</a>
-                    </div>
                 @endif
                 </div>
             </div>

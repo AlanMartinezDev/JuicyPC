@@ -75,14 +75,22 @@ class UserController extends Controller
             'name' => ['nullable','string', 'max:255'],
             'username' => ['nullable','string', 'max:255', 'unique:users,username,'.$id],
             'address' => ['nullable','string', 'max:255'],
+            'image' => ['image'],
             'shippingRegion' => ['nullable'],
             'password' => ['nullable','string', 'same:cpassword'],
         ]);
 
         $user = User::findOrFail($id);
+
+        //$imageUrl = $request->image->store('users');
+        $extension = $request->image->extension();
+        
+        $imageUrl = $request->image->move(public_path('images/users'), $user->name.".".$extension);
+
         $user->name = $request->name;
         $user->username = $request->username;
         $user->address = $request->address;
+        $user->image = 'images/users/'.$user->name.".".$extension;
         if($request->shippingRegion == 'Escoge una región...'){ 
             $user->shippingRegion = $user->shippingRegion;
         } 

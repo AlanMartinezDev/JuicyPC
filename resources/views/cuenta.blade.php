@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-5">
             <div class="row justify-content-center fs-4">Datos de tu cuenta</div><br>
-            <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post">
+            <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Nombre</label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="formFileSm" class="form-label">Imagen</label>
-                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                    <input class="form-control form-control-sm" id="formFileSm" name="image" type="file">
                 </div>
 
                 <div class="col-12 mt-3">

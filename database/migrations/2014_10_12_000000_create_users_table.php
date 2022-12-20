@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('username')->unique();
             $table->string('address')->nullable();
+            $table->string('image')->nullable();
             $table->double('accountBalance')->default(1500);
             $table->set('shippingRegion',['España', 'Portugal','Andorra'])->nullable();
             $table->rememberToken();

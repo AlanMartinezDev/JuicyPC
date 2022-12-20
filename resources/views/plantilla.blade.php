@@ -14,7 +14,68 @@
 	</head>
 	<body>
 		<div class="container p-2">
-			<!-- inicio de header -->
+			<!-- nuevo header -->
+			<header class="p-3 mb-3 border-bottom">
+				<div class="container-fluid">
+				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					<a class="d-flex align-items-center mb-2 me-2 mb-lg-0 text-dark text-decoration-none navbar-brand" href="{{ url('/') }}">JuicyPC</a>
+
+					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+						<li class="nav-item d-flex ms-3">
+							<i class="fa-solid fa-shop align-self-center" style="color:grey;"></i>
+							<a href="{{ url('/productos') }}" class="nav-link link-secondary p-2">Productos</a>
+						</li>
+						<li class="nav-item d-flex ms-3">
+							<i class="fa-solid fa-tags align-self-center" style="color:grey;"></i>
+							<a href="{{ url('/categorias') }}" class="nav-link link-secondary p-2">Categorías</a>
+						</li>
+						<li class="nav-item d-flex ms-3">
+							<i class="fa-solid fa-cart-shopping align-self-center" style="color:grey;"></i>
+							<a href="{{ url('/carrito') }}" class="nav-link link-secondary p-2">Carrito
+							@if(isset( auth::user()->name ))	
+								@if(count(Cart::getContent()) > 0)
+								({{ count(Cart::getContent()) }})
+								@endif
+							@endif
+							</a>
+						</li>
+					</ul>
+					<!--
+						<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+						<input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+						</form>
+					-->
+					@if(isset( auth::user()->name ))
+					<div class="dropdown text-end">
+						<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="https://github.com/mdo.png" alt="{{ auth::user()->name }}" width="32" height="32" class="rounded-circle"></img>
+						</a>
+						<ul class="dropdown-menu text-small">
+							@if( auth::user()->role == 'admin' )
+							<li>
+								<a class="dropdown-item" href="{{ url('/admin') }}">Administración</a>
+							</li>
+							@endif
+							<li>
+								<a class="dropdown-item" href="{{ url('/cuenta') }}">Cuenta</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item link-danger" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+							</li>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+						</ul>
+					</div>
+					@else
+					<li class="nav-item d-flex">
+						<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
+						<a class="nav-link link-secondary p-2" href="{{ url('/cuenta') }}">Cuenta</a>
+					</li>
+					@endif
+				</div>
+				</div>
+			</header>
+			<!-- inicio de header
 			<nav class="navbar navbar-expand-lg">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="{{ url('/') }}">JuicyPC</a>
@@ -44,7 +105,7 @@
 							<!--li class="nav-item d-flex ms-3" style="color:grey;">
 								<i class="fa-solid fa-headset align-self-center"></i>
 								<a class="nav-link" href="{{ url('/centro-de-ayuda') }}">Centro de ayuda</a>
-							</li-->
+							</li>
 							@if(isset( auth::user()->name ))
 							<li class="nav-item dropdown d-flex ms-3">
 								<i class="fa-solid fa-user align-self-center" style="color:grey;"></i>
@@ -71,13 +132,13 @@
 							</li>
 							@endif
 						</ul>
-						<!--form class="d-flex" role="search">
+						form class="d-flex" role="search">
 							<input class="form-control me-2" type="search" placeholder="Busca en JuicyPC..." aria-label="Search">
 							<button class="btn btn-outline-success" type="submit">Buscar</button>
-						</form-->
+						</form>
 					</div>
 				</div>
-			</nav>
+			</nav>-->
 		</div>
 		<!-- fin de header -->
 		<div class="container"> @yield('content') </div>

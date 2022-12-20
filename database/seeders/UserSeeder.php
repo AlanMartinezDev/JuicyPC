@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Eric',
                 'username' => 'erga916',
-                'email' => 'erga916@vidalibarraquer.net',
+                'email' => 'eric@juicypc.com',
                 'address' => 'La Cañada Real Nº1',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Jesús',
                 'username' => 'jepa139',
-                'email' => 'jepa139@vidalibarraquer.net',
+                'email' => 'jesus@juicypc.com',
                 'address' => 'Las Maldivas Nº2',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Alan',
                 'username' => 'alma031',
-                'email' => 'alma031@vidalibarraquer.net',
+                'email' => 'alan@juicypc.com',
                 'address' => 'Messi Avenue Nº3',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',

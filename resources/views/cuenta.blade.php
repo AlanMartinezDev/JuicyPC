@@ -8,6 +8,7 @@
         <div class="col-5">
             <div class="row justify-content-center fs-4">Datos de tu cuenta</div><br>
             <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post">
+                @csrf
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="inputName" name="name" value="{{ $user->name }}">
@@ -64,31 +65,35 @@
                     <label for="inputPassword3" class="form-label">Confirmar nueva contraseña</label>
                     <input type="password" class="form-control" id="inputPassword3" name="cpassword">
                 </div>
-                <div class="col-12">
+                <div class="col-md-6">
+                    <label for="formFileSm" class="form-label">Imagen</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                </div>
+
+                <div class="col-12 mt-3">
                     <button type="submit" class="btn btn-outline-primary me-3">Actualizar datos</button>
                     <!-- Modal -->
                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar cuenta</button>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">¿Quieres eliminar tu cuenta?</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">¿Quieres eliminar tu cuenta?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Sentimos que te vayas, esta acción no es reversible y recuerda que cualquier problema puedes consultarlo por <a href="mailto:soporte@juicypc.com">correo</a>.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <a href="/eliminarCuenta/{{ $user->id }}" type="submit" class="btn btn-outline-danger">Eliminar cuenta</a>
+                            </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            Sentimos que te vayas, esta acción no es reversible y recuerda que cualquier problema puedes consultarlo por <a href="mailto:soporte@juicypc.com">correo</a>.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <a href="/eliminarCuenta/{{ $user->id }}" type="submit" class="btn btn-outline-danger">Eliminar cuenta</a>
-                        </div>
-                        </div>
-                    </div>
                     </div>
                     <!-- Fin de modal -->
                 </div>
-                @csrf
             </form>
         </div>
         <div class="col-4"></div>

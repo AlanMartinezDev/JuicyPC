@@ -48,7 +48,7 @@
 					@if(isset( auth::user()->name ))
 					<div class="dropdown text-end">
 						<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="https://github.com/mdo.png" alt="{{ auth::user()->name }}" width="32" height="32" class="rounded-circle"></img>
+							<img src="{{ asset('/images/user.png') }}" alt="{{ auth::user()->name }}" width="32" height="32" class="rounded-circle"></img>
 						</a>
 						<ul class="dropdown-menu text-small">
 							@if( auth::user()->role == 'admin' )

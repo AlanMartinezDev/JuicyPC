@@ -31,7 +31,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'MSI',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1051/10517987/1747-msi-b550-gaming-gen3.jpg'    
+            'image' => '/images/1.webp'    
         ],
         [
             'name' => 'GeForce RTX 4090 GAMING OC 24GB GDDR6X',
@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Gigabyte',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1058/10589923/1624-gigabyte-geforce-rtx-4090-gaming-oc-24gb-gddr6x.jpg'     
+            'image' => '/images/2.webp'     
         ],
         [
             'name' => 'i9-13900K 3 GHz Box',
@@ -47,7 +47,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Intel Core',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1057/10573120/1643-intel-core-i9-13900k-3-ghz-box.jpg'      
+            'image' => '/images/3.webp'      
         ],
         [
             'name' => 'FURY Beast RGB DDR4 3600 MHz 128GB 4x32GB CL18',
@@ -55,7 +55,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Kingston',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/43/432801/1336-kingston-fury-beast-rgb-ddr4-3600-mhz-128gb-4x32gb-cl18.jpg'      
+            'image' => '/images/4.webp'      
         ],
 
         // PERIFÉRICOS
@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'MSI',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1019/10197854/1898-msi-optix-meg381cqr-plus-375-led-rapid-ips-uwqhd-175hz-g-sync-ultimate-curvo.jpg'      
+            'image' => '/images/5.webp'      
         ],
 
         [
@@ -74,7 +74,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Razer',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/36/361533/1456-razer-blackwidow-v3-pro-teclado-mecanico-inalambrico-gaming-switch-green-layout-usa.jpg'      
+            'image' => '/images/6.webp'      
         ],
 
         [
@@ -83,7 +83,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Razer',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1064/10643482/157-razer-basilisk-v3-pro-raton-gaming-inalambrico-30000-dpi-negro.jpg'      
+            'image' => '/images/7.webp'      
         ],
 
         [
@@ -92,7 +92,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Astro Gaming',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/24/245429/asdqwd.jpg'      
+            'image' => '/images/8.webp'      
         ],
 
         // ORDENADORES
@@ -102,7 +102,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'MSI',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1046/10460667/1110-msi-mag-meta-s-5si-044xes-amd-ryzen-5-5600x-16gb-512gb-ssd-gtx-1660-super.jpg'      
+            'image' => '/images/9.webp'      
         ],
 
         [
@@ -111,7 +111,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'HP',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1036/10364751/1140-hp-victus-15l-tg02-0018ns-amd-ryzen-5-5600g-16gb-512gb-ssd-gtx-1650.jpg'      
+            'image' => '/images/10.webp'      
         ],
 
         [
@@ -120,7 +120,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'MSI',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1017/10170894/133-msi-mag-meta-5-5edq-1238xes-amd-ryzen-5-5600x-16gb-1tb-ssd-rx6600xt.jpg'      
+            'image' => '/images/11.webp'      
         ],
 
         [
@@ -129,7 +129,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Lenovo',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1026/10262623/1576-lenovo-ideacentre-gaming-5-17iab7-intel-core-i5-12400f-16gb-512gb-ssd-gtx1650-super.jpg'      
+            'image' => '/images/12.webp'      
         ],
         
         // PORTÁTILES
@@ -139,7 +139,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Acer',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/38/387066/1123-acer-nitro-5-an517-41-r53x-amd-ryzen-7-5800h-16gb-1tb-ssd-rtx3080-173.jpg'      
+            'image' => '/images/13.webp'      
         ],
 
         [
@@ -148,7 +148,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'MSI',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1056/10569561/1423-msi-pulse-gl76-12uek-245xes-intel-core-i9-12900h-32gb-1tb-ssd-rtx-3060-173.jpg'      
+            'image' => '/images/14.webp'      
         ],
 
         [
@@ -157,7 +157,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Lenovo',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1010/10101735/1383-lenovo-ideapad-3-15itl6-intel-core-i5-1135g7-8-gb-512gb-ssd-156-review.jpg'      
+            'image' => '/images/15.webp'      
         ],
 
         [
@@ -166,7 +166,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'ASUS',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1031/10317957/1580-asus-rog-strix-g15-g513rm-hq012-amd-ryzen-9-6800h-16gb-1tb-ssd-rtx3060-156.jpg'      
+            'image' => '/images/16.webp'      
         ],
 
         // MÓVILES
@@ -176,7 +176,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Xiaomi',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1002/10026495/1796-xiaomi-redmi-note-11-4-128gb-gris-grafito-libre.jpg'      
+            'image' => '/images/17.webp'      
         ],
 
         [
@@ -185,7 +185,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'POCO',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1009/10096746/1608-poco-x4-pro-5g-6-128gb-amarillo-libre-comprar.jpg'      
+            'image' => '/images/18.webp'      
         ],
 
         [
@@ -194,7 +194,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Samsung',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1018/10186129/1745-samsung-galaxy-m23-5g-4-128gb-verde-libre.jpg'      
+            'image' => '/images/19.webp'      
         ],
 
         [
@@ -203,7 +203,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Realme',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1019/10194275/1291-realme-gt2-8-128gb-negro-libre.jpg'      
+            'image' => '/images/20.webp'      
         ],
 
         // TABLETS
@@ -213,7 +213,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Lenovo',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1063/10632624/170-lenovo-tab-p11-11-2k-4-128gb-wifi-gris.jpg'      
+            'image' => '/images/21.webp'      
         ],
         
         [
@@ -222,7 +222,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Samsung',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/40/408794/1665-samsung-galaxy-tab-s7-fe-128gb-wifi-negra.jpg'      
+            'image' => '/images/22.webp'      
         ],
         
         [
@@ -231,7 +231,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Apple',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1063/10635756/1694-apple-ipad-pro-2022-11-wifi-cellular-256gb-gris-espacial.jpg'      
+            'image' => '/images/23.jpg'      
         ],
         
         [
@@ -240,7 +240,7 @@ class ProductSeeder extends Seeder
             'user_id' => 1,  
             'description' => 'Esto es una descripción de producto en la tienda JuicyPC creada por los seeders. Esta descripción puede ser editada y eliminada posteriormente por un administrador.',
             'brand' => 'Lenovo',
-            'image' => 'https://thumb.pccomponentes.com/w-530-530/articles/1063/10633682/1862-lenovo-yoga-tab-11-4-128gb-11-2k-gris.jpg'      
+            'image' => '/images/24.webp'      
         ],
         
         ];

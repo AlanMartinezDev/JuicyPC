@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-5">
-            <div class="row justify-content-center fs-4">Datos de tu cuenta</div><br>
+            <div class="row justify-content-center fs-4 mb-4">Datos de tu cuenta</div>
             <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6">
@@ -96,68 +96,31 @@
                 </div>
             </form>
         </div>
-        <div class="col-4"></div>
-        <div class="col-3 align-self-center">
+        <div class="col-4">
+            <div class="row justify-content-center fs-4 mb-4">Mis pedidos</div>
+        </div>
+        <div class="col-3">
             <form action="/cuenta2/{{ $user->id }}" method="post">
-            <div class="row fs-4 justify-content-center mb-3">Saldo</div>
-                <div class="input-group mb-3 justify-content-center">
-                    <span class="input-group-text">Saldo de la cuenta:</span>
-                    <span class="input-group-text" title="Añade saldo en el campo inferior" style="cursor:not-allowed;">{{ $user->accountBalance}}$</span>
-                </div>
-                <!--IMPLEMENTAR FORMULARIO PARA AÑADIR BALANCE A LA CUENTA-->
-                <div class="row g-0 justify-content-center text-center">
-                    <div>
-                        <label for="accountBalance" class="form-label">Añade saldo a tu cuenta</label>
-                    </div>
-                    <div class="col-6 col-md-4 mb-3">
-                        <input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0" min="0" max="10000">
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-outline-primary">Actualizar saldo</button>
-                    </div>
-                </div>
-            </div>
             @csrf
+                <div class="row fs-4 justify-content-center mb-3">Saldo</div>
+                    <div class="input-group mb-3 justify-content-center">
+                        <span class="input-group-text">Saldo de la cuenta:</span>
+                        <span class="input-group-text" title="Añade saldo en el campo inferior" style="cursor:not-allowed;">{{ $user->accountBalance}}$</span>
+                    </div>
+                    <!--IMPLEMENTAR FORMULARIO PARA AÑADIR BALANCE A LA CUENTA-->
+                    <div class="row g-0 justify-content-center text-center">
+                        <div>
+                            <label for="accountBalance" class="form-label">Añade saldo a tu cuenta</label>
+                        </div>
+                        <div class="col-6 col-md-4 mb-3">
+                            <input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0" min="0" max="10000">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-outline-primary">Actualizar saldo</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
-    <!--
-    <div class="row ">
-        <div class="col">
-            <div class="row justify-content-center">Mis datos</div>
-            <div class="row justify-content-center">
-
-            <label for="email" class="col col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                <div class="col">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-        </div>
     </div>
-
-https://dkx0n05ol7t5q.cloudfront.net/webpack_assets/welcome-pattern.bb4bdce2c77ea74429df.svg
-
-    .d4ba859445ffa2444ba0c0b191e56367-scss {
-    background-image: url(/webpack_assets/welcome-pattern.bb4bdce….svg);
-    background-size: 400px;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
--->
-@if($errors->any())
-    <ul>
-        @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
 @endsection

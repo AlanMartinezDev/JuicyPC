@@ -45,7 +45,9 @@ class PruebaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        
+        return $input;
     }
 
     /**
@@ -121,7 +123,7 @@ class PruebaController extends Controller
         }
 
         try {
-            $planet->delete();
+            $user->delete();
 
             $response = [
                 'success' => true,

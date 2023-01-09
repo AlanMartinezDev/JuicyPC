@@ -26,6 +26,11 @@ Route::get('/hola', function() {
     echo "hola";
 });
 
+/*
 Route::get('/users', [App\Http\Controllers\api\PruebaController::class, 'index']);
 Route::get('/users/{id}', [App\Http\Controllers\api\PruebaController::class, 'show']);
 Route::delete('/users/{id}', [App\Http\Controllers\api\PruebaController::class, 'destroy']);
+Route::post('/users', [App\Http\Controllers\api\PruebaController::class, 'store']);
+*/
+
+Route::resource('/users', App\Http\Controllers\api\PruebaController::class);

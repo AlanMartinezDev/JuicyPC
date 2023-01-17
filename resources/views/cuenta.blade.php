@@ -98,6 +98,20 @@
         </div>
         <div class="col-4">
             <div class="row justify-content-center fs-4 mb-4">Mis pedidos</div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pedido1" aria-expanded="false" aria-controls="pedido1">
+                        Pedido #1
+                    </button>
+                    </h2>
+                    <div id="pedido1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            texto
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-3">
             <form action="/cuenta2/{{ $user->id }}" method="post">

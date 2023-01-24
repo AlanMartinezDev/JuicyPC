@@ -18,8 +18,7 @@
 			<header class="p-3 mb-3 border-bottom">
 				<div class="container-fluid">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-					<a class="d-flex align-items-center mb-2 me-2 mb-lg-0 text-dark text-decoration-none navbar-brand" href="{{ url('/') }}">JuicyPC</a>
-
+					<a class="d-flex align-items-center mb-2 me-2 mb-lg-0 text-dark text-decoration-none navbar-brand" href="{{ url('/') }}"><i class="fa-solid fa-desktop me-2"></i> | JuicyPC</a>
 					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 						<li class="nav-item d-flex ms-3">
 							<i class="fa-solid fa-shop align-self-center" style="color:grey;"></i>

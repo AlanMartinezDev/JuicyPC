@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" value="{{ $user->email }}" title="Tu email no es modificable una vez creada la cuenta" style="cursor:not-allowed;" disabled>
+                    <input type="email" class="form-control" id="inputEmail4" value="{{ $user->email }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Tu email no es modificable una vez creada la cuenta." style="cursor:not-allowed;" disabled>
                 </div>
                 <div class="col-md-6">
                     <label for="inputState" class="form-label">Región</label>
@@ -107,7 +107,7 @@
                     </h2>
                     <div id="pedido1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            texto
+                            Datos del pedido #1
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <div class="row fs-4 justify-content-center mb-3">Saldo</div>
                     <div class="input-group mb-3 justify-content-center">
                         <span class="input-group-text">Saldo de la cuenta:</span>
-                        <span class="input-group-text" title="Añade saldo en el campo inferior" style="cursor:not-allowed;">{{ $user->accountBalance}}$</span>
+                        <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Añade saldo en el campo inferior." style="cursor:not-allowed;">{{ $user->accountBalance}}$</span>
                     </div>
                     <!--IMPLEMENTAR FORMULARIO PARA AÑADIR BALANCE A LA CUENTA-->
                     <div class="row g-0 justify-content-center text-center">
@@ -137,4 +137,8 @@
             </form>
         </div>
     </div>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
 @endsection

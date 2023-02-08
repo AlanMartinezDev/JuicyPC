@@ -27,16 +27,16 @@
 </div>
 <div class="row">
     <div class="col-3">
-        <a href="/productos"><img src="https://img.pccomponentes.com/pcblog/1672873200000/500x500.jpg" class="img-fluid" alt="PC"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc1.webp') }}" class="img-fluid" alt="PC1"></a>
     </div>
     <div class="col-3">
-        <a href="/productos"><img src="https://img.pccomponentes.com/pcblog/1672873200000/pccom-500x500.jpg" class="img-fluid" alt="PC"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc2.webp') }}" class="img-fluid" alt="PC2"></a>
     </div>
     <div class="col-3">
-        <a href="/productos"><img src="https://img.pccomponentes.com/pcblog/1673218800000/500x500-hp-1.jpg" class="img-fluid" alt="PC"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc3.webp') }}" class="img-fluid" alt="PC3"></a>
     </div>
     <div class="col-3">
-        <a href="/productos"><img src="https://img.pccomponentes.com/pcblog/1672873200000/oferta-500x500.jpg" class="img-fluid" alt="PC"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc4.webp') }}" class="img-fluid" alt="PC4"></a>
     </div>
 </div>
 

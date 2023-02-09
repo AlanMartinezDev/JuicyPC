@@ -6,7 +6,7 @@
 </div>
 <div class="row mb-3">
     <div class="col-12">
-        <a href="/categorias/show/2"><img src="https://img.pccomponentes.com/pcblog/1672873200000/1560x349-1-1.jpg" class="img-fluid" alt="PC"></a>
+        <a href="/categorias/show/2"><img src="https://img.pccomponentes.com/pcblog/1672873200000/1560x349-1-1.jpg" class="img-fluid rounded" alt="PC"></a>
     </div>
 </div>
 <div class="row mb-3">

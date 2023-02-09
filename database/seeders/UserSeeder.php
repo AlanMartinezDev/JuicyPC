@@ -61,11 +61,11 @@ class UserSeeder extends Seeder
             ],
 
             [
-                'name' => 'Usuario Normal',
-                'username' => 'NormalUser',
-                'email' => 'user@gmail.com',
-                'address' => 'Snowman Street Nº4',
-                'image' => '/images/user.png',
+                'name' => 'Beemo',
+                'username' => 'bmo',
+                'email' => 'bmo@juicypc.com',
+                'address' => 'Robot Street, 101',
+                'image' => 'images/users/BMO.jpg',
                 'password' => Hash::make('12345678'),
                 'accountBalance' => '1500',
                 'shippingRegion' => 'España',

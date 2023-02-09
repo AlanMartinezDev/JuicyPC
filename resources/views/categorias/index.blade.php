@@ -16,7 +16,7 @@
                 @foreach($cats as $cat)
                 <div class="col">
                     <div class="card text-center">
-                        <img src="{{ $cat->image }}" class="card-img-top w-75 d-block ms-auto me-auto" alt="...">
+                        <img src="{{ $cat->image }}" class="card-img-top w-75 d-block ms-auto me-auto rounded mt-3" alt="...">
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-center"><a href="/categorias/show/{{ $cat->id }}" class="text-decoration-none">{{ $cat->name }}</a></h5>
                             <div class="row">

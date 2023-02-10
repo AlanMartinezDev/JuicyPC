@@ -5,7 +5,7 @@
     </div>
 
     <div class="row">
-        <div class="col-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 mt-5">
             <div class="row justify-content-center fs-4 mb-4">Datos de tu cuenta</div>
             <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -47,12 +47,6 @@
                     @endif
                     </select>
                 </div>
-                <!--
-                <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4">
-                </div>
-                -->
                 <div class="col-12">
                     <label for="inputAddress" class="form-label">Dirección de envío</label>
                     <input type="text" class="form-control" id="inputAddress" name="address" value="{{ $user->address }}">
@@ -96,7 +90,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 col-xxl-4 mt-5">
             <div class="row justify-content-center fs-4 mb-4">Mis pedidos</div>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
@@ -113,7 +107,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 col-xxl-3 mt-5">
             <form action="/cuenta2/{{ $user->id }}" method="post">
             @csrf
                 <div class="row fs-4 justify-content-center mb-3">Saldo</div>

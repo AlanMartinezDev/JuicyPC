@@ -6,7 +6,7 @@
 </div>
 <div class="row mb-3">
     <div class="col-12">
-        <a href="/categorias/show/2"><img src="https://img.pccomponentes.com/pcblog/1672873200000/1560x349-1-1.jpg" class="img-fluid" alt="PC"></a>
+        <a href="/categorias/show/2"><img src="https://img.pccomponentes.com/pcblog/1672873200000/1560x349-1-1.jpg" class="img-fluid rounded" alt="PC"></a>
     </div>
 </div>
 <div class="row mb-3">
@@ -27,16 +27,16 @@
 </div>
 <div class="row">
     <div class="col-3">
-        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc1.webp') }}" class="img-fluid" alt="PC1"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc1.webp') }}" class="img-fluid rounded" alt="PC1"></a>
     </div>
     <div class="col-3">
-        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc2.webp') }}" class="img-fluid" alt="PC2"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc2.webp') }}" class="img-fluid rounded" alt="PC2"></a>
     </div>
     <div class="col-3">
-        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc3.webp') }}" class="img-fluid" alt="PC3"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc3.webp') }}" class="img-fluid rounded" alt="PC3"></a>
     </div>
     <div class="col-3">
-        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc4.webp') }}" class="img-fluid" alt="PC4"></a>
+        <a href="{{ url('/productos') }}"><img src="{{ url('images/pc4.webp') }}" class="img-fluid rounded" alt="PC4"></a>
     </div>
 </div>
 

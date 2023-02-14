@@ -108,7 +108,7 @@
             </div>
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 col-xxl-3 mt-5">
-            <form action="/cuenta2/{{ $user->id }}" method="post">
+            <form action="/cuenta2/{{ $user->id }}" method="post" class="needs-validation" novalidate>
             @csrf
                 <div class="row fs-4 justify-content-center mb-3">Saldo</div>
                     <div class="input-group mb-3 justify-content-center">
@@ -120,8 +120,11 @@
                         <div>
                             <label for="accountBalance" class="form-label">Añade saldo a tu cuenta</label>
                         </div>
-                        <div class="col-6 col-md-4 mb-3">
+                        <div class="col-8 mb-3">
                             <input type="number" class="form-control" id="accountBalance" name="accountBalance" value="0" min="0" max="10000">
+                            <div class="invalid-feedback">
+                                El saldo a añadir no puede ser menor que 0 ni mayor que 10000.
+                            </div>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-outline-primary">Actualizar saldo</button>
@@ -132,7 +135,29 @@
         </div>
     </div>
     <script>
+        // tooltip
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+        // validación formulario
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+            }, false)
+        })
+        })()
     </script>
 @endsection

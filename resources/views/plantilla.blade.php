@@ -38,6 +38,14 @@
 							@endif
 							</a>
 						</li>
+						@if(isset( auth::user()->name ))
+							@if( auth::user()->role == 'admin' )
+							<li class="nav-item d-flex ms-3">
+								<i class="fa-solid fa-warehouse align-self-center" style="color:grey;"></i>
+								<a href="{{ url('/stores') }}" class="nav-link link-secondary p-2">Almacenes</a>
+							</li>
+							@endif
+						@endif
 					</ul>
 					<!--
 						<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">

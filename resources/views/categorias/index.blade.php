@@ -20,7 +20,6 @@
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-center"><a href="/categorias/show/{{ $cat->id }}" class="text-decoration-none">{{ $cat->name }}</a></h5>
                             <div class="row">
-                            <div class="row">
                                 <!--@if( isset(auth::user()->role) && auth::user()->role == 'admin' )
                                     <div class="col d-flex justify-content-center">
                                         <a href="/productos/update/{{ $cat->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
@@ -44,7 +43,6 @@
                                         <a href="/categorias/delete/{{ $cat->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar categoria</a>
                                     </div>
                                 @endif
-                                </div>
                             </div>
                         </div>
                     </div>

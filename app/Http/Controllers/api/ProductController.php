@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Product;
 
@@ -51,6 +52,15 @@ class ProductController extends Controller
         $producto->description = $request->description;
         $producto->brand = $request->brand;
         $producto->save();
+
+        $cat_id = $request->cat_id; // Obtener el cat_id de la solicitud
+
+        // Crear un nuevo registro en la tabla intermedia
+        DB::table('product_cat')->insert([
+            'product_id' => $producto->id,
+            'cat_id' => $cat_id
+        ]);
+
         $data = [
             'message' => 'Producto creado',
             'producto' => $producto

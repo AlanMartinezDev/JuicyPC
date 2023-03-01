@@ -58,6 +58,12 @@ class CategorySeeder extends Seeder
                 'user_id' => 1,
                 'image' => '/images/categorias/tablets.webp',
             ],
+
+            [
+                'name' => 'Sin categoría',
+                'user_id' => 1,
+                'image' => 'https://cdn-icons-png.flaticon.com/512/316/316313.png',
+            ],
         ];
 
         Cat::insert($cats);

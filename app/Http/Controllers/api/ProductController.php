@@ -51,6 +51,7 @@ class ProductController extends Controller
         $producto->price = $request->price;
         $producto->description = $request->description;
         $producto->brand = $request->brand;
+        $producto->user_id = $request->user_id;
         $producto->save();
 
         $cat_id = $request->cat_id; // Obtener el cat_id de la solicitud
@@ -114,7 +115,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Product::find($id);
+
+        if (!$producto) {
+            return response()->json(['message' => 'Producto no encontrado'], 404);
+        }
+
+        $producto->name = $request->input('name', $producto->name);
+        $producto->price = $request->input('price', $producto->price);
+        $producto->description = $request->input('description', $producto->description);
+        $producto->brand = $request->input('brand', $producto->brand);
+        $producto->user_id = $request->input('user_id', $producto->user_id);
+        $producto->save();
+
+        // Actualizar la relación en la tabla intermedia si se proporciona un cat_id
+        if ($request->has('cat_id')) {
+            $cat_id = $request->cat_id;
+            DB::table('product_cat')
+                ->where('product_id', $producto->id)
+                ->update(['cat_id' => $cat_id]);
+        }
+
+        $data = [
+            'message' => 'Producto actualizado',
+            'producto' => $producto
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -125,6 +151,22 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Product::find($id);
+
+        if (!$producto) {
+            return response()->json(['message' => 'Producto no encontrado'], 404);
+        }
+
+        // Eliminar la relación en la tabla intermedia
+        DB::table('product_cat')->where('product_id', $producto->id)->delete();
+
+        $producto->delete();
+
+        $data = [
+            'message' => 'Producto eliminado',
+            'producto' => $producto
+        ];
+        return response()->json($data);
     }
+
 }

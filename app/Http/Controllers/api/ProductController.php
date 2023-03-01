@@ -5,9 +5,11 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\User;
+use App\Models\Product;
 
-class PruebaController extends Controller
+use App\Http\Resources\ProductResource as ProductResource;
+
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +18,13 @@ class PruebaController extends Controller
      */
     public function index()
     {
-        $users = User::all(['id','name','email','username']);
-
+        $productos = Product::all();
         $response = [
             'success' => true,
-            'message' => 'Listado de usuarios',
-            'data' => $users,
+            'message' => "Lista de productos",
+            'data' => ProductResource::collection($productos)
         ];
-
-        return response()->json($response,400);
+        return response()->json($response, 200);
     }
 
     /**
@@ -45,9 +45,17 @@ class PruebaController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        
-        return $input;
+        $producto = new Product;
+        $producto->name = $request->name;
+        $producto->price = $request->price;
+        $producto->description = $request->description;
+        $producto->brand = $request->brand;
+        $producto->save();
+        $data = [
+            'message' => 'Producto creado',
+            'producto' => $producto
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -58,25 +66,22 @@ class PruebaController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-
-        if ($user == null) {
+        $producto = Product::find($id);
+        if($producto == null) {
             $response = [
                 'success' => false,
-                'message' => 'Usuario no encontrado',
-                'data' => [],
+                'message' => "Producto no encontrado"
             ];
-            
-            return response()->json($response,404);
+            return response()->json($response, 404);
+
+        } else {
+            $response = [
+                'success' => true,
+                'data' => new ProductResource($producto),
+                'message' => "Producto encontrado"
+            ];
+            return response()->json($response, 200);
         }
-
-        $response = [
-            'success' => true,
-            'message' => 'Usuario encontrado',
-            'data' => $user,
-        ];
-
-        return response()->json($response,200);
     }
 
     /**
@@ -110,36 +115,6 @@ class PruebaController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-
-        if ($user == null) {
-            $response = [
-                'success' => false,
-                'message' => 'Usuario no encontrado',
-                'data' => [],
-            ];
-            
-            return response()->json($response,404);
-        }
-
-        try {
-            $user->delete();
-
-            $response = [
-                'success' => true,
-                'message' => 'Usuario borrado',
-                'data' => $user,
-            ];
-
-            return response()->json($response,200);
-        }
-        catch(\Exception $e) {
-            $response = [
-                'success' => false,
-                'message' => 'Error borrando usuario',
-            ];
-
-            return response()->json($response,400);
-        }
+        //
     }
 }

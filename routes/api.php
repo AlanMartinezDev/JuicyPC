@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ProductController;
+use App\Http\Controllers\api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('productos', ProductController::class);
+
+Route::resource('categorias', CategoryController::class);

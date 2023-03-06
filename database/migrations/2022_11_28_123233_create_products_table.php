@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->double('price');
             $table->string('description');
             $table->string('brand');
-            $table->string('image')->nullable()->default('https://cdn-icons-png.flaticon.com/512/316/316313.png');
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
         });
     }

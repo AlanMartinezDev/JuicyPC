@@ -121,12 +121,13 @@ class ProductController extends Controller
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
 
-        $producto->name = $request->input('name', $producto->name);
+        $producto->name = $request->input('name', 'hola'); //$producto->name);
         $producto->price = $request->input('price', $producto->price);
         $producto->description = $request->input('description', $producto->description);
         $producto->brand = $request->input('brand', $producto->brand);
         $producto->user_id = $request->input('user_id', $producto->user_id);
         $producto->save();
+
 
         // Actualizar la relación en la tabla intermedia si se proporciona un cat_id
         if ($request->has('cat_id')) {

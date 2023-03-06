@@ -1,11 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Hash;
+
 use App\Models\User;
-use App\Models\ShoppingCart;
+
+use App\Http\Resources\UserResource as UserResource;
 
 class UserController extends Controller
 {
@@ -16,7 +21,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::all();
+        $response = [
+            'success' => true,
+            'message' => "Lista de usuarios",
+            'data' => UserResource::collection($usuarios)
+        ];
+        return response()->json($response, 200);
     }
 
     /**
@@ -71,44 +82,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => ['nullable','string', 'max:255'],
-            'username' => ['nullable','string', 'max:255', 'unique:users,username,'.$id],
-            'address' => ['nullable','string', 'max:255'],
-            'image' => ['nullable','image'],
-            'shippingRegion' => ['nullable'],
-            'password' => ['nullable','string', 'same:cpassword'],
-        ]);
+        $usuario = User::find($id);
 
-        $user = User::find($id);
-        if (!$user) {
-            // maneja el caso en el que no se encuentre el usuario con el ID proporcionado
-            return redirect()->back()->withErrors(['No se ha encontrado el usuario con el ID proporcionado']);
+        if(!$usuario) {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
 
-        //$imageUrl = $request->image->store('users');
+        $usuario->name = $request->input('name', $usuario->name);
+        $usuario->email = $request->input('email', $usuario->email);
+        $usuario->password = Hash::make($request->input('password', $usuario->password));
+        $usuario->username = $request->input('username', $usuario->username);
+        $usuario->address = $request->input('address', $usuario->address);
+        $usuario->accountBalance = $request->input('accountBalance', $usuario->accountBalance);
+        $usuario->shippingRegion = $request->input('shippingRegion', $usuario->shippingRegion);
+        $usuario->save();
 
-        $user->name = $request->name;
-        $user->username = trim(strip_tags($request->username));
-        $user->address = $request->address;
+        $data = [
+            'message' => 'Usuario modificado',
+            'usuario' => $usuario
+        ];
 
-        if ($request->hasFile('image')) {
-            // funciones para almacenar imagen
-            $extension = $request->image->extension();
-            $imageUrl = $request->image->move(public_path('images/users'), $user->username.".".$extension);
-            $user->image = 'images/users/'.$user->username.".".$extension;
-        }
-        
-        if($request->shippingRegion == 'Escoge una región...'){ 
-            $user->shippingRegion = $user->shippingRegion;
-        } 
-        else {
-            $user->shippingRegion = $request->shippingRegion;
-        }
-        if($request->password != "") $user->password = Hash::make($request->password);
-        $user->save();
-        //dd($user->username);
-        return redirect('/cuenta');
+        return response()->json($data);
     }
 
     public function updateBalance(Request $request, $id)
@@ -117,10 +111,10 @@ class UserController extends Controller
             'accountBalance' => ['nullable','integer']
         ]);
 
-        $user = User::findOrFail($id);
-        $user->accountBalance += $request->accountBalance;
+        $usuario = User::findOrFail($id);
+        $usuario->accountBalance += $request->accountBalance;
         
-        $user->save();
+        $usuario->save();
         //dd($user->username);
         return redirect('/cuenta');
     }
@@ -133,10 +127,19 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = auth()->user();
-        
-        $user->delete();
-        return redirect('/');
+        $usuario = User::find($id);
+
+        if (!$usuario) {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+
+        $usuario->delete();
+
+        $data = [
+            'message' => 'Usuario eliminado',
+            'usuario' => $usuario
+        ];
+        return response()->json($data);
     }
     
 }

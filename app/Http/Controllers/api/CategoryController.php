@@ -98,7 +98,17 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-       //
+        $cat = Cat::find($id);
+
+        if (!$cat) {
+            return response()->json(['message' => 'Categoria no encontrada'], 404);
+        }
+    
+        $data = [
+            'message' => 'Editar categoria',
+            'categoria' => $cat
+        ];
+        return response()->json($data);
     }
 
     /**

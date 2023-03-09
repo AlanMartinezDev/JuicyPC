@@ -1,60 +1,161 @@
 @extends('plantilla')
 @section('content')
-    <div class="row">
-        <div class="row mb-3">
-            <h1>Categorías</h1>
-        </div>
-        <div class="col">
-        <div class="row mb-3 justify-content-center">
-        @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
-                <div class="col-2">
-                    <a href="{{ route('cat.create') }}" type="button" class="btn btn-outline-dark">Crear Categoria</a>
-                </div>
-            @endif
-        </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-4 g-4">
-                @foreach($cats as $cat)
-                <div class="col">
-                    <div class="card text-center">
-                        <img src="{{ $cat->image }}" class="card-img-top w-75 d-block ms-auto me-auto rounded mt-3" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title d-flex justify-content-center"><a href="/categorias/show/{{ $cat->id }}" class="text-decoration-none">{{ $cat->name }}</a></h5>
-                            <div class="row">
-                                <!--@if( isset(auth::user()->role) && auth::user()->role == 'admin' )
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/productos/update/{{ $cat->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar producto</a>
-                                    </div>
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/productos/delete/{{ $cat->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar producto</a>
-                                    </div>
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/productos/show/{{ $cat->id }}" type="button" class="btn btn-outline-success btn-sm">Ver producto</a>
-                                    </div>
-                                @else
-                                    <div class="col d-flex justify-content-end">
-                                        <a href="" type="button" class="btn btn-outline-success btn-sm">Añadir al carrito</a>
-                                    </div>
-                                @endif-->
-                                @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/categorias/update/{{ $cat->id }}" type="button" class="btn btn-outline-warning btn-sm">Editar categoria</a>
-                                    </div>
-                                    <div class="col d-flex justify-content-center">
-                                        <a href="/categorias/delete/{{ $cat->id }}" type="button" class="btn btn-outline-danger btn-sm">Borrar categoria</a>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <br><br>
-    <div class="row">
-        <div class="col justify-content-center d-flex">
-            {{ $cats->links('pagination::bootstrap-4') }}
-        </div>
-    </div>
+    <table id="categorias" class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí van los datos de la tabla -->
+      </tbody>
+    </table>
+
+
+    <form id="formulario">
+
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name"><br>
+
+        <input type="submit" value="Crear">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Obtener la lista de productos
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/categorias",
+                method: "GET",
+                success: function(data) {
+                    // Agregar los productos a la tabla
+                    $.each(data.data, function(index, categoria) {
+                        var fila = "<tr>" +
+                            "<td>" + categoria.id + "</td>" +
+                            "<td>" + categoria.name + "</td>" +
+                            "<td>" +
+                                "<button class='btn btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" +
+                            "</td>" +
+                        "</tr>";
+                        $("#categorias tbody").append(fila);
+                    });
+                }
+            });
+
+            // Enviar el formulario para crear un producto
+            $("#formulario").submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/categorias",
+                    method: "POST",
+                    data: formData,
+                    success: function(data) {
+                        // Agregar el nuevo producto a la tabla
+                        var categoria = data.categoria;
+                        var fila = "<tr>" +
+                            "<td>" + categoria.id + "</td>" +
+                            "<td>" + categoria.name + "</td>" +
+                            "<td>" +
+                                "<button class='btn btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" + "</td>" + "</tr>";
+                        $("#categorias tbody").append(fila);                    // Limpiar el formulario
+                    $("#formulario")[0].reset();
+                }
+            });
+            location.reload();
+        });
+    });
+
+    function editarCategoria(id) {
+        // Obtener el producto a editar
+        $.ajax({
+            url: "http://127.0.0.1:8000/api/categorias/" + id + "/edit",
+            method: "GET",
+            success: function(data) {
+                var categoria = data.categoria;
+                console.log(categoria);
+
+                // Llenar el formulario con los datos del producto
+                $("#name").val(categoria.name);
+
+                // Cambiar el botón de "Crear" a "Actualizar"
+                var boton = $("#formulario input[type='submit']");
+                boton.val("Actualizar");
+                boton.off("click").on("click", function(event) {
+                    event.preventDefault();
+
+                    // Enviar el formulario actualizado
+                    var formData = $("#formulario").serialize();
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/api/categorias/" + id,
+                        method: "PUT",
+                        data: formData,
+                        success: function(data) {
+                            // Actualizar los datos del producto en la tabla
+                            var categoria = data.categoria;
+                            var fila = "<tr>" +
+                                "<td>" + categoria.id + "</td>" +
+                                "<td>" + categoria.name + "</td>" +
+                                "<td>" +
+                                    "<button class='btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                    "<button class='btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" +
+                                "</td>" +
+                            "</tr>";
+                            $("#categorias tbody tr:nth-child(" + (id + 1) + ")").replaceWith(fila);
+
+                            // Limpiar el formulario
+                            $("#formulario")[0].reset();
+                            boton.val("Crear");
+                            boton.off("click").on("click", function(event) {
+                                event.preventDefault();
+                                var formData = $("#formulario").serialize();
+                                $.ajax({
+                                    url: "http://127.0.0.1:8000/api/categorias",
+                                    method: "POST",
+                                    data: formData,
+                                    success: function(data) {
+                                        var categoria = data.categoria;
+                                        var fila = "<tr>" +
+                                            "<td>" + categoria.id + "</td>" +
+                                            "<td>" + categoria.name + "</td>" +
+                                            "<td>" +
+                                                "<button class='btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                                "<button class='btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" +
+                                            "</td>" +
+                                        "</tr>";
+                                        $("#categorias tbody").append(fila);
+                                        $("#formulario")[0].reset();
+                                    }
+                                });
+                            });
+                            location.reload();
+                        }
+                    });
+                });
+            }
+        });
+    }
+
+    function eliminarCategoria(id) {
+        // Confirmar que se desea eliminar el producto
+        if (confirm("¿Estás seguro de que deseas eliminar esta categoria?")) {
+            // Eliminar el producto
+            $.ajax({
+              url: "http://127.0.0.1:8000/api/categorias/" + id,
+                method: "DELETE",
+                success: function() {
+                    // Eliminar la fila de la tabla correspondiente al producto elimino
+                    $("#categorias tbody tr:nth-child(" + (id + 1) + ")").remove();
+                }
+            });
+            location.reload();
+        }
+    }
+</script>
+
 @endsection
+

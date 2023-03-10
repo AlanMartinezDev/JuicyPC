@@ -2,16 +2,16 @@
 @section('content')
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+<button type="button" class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#modalCrearProd">
+  Crear productos
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalCrearProd" tabindex="-1" aria-labelledby="modalCrearProdLavel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">form</h1>
+        <h1 class="modal-title fs-5" id="modalCrearProdLavel">form</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -97,7 +97,7 @@
                             "<td>" + producto.description + "</td>" +
                             "<td>" + producto.brand + "</td>" +
                             "<td>" +
-                                "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                 "<button class='btn btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" +
                             "</td>" +
                         "</tr>";
@@ -124,7 +124,7 @@
                             "<td>" + producto.description + "</td>" +
                             "<td>" + producto.brand + "</td>" +
                             "<td>" +
-                                "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                 "<button class='btn btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" + "</td>" + "</tr>";
                         $("#productos tbody").append(fila);                    // Limpiar el formulario
                     $("#formulario")[0].reset();
@@ -172,7 +172,7 @@
                                 "<td>" + producto.description + "</td>" +
                                 "<td>" + producto.brand + "</td>" +
                                 "<td>" +
-                                    "<button class='btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                    "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                     "<button class='btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" +
                                 "</td>" +
                             "</tr>";
@@ -197,7 +197,7 @@
                                             "<td>" + producto.description + "</td>" +
                                             "<td>" + producto.brand + "</td>" +
                                             "<td>" +
-                                                "<button class='btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                                "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                                 "<button class='btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" +
                                             "</td>" +
                                         "</tr>";
@@ -206,9 +206,10 @@
                                     }
                                 });
                             });
-                            location.reload();
                         }
                     });
+                    //El location va al final del primer bloque ajax de la funcion
+                    location.reload();
                 });
             }
         });

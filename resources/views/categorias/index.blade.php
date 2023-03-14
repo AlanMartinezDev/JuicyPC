@@ -1,5 +1,33 @@
 @extends('plantilla')
 @section('content')
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#modalCrearProd">
+  Crear categoria
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCrearProd" tabindex="-1" aria-labelledby="modalCrearProdLavel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalCrearProdLavel">form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form id="formulario">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" id="name" class="form-control" required><br>
+
+            <input type="submit" value="Crear" class="btn btn-outline-success">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
     <table id="categorias" class="table table-striped">
       <thead class="table-dark">
         <tr>
@@ -12,15 +40,6 @@
         <!-- Aquí van los datos de la tabla -->
       </tbody>
     </table>
-
-
-    <form id="formulario">
-
-        <label for="name">Nombre:</label>
-        <input type="text" name="name" id="name"><br>
-
-        <input type="submit" value="Crear">
-    </form>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -36,7 +55,7 @@
                             "<td>" + categoria.id + "</td>" +
                             "<td>" + categoria.name + "</td>" +
                             "<td>" +
-                                "<button class='btn btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                 "<button class='btn btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" +
                             "</td>" +
                         "</tr>";
@@ -60,7 +79,7 @@
                             "<td>" + categoria.id + "</td>" +
                             "<td>" + categoria.name + "</td>" +
                             "<td>" +
-                                "<button class='btn btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                 "<button class='btn btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" + "</td>" + "</tr>";
                         $("#categorias tbody").append(fila);                    // Limpiar el formulario
                     $("#formulario")[0].reset();
@@ -101,7 +120,7 @@
                                 "<td>" + categoria.id + "</td>" +
                                 "<td>" + categoria.name + "</td>" +
                                 "<td>" +
-                                    "<button class='btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                    "<button class='btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                     "<button class='btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" +
                                 "</td>" +
                             "</tr>";
@@ -123,7 +142,7 @@
                                             "<td>" + categoria.id + "</td>" +
                                             "<td>" + categoria.name + "</td>" +
                                             "<td>" +
-                                                "<button class='btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")'>Editar</button> " +
+                                                "<button class='btn-outline-primary' onclick='editarCategoria(" + categoria.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
                                                 "<button class='btn-outline-danger' onclick='eliminarCategoria(" + categoria.id + ")'>Eliminar</button>" +
                                             "</td>" +
                                         "</tr>";

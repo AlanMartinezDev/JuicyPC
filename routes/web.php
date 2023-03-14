@@ -30,12 +30,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //RUTAS GET | VISUALIZACIÓN DE PRODUCTOS | USUARIO : NORMAL
 
 Route::get('/productos',[App\Http\Controllers\ProductController::class, 'index'])->name('productos.index');
-Route::get('/productos/show/{product}',[App\Http\Controllers\ProductController::class, 'show'])->name('productos.show');
+Route::get('/productos/{producto}/',[App\Http\Controllers\ProductController::class, 'show'])->name('productos.show');
 
 //Rutas de Categorias
 Route::get('/categorias',[App\Http\Controllers\CategoryController::class, 'index'])->name('categorias.index');
@@ -90,6 +91,7 @@ Route::group(['middleware'=>['auth']], function(){
 
         //RUTAS GET | CRUD PRODUCTO + RELACIÓN N A N DE PRODUCTOS CON CATEGORÍAS | USUARIO : ADMIN
 
+        //Route::get('/productos',[App\Http\Controllers\ProductController::class, 'index'])->name('productos.indexAdmin');
         Route::get('/productos/create',[App\Http\Controllers\ProductController::class,'create'])->name('productos.create');
         Route::get('/productos/delete/{id}',[App\Http\Controllers\ProductController::class,'destroy'])->name('productos.destroy');
         Route::get('/productos/{product}/cats', [App\Http\Controllers\ProductController::class, 'editCats'])->name('products.editcats');

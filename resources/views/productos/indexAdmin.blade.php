@@ -1,6 +1,8 @@
 @extends('plantilla')
 @section('content')
 
+<h1 class="mb-5">Productos</h1>
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#modalCrearProd">
   Crear productos

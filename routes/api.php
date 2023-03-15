@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\api\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::resource('productos', ProductController::class);
 Route::resource('categorias', CategoryController::class);
 
 Route::resource('usuarios', UserController::class);
+
+Route::resource('stores', StoreController::class);

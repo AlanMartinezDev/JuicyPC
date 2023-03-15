@@ -131,7 +131,7 @@ class ProductController extends Controller
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
 
-        $producto->name = $request->input('name', 'hola'); //$producto->name);
+        $producto->name = $request->input('name', $producto->name); //$producto->name);
         $producto->price = $request->input('price', $producto->price);
         $producto->description = $request->input('description', $producto->description);
         $producto->brand = $request->input('brand', $producto->brand);

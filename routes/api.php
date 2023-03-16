@@ -32,7 +32,8 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group( function () {
-
+    
+    Route::resource('stores', StoreController::class);
     
 });
 
@@ -45,5 +46,3 @@ Route::resource('productos', ProductController::class);
 Route::resource('categorias', CategoryController::class);
 
 Route::resource('usuarios', UserController::class);
-
-Route::resource('stores', StoreController::class);

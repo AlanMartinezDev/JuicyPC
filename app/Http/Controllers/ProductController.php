@@ -25,7 +25,7 @@ class ProductController extends Controller
         //REDIRECCIÓN A LA VISTA /productos
 
         // vista admin
-        return view('productos.indexAdmin',compact('products'));
+        //return view('productos.indexAdmin',compact('products'));
 
         // vista usuario normal
         return view('productos.index',compact('products'));

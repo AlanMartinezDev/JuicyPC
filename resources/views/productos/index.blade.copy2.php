@@ -1,6 +1,8 @@
 @extends('plantilla')
 @section('content')
 
+@if( isset(auth::user()->role) && auth::user()->role == 'admin' )
+
 <!-- Button trigger modal -->
 <button type="button" id="modal" class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
@@ -332,4 +334,5 @@
         @endif
 </script>
 
+@endif
 @endsection

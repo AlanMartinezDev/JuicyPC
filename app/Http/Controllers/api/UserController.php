@@ -70,7 +70,19 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+    
+        if(!$usuario) {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+    
+        $response = [
+            'success' => true,
+            'message' => "Editar usuario",
+            'data' => new UserResource($usuario)
+        ];
+    
+        return response()->json($response, 200);
     }
 
     /**

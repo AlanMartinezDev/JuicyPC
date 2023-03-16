@@ -15,7 +15,6 @@ use App\Models\User;
 class ProductController extends Controller
 {
      //APARTADO IMPLEMENTACIÓN CRUD
-
     public function index()
     {
         //ACCEDEMOS AL MODELO PRODCUTO Y DEVOLVEMOS A LA VISTA CON COMPACT LA VARIABLE QUE CONTIENE LA INFORMACIÓN CON PAGINADO
@@ -23,12 +22,23 @@ class ProductController extends Controller
         $products = Product::Paginate(8);
 
         //REDIRECCIÓN A LA VISTA /productos
-
+        /*if (!isset(auth()->user()->id)) {
+            return view('productos.index',compact('products'));
+        } elseif (isset(auth()->user()->id) && auth()->user()->role == "normal") {
+            return view('productos.index',compact('products'));
+        } else {
+            return view('productos.indexAdmin',compact('products'));
+        }*/
+        if (!isset(auth()->user()->id) || isset(auth()->user()->id) && auth()->user()->role == "normal") {
+            return view('productos.index',compact('products'));
+        }else {
+            return view('productos.indexAdmin',compact('products'));
+        }
         // vista admin
-        return view('productos.indexAdmin',compact('products'));
+        //return view('productos.indexAdmin',compact('products'));
 
         // vista usuario normal
-        return view('productos.index',compact('products'));
+        //return view('productos.index',compact('products'));
     }
 
     public function create()

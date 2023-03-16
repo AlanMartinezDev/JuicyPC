@@ -193,8 +193,7 @@
     }
 
         //SCRIPT PARA VISTA ADMIN
-        @if(isset( auth::user()->id ))
-            @if( auth::user()->role == 'admin' )
+        
 
         $(document).ready(function() {
             // Obtener la lista de productos
@@ -345,8 +344,7 @@
             location.reload();
         }
     }
-        @endif
-    @endif
+    
 </script>
 
 @endsection

@@ -1,6 +1,16 @@
 @extends('plantilla')
 @section('content')
-
+<script>
+    function cookieExiste(nombreCookie) {
+        var cookies = document.cookie.split(";");
+        for(var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if(cookie.indexOf(nombreCookie + "=") === 0){
+                return true;
+            }
+        }
+    }
+</script>
 <div class="row text-start">
     <p><strong>Expertos en tecnología</strong> con un servicio 5 ☆</p>
 </div>

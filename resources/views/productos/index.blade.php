@@ -94,10 +94,24 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+       /* async function getToken() {        
+        try {
+
+            const response = await fetch('http://localhost:8000/token');
+            const json = await response.json();
+            window.localStorage.setItem("token", json.token);        
+
+        }
+        catch(error) {           
+            console.log('error obtenint token')
+        }
+
+    }*/
         //SCRIPT PARA VISTA USUARIO NORMAL O NOT AUTH
             document.getElementById('productos').style.display = 'none';
             document.getElementById('modal').style.display = 'none';
-
+   
+            
             // Obtener la lista de productos
            $.ajax({
                 url: "http://127.0.0.1:8000/api/productos",
@@ -178,9 +192,9 @@
         });
     }
 
-
         //SCRIPT PARA VISTA ADMIN
-        @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
+        @if(isset( auth::user()->id ))
+            @if( auth::user()->role == 'admin' )
 
         $(document).ready(function() {
             // Obtener la lista de productos
@@ -190,7 +204,8 @@
                 success: function(data) {
                     // Agregar los productos a la tabla
                     $.each(data.data, function(index, producto) {
-                        var fila = "<tr>" +
+                        var fila = 
+                            "<tr>" +
                             "<td>" + producto.id + "</td>" +
                             "<td>" + producto.name + "</td>" +
                             "<td>" + producto.price + "</td>" +
@@ -217,7 +232,8 @@
                     success: function(data) {
                         // Agregar el nuevo producto a la tabla
                         var producto = data.producto;
-                        var fila = "<tr>" +
+                        var fila = 
+                            "<tr>" +
                             "<td>" + producto.id + "</td>" +
                             "<td>" + producto.name + "</td>" +
                             "<td>" + producto.price + "</td>" +
@@ -330,6 +346,7 @@
         }
     }
         @endif
+    @endif
 </script>
 
 @endsection

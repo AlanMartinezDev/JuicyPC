@@ -7,33 +7,48 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 mt-5">
             <div class="row justify-content-center fs-4 mb-4">Datos de tu cuenta</div>
-                <form id="edit-form">
-                    <input type="text" name="name" placeholder="Nombre"><br>
-                    <input type="email" name="email" placeholder="Email"><br>
-                    <input type="password" name="password" placeholder="Contraseña"><br>
-                    <input type="text" name="username" placeholder="Nombre de usuario"><br>
-                    <input type="text" name="address" placeholder="Dirección"><br>
-                    <input type="number" name="accountBalance" placeholder="Saldo de cuenta"><br>
-                    <input type="text" name="shippingRegion" placeholder="Región de envío"><br>
+            <form class="row g-3" id="edit-form">
+                <div class="col-md-6">
+                    <input class="form-control" type="text" name="name" placeholder="Nombre">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="email" name="email" placeholder="Email">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="password" name="password" placeholder="Contraseña">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" name="username" placeholder="Nombre de usuario">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" name="address" placeholder="Dirección">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="number" name="accountBalance" placeholder="Saldo de cuenta">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" name="shippingRegion" placeholder="Región de envío">
+                </div>
+                <div class="col-md-6">
+                    <input class="btn btn-outline-success" type="submit" value="Guardar">
+                </div>  
+            </form>
+            <script>
+                $('#edit-form').on('submit', function(event) {
+                    event.preventDefault();
+                    var formData = $(this).serialize();
 
-                    <input type="submit" value="Guardar">
-                </form>
-                <script>
-                    $('#edit-form').on('submit', function(event) {
-                        event.preventDefault();
-                        var formData = $(this).serialize();
-
-                        $.ajax({
-                            url: "",
-                            type: "PUT",
-                            data: formData,
-                            success: function(data) {
-                                // actualizar la vista con los nuevos datos del usuario
-                                console.log(data);
-                            }
-                        });
+                    $.ajax({
+                        url: "",
+                        type: "PUT",
+                        data: formData,
+                        success: function(data) {
+                            // actualizar la vista con los nuevos datos del usuario
+                            console.log(data);
+                        }
                     });
-</script>
+                });
+            </script>
              </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 col-xxl-4 mt-5">
             <div class="row justify-content-center fs-4 mb-4">Mis pedidos</div>

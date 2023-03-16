@@ -10,7 +10,43 @@
             }
         }
     }
+
+    async function getToken(){
+
+        if (!cookieExiste("token")) {
+            
+            try {
+                let URL = "http://localhost:8000/token";
+
+                const response = await fetch(URL, {
+                    method: 'GET',
+                    headers: {
+                        'Accept' : 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+
+                if (response.ok) {
+                    let token = data.token.split("|");
+                    document.cookie = "token=" + token[1];
+
+                    var miCookie = document.cookie;
+                    
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            console.log("La cookie existe");
+        }
+
+        getToken();
+    }
+
 </script>
+
 <div class="row text-start">
     <p><strong>Expertos en tecnología</strong> con un servicio 5 ☆</p>
 </div>

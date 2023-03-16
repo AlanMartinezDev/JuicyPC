@@ -1,5 +1,7 @@
 @extends('plantilla')
 @section('content')
+
+
  
 <h1 class="mb-5">Almacenes</h1>
 
@@ -54,11 +56,30 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+
+    function getCookie(cname){
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while(c.charAt(0) == ' '){
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
         $(document).ready(function() {
             // Obtener la lista de stores
             $.ajax({
                 url: "http://127.0.0.1:8000/api/stores",
                 method: "GET",
+                'Authorization' : 'Bearer ' + getCookie('token'),
                 success: function(data) {
                     // Agregar los stores a la tabla
                     $.each(data.data, function(index, store) {
@@ -84,6 +105,7 @@
                 $.ajax({
                     url: "http://127.0.0.1:8000/api/stores",
                     method: "POST",
+                    'Authorization' : 'Bearer ' + getCookie('token'),
                     data: formData,
                     success: function(data) {
                         // Agregar el nuevo store a la tabla
@@ -109,6 +131,7 @@
         $.ajax({
             url: "http://127.0.0.1:8000/api/stores/" + id + "/edit",
             method: "GET",
+            'Authorization' : 'Bearer ' + getCookie('token'),
             success: function(data) {
                 var store = data.store;
                 console.log(store);
@@ -130,6 +153,7 @@
                     $.ajax({
                         url: "http://127.0.0.1:8000/api/stores/" + id,
                         method: "PUT",
+                        'Authorization' : 'Bearer ' + getCookie('token'),
                         data: formData,
                         success: function(data) {
                             // Actualizar los datos del producto en la tabla
@@ -155,6 +179,7 @@
                                 $.ajax({
                                     url: "http://127.0.0.1:8000/api/stores",
                                     method: "POST",
+                                    'Authorization' : 'Bearer ' + getCookie('token'),
                                     data: formData,
                                     success: function(data) {
                                         var store = data.store;
@@ -189,6 +214,7 @@
             $.ajax({
               url: "http://127.0.0.1:8000/api/stores/" + id,
                 method: "DELETE",
+                'Authorization' : 'Bearer ' + getCookie('token'),
                 success: function() {
                     // Eliminar la fila de la tabla correspondiente al producto elimino
                     $("#stores tbody tr:nth-child(" + (id + 1) + ")").remove();

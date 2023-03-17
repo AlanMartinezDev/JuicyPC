@@ -1,7 +1,35 @@
 @extends('plantilla')
 @section('content')
+    <div class="row">
+        <div class="row mb-3">
+            <h1>Almacenes</h1>
+        </div>
+        <div class="col">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-4 g-4">
+                @foreach($stores as $store)
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $store->name }}</h5>
+                            <p class="card-text">{{ $store->address }}</p>
+                            <p class="card-text fw-bold">{{ $store->contact }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col justify-content-center d-flex">
+            {{ $stores->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
 
+    <!-- VISTA ADMINISTRADOR  ------------------------------------------------------------------------------------------------------                   -->
 
+    @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
  
 <h1 class="mb-5">Almacenes</h1>
 
@@ -56,32 +84,11 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-
-    function getCookie(cname){
-        let name = cname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while(c.charAt(0) == ' '){
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
-
         $(document).ready(function() {
             // Obtener la lista de stores
             $.ajax({
                 url: "http://127.0.0.1:8000/api/stores",
                 method: "GET",
-                headers: {
-                    'Authorization': 'Bearer ' + getCookie('token')
-                },
                 success: function(data) {
                     // Agregar los stores a la tabla
                     $.each(data.data, function(index, store) {
@@ -99,6 +106,7 @@
                     });
                 }
             });
+
             // Enviar el formulario para crear un store
             $("#formulario").submit(function(event) {
                 event.preventDefault();
@@ -106,9 +114,6 @@
                 $.ajax({
                     url: "http://127.0.0.1:8000/api/stores",
                     method: "POST",
-                    headers: {
-                        'Authorization': 'Bearer ' + getCookie('token')
-                    },
                     data: formData,
                     success: function(data) {
                         // Agregar el nuevo store a la tabla
@@ -128,35 +133,33 @@
             location.reload();
         });
     });
+
     function editarStore(id) {
         // Obtener el store a editar
         $.ajax({
             url: "http://127.0.0.1:8000/api/stores/" + id + "/edit",
             method: "GET",
-            headers: {
-                'Authorization': 'Bearer ' + getCookie('token')
-            },
             success: function(data) {
                 var store = data.store;
                 console.log(store);
+
                 // Llenar el formulario con los datos del producto
                 $("#name").val(store.name);
                 $("#address").val(store.address);
                 $("#contact").val(store.contact);
                 $("#product_id").val(store.product_id);
+
                 // Cambiar el botón de "Crear" a "Actualizar"
                 var boton = $("#formulario input[type='submit']");
                 boton.val("Actualizar");
                 boton.off("click").on("click", function(event) {
                     event.preventDefault();
+
                     // Enviar el formulario actualizado
                     var formData = $("#formulario").serialize();
                     $.ajax({
                         url: "http://127.0.0.1:8000/api/stores/" + id,
                         method: "PUT",
-                        headers: {
-                            'Authorization': 'Bearer ' + getCookie('token')
-                        },
                         data: formData,
                         success: function(data) {
                             // Actualizar los datos del producto en la tabla
@@ -172,6 +175,7 @@
                                 "</td>" +
                             "</tr>";
                             $("#stores tbody tr:nth-child(" + (id + 1) + ")").replaceWith(fila);
+
                             // Limpiar el formulario
                             $("#formulario")[0].reset();
                             boton.val("Crear");
@@ -181,9 +185,6 @@
                                 $.ajax({
                                     url: "http://127.0.0.1:8000/api/stores",
                                     method: "POST",
-                                    headers: {
-                                        'Authorization': 'Bearer ' + getCookie('token')
-                                    },
                                     data: formData,
                                     success: function(data) {
                                         var store = data.store;
@@ -210,6 +211,7 @@
             }
         });
     }
+
     function eliminarStore(id) {
         // Confirmar que se desea eliminar el producto
         if (confirm("¿Estás seguro de que deseas eliminar este almacen?")) {
@@ -217,9 +219,6 @@
             $.ajax({
               url: "http://127.0.0.1:8000/api/stores/" + id,
                 method: "DELETE",
-                headers: {
-                    'Authorization': 'Bearer ' + getCookie('token')
-                },
                 success: function() {
                     // Eliminar la fila de la tabla correspondiente al producto elimino
                     $("#stores tbody tr:nth-child(" + (id + 1) + ")").remove();
@@ -230,4 +229,5 @@
     }
 </script>
 
+    @endif
 @endsection

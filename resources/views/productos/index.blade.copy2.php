@@ -1,6 +1,8 @@
 @extends('plantilla')
 @section('content')
 
+@if( isset(auth::user()->role) && auth::user()->role == 'admin' )
+
 <!-- Button trigger modal -->
 <button type="button" id="modal" class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
@@ -94,24 +96,10 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-       /* async function getToken() {        
-        try {
-
-            const response = await fetch('http://localhost:8000/token');
-            const json = await response.json();
-            window.localStorage.setItem("token", json.token);        
-
-        }
-        catch(error) {           
-            console.log('error obtenint token')
-        }
-
-    }*/
         //SCRIPT PARA VISTA USUARIO NORMAL O NOT AUTH
             document.getElementById('productos').style.display = 'none';
             document.getElementById('modal').style.display = 'none';
-   
-            
+
             // Obtener la lista de productos
            $.ajax({
                 url: "http://127.0.0.1:8000/api/productos",
@@ -192,8 +180,159 @@
         });
     }
 
-        
-    
+
+        //SCRIPT PARA VISTA ADMIN
+        @if( isset(auth::user()->role) && auth::user()->role == 'admin' )
+
+        $(document).ready(function() {
+            // Obtener la lista de productos
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/productos",
+                method: "GET",
+                success: function(data) {
+                    // Agregar los productos a la tabla
+                    $.each(data.data, function(index, producto) {
+                        var fila = "<tr>" +
+                            "<td>" + producto.id + "</td>" +
+                            "<td>" + producto.name + "</td>" +
+                            "<td>" + producto.price + "</td>" +
+                            "<td>" + producto.description + "</td>" +
+                            "<td>" + producto.brand + "</td>" +
+                            "<td>" +
+                                "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" +
+                            "</td>" +
+                        "</tr>";
+                        $("#productos tbody").append(fila);
+                    });
+                }
+            });
+
+            // Enviar el formulario para crear un producto
+            $("#formulario").submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/productos",
+                    method: "POST",
+                    data: formData,
+                    success: function(data) {
+                        // Agregar el nuevo producto a la tabla
+                        var producto = data.producto;
+                        var fila = "<tr>" +
+                            "<td>" + producto.id + "</td>" +
+                            "<td>" + producto.name + "</td>" +
+                            "<td>" + producto.price + "</td>" +
+                            "<td>" + producto.description + "</td>" +
+                            "<td>" + producto.brand + "</td>" +
+                            "<td>" +
+                                "<button class='btn btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                "<button class='btn btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" + "</td>" + "</tr>";
+                        $("#productos tbody").append(fila);                    // Limpiar el formulario
+                    $("#formulario")[0].reset();
+                }
+            });
+            location.reload();
+        });
+    });
+
+    function editarProducto(id) {
+        // Obtener el producto a editar
+        $.ajax({
+            url: "http://127.0.0.1:8000/api/productos/" + id + "/edit",
+            method: "GET",
+            success: function(data) {
+                var producto = data.producto;
+                console.log(producto);
+
+                // Llenar el formulario con los datos del producto
+                $("#name").val(producto.name);
+                $("#price").val(producto.price);
+                $("#description").val(producto.description);
+                $("#brand").val(producto.brand);
+                $("#cat_id").val(producto.cat_id);
+
+                // Cambiar el botón de "Crear" a "Actualizar"
+                var boton = $("#formulario input[type='submit']");
+                boton.val("Actualizar");
+                boton.off("click").on("click", function(event) {
+                    event.preventDefault();
+
+                    // Enviar el formulario actualizado
+                    var formData = $("#formulario").serialize();
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/api/productos/" + id,
+                        method: "PUT",
+                        data: formData,
+                        success: function(data) {
+                            // Actualizar los datos del producto en la tabla
+                            var producto = data.producto;
+                            var fila = "<tr>" +
+                                "<td>" + producto.id + "</td>" +
+                                "<td>" + producto.name + "</td>" +
+                                "<td>" + producto.price + "</td>" +
+                                "<td>" + producto.description + "</td>" +
+                                "<td>" + producto.brand + "</td>" +
+                                "<td>" +
+                                    "<button class='btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                    "<button class='btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" +
+                                "</td>" +
+                            "</tr>";
+                            $("#productos tbody tr:nth-child(" + (id + 1) + ")").replaceWith(fila);
+
+                            // Limpiar el formulario
+                            $("#formulario")[0].reset();
+                            boton.val("Crear");
+                            boton.off("click").on("click", function(event) {
+                                event.preventDefault();
+                                var formData = $("#formulario").serialize();
+                                $.ajax({
+                                    url: "http://127.0.0.1:8000/api/productos",
+                                    method: "POST",
+                                    data: formData,
+                                    success: function(data) {
+                                        var producto = data.producto;
+                                        var fila = "<tr>" +
+                                            "<td>" + producto.id + "</td>" +
+                                            "<td>" + producto.name + "</td>" +
+                                            "<td>" + producto.price + "</td>" +
+                                            "<td>" + producto.description + "</td>" +
+                                            "<td>" + producto.brand + "</td>" +
+                                            "<td>" +
+                                                "<button class='btn-outline-primary' onclick='editarProducto(" + producto.id + ")'>Editar</button> " +
+                                                "<button class='btn-outline-danger' onclick='eliminarProducto(" + producto.id + ")'>Eliminar</button>" +
+                                            "</td>" +
+                                        "</tr>";
+                                        $("#productos tbody").append(fila);
+                                        $("#formulario")[0].reset();
+                                    }
+                                });
+                            });
+                            location.reload();
+                        }
+                    });
+                });
+            }
+        });
+    }
+
+    function eliminarProducto(id) {
+        // Confirmar que se desea eliminar el producto
+        if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+            // Eliminar el producto
+            $.ajax({
+              url: "http://127.0.0.1:8000/api/productos/" + id,
+                method: "DELETE",
+                success: function() {
+                    // Eliminar la fila de la tabla correspondiente al producto elimino
+                    $("#productos tbody tr:nth-child(" + (id + 1) + ")").remove();
+                }
+            });
+            location.reload();
+        }
+    }
+        @endif
 </script>
 
+@endif
 @endsection

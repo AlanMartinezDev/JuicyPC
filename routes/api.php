@@ -6,7 +6,8 @@ use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\StoreController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\api\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------

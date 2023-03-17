@@ -17,7 +17,7 @@
         if (!cookieExiste("token")) {
             
             try {
-                let URL = "http://localhost:8000/token";
+                let URL = "http://127.0.0.1:8000/token";
 
                 const response = await fetch(URL, {
                     method: 'GET',

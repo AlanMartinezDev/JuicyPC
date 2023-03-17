@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('content')
- 
+
 <h1 class="mb-5">Almacenes</h1>
 
 <!-- Button trigger modal -->
@@ -76,7 +76,6 @@
                     });
                 }
             });
-
             // Enviar el formulario para crear un store
             $("#formulario").submit(function(event) {
                 event.preventDefault();
@@ -103,7 +102,6 @@
             location.reload();
         });
     });
-
     function editarStore(id) {
         // Obtener el store a editar
         $.ajax({
@@ -112,19 +110,16 @@
             success: function(data) {
                 var store = data.store;
                 console.log(store);
-
                 // Llenar el formulario con los datos del producto
                 $("#name").val(store.name);
                 $("#address").val(store.address);
                 $("#contact").val(store.contact);
                 $("#product_id").val(store.product_id);
-
                 // Cambiar el botón de "Crear" a "Actualizar"
                 var boton = $("#formulario input[type='submit']");
                 boton.val("Actualizar");
                 boton.off("click").on("click", function(event) {
                     event.preventDefault();
-
                     // Enviar el formulario actualizado
                     var formData = $("#formulario").serialize();
                     $.ajax({
@@ -145,7 +140,6 @@
                                 "</td>" +
                             "</tr>";
                             $("#stores tbody tr:nth-child(" + (id + 1) + ")").replaceWith(fila);
-
                             // Limpiar el formulario
                             $("#formulario")[0].reset();
                             boton.val("Crear");
@@ -181,7 +175,6 @@
             }
         });
     }
-
     function eliminarStore(id) {
         // Confirmar que se desea eliminar el producto
         if (confirm("¿Estás seguro de que deseas eliminar este almacen?")) {

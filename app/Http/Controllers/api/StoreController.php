@@ -107,7 +107,7 @@ class StoreController extends Controller
         if (!$store) {
             return response()->json(['message' => 'Almacen no encontrado'], 404);
         }
-    
+
         $data = [
             'message' => 'Editar Almacen',
             'store' => $store

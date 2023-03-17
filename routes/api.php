@@ -6,7 +6,7 @@ use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\StoreController;
-use App\Http\Controllers\api\RegisterController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,6 @@ Route::post('login', [RegisterController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group( function () {
     
-    Route::resource('stores', StoreController::class);
     
 });
 
@@ -46,3 +45,5 @@ Route::resource('productos', ProductController::class);
 Route::resource('categorias', CategoryController::class);
 
 Route::resource('usuarios', UserController::class);
+
+Route::resource('stores', StoreController::class);

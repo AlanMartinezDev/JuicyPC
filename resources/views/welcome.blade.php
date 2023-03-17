@@ -9,6 +9,7 @@
                 return true;
             }
         }
+        return false;
     }
 
     async function getToken(){
@@ -26,13 +27,12 @@
                 });
                 
                 const data = await response.json();
+                console.log(miCookie);
 
                 if (response.ok) {
                     let token = data.token.split("|");
                     document.cookie = "token=" + token[1];
-
                     var miCookie = document.cookie;
-                    
                 }
 
             } catch (error) {
@@ -41,9 +41,12 @@
         } else {
             console.log("La cookie existe");
         }
+    }
 
+    window.onload = function() {
         getToken();
     }
+
 
 </script>
 

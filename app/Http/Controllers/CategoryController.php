@@ -16,7 +16,13 @@ class CategoryController extends Controller
     public function index()
     {
         $cats = Cat::Paginate(4);
-        return view('categorias.index',compact('cats'));
+
+        if (!isset(auth()->user()->id) || isset(auth()->user()->id) && auth()->user()->role == "normal") {
+            return view('categorias.index',compact('cats'));
+        }else {
+            return view('categorias.indexAdmin',compact('cats'));
+        }
+        
     }
 
     /**

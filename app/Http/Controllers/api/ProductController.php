@@ -105,13 +105,18 @@ class ProductController extends Controller
     {
         $producto = Product::find($id);
 
+        $cats = DB::table('cats')
+                ->select('id', 'name')
+                ->get();
+
         if (!$producto) {
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
     
         $data = [
             'message' => 'Editar producto',
-            'producto' => $producto
+            'producto' => $producto,
+            'categorias' => $cats
         ];
         return response()->json($data);
     }

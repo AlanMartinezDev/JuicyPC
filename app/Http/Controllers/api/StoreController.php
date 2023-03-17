@@ -104,13 +104,18 @@ class StoreController extends Controller
     {
         $store = Store::find($id);
 
+        $products = DB::table('products')
+                ->select('id', 'name')
+                ->get();
+
         if (!$store) {
             return response()->json(['message' => 'Almacen no encontrado'], 404);
         }
 
         $data = [
             'message' => 'Editar Almacen',
-            'store' => $store
+            'store' => $store,
+            'productos' => $products
         ];
         return response()->json($data);
     }

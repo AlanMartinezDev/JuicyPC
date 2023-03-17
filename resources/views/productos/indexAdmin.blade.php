@@ -31,7 +31,16 @@
             <input type="text" name="brand" id="brand" class="form-control" required><br>
 
             <label for="cat_id">Categoría:</label>
-            <input type="number" name="cat_id" id="cat_id" class="form-control" required><br>
+            <select name="cat_id" id="cat_id" class="form-control" required>
+              <option value="">Seleccionar categoría</option>
+            </select><br>
+
+            <!--
+            <label for="store_id">Productos:</label>
+            <select name="store_id" id="store_id" class="form-control" required>
+              <option value="">Seleccionar productos</option>
+            </select><br>
+-->
 
             <input type="submit" value="Crear" class="btn btn-outline-success">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -41,30 +50,6 @@
   </div>
 </div>
 
-
-<!-- --------------------------------------------------   -->
-
-
-<!--div class="row mb-5">
-        <form id="formulario">
-            <label for="name">Nombre:</label>
-            <input type="text" name="name" id="name" class="form-control"><br>
-
-            <label for="price">Precio:</label>
-            <input type="number" name="price" id="price" class="form-control"><br>
-
-            <label for="description">Descripción:</label>
-            <textarea name="description" id="description" class="form-control"></textarea><br>
-
-            <label for="brand">Marca:</label>
-            <input type="text" name="brand" id="brand" class="form-control"><br>
-
-            <label for="cat_id">Categoría:</label>
-            <input type="number" name="cat_id" id="cat_id" class="form-control"><br>
-
-            <input type="submit" value="Crear" class="btn btn-outline-success">
-        </form>
-</div-->
 
     <table id="productos" class="table table-striped">
       <thead class="table-dark">
@@ -84,6 +69,24 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+
+function getCookie(cname){
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while(c.charAt(0) == ' '){
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    
         $(document).ready(function() {
             // Obtener la lista de productos
             $.ajax({
@@ -107,6 +110,37 @@
                     });
                 }
             });
+
+
+            // Obtener la lista de categorías y agregarlas al select
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/categorias",
+                method: "GET",
+                success: function(data) {
+                    // Agregar las categorías al select
+                    $.each(data.data, function(index, categoria) {
+                    var opcion = "<option value='" + categoria.id + "'>" + categoria.name + "</option>";
+                    $("#cat_id").append(opcion);
+                    });
+                }
+            });
+/*
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/stores",
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + getCookie('token')
+                },
+                success: function(data) {
+                    // Agregar las categorías al select
+                    $.each(data.data, function(index, store) {
+                    var opcion = "<option value='" + store.id + "'>" + store.name + "</option>";
+                    $("#store_id").append(opcion);
+                    });
+                }
+            });
+
+*/
 
             // Enviar el formulario para crear un producto
             $("#formulario").submit(function(event) {

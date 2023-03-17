@@ -26,37 +26,37 @@ class CategorySeeder extends Seeder
             [
                 'name' => 'Componentes',
                 'user_id' => 1,
-                'image' => '/images/categorias/componentes.webp',
+                'image' => '/images/2.webp',
             ],
 
             [
                 'name' => 'Periféricos',
                 'user_id' => 1,
-                'image' => '/images/categorias/periféricos.webp',
+                'image' => '/images/7.webp',
             ],
 
             [
                 'name' => 'Ordenadores',
                 'user_id' => 1,
-                'image' => '/images/categorias/ordenadores.webp',
+                'image' => '/images/9.webp',
             ],
 
             [
                 'name' => 'Portátiles',
                 'user_id' => 1,
-                'image' => '/images/categorias/portátiles.webp',
+                'image' => '/images/14.webp',
             ],
 
             [
                 'name' => 'Móviles',
                 'user_id' => 1,
-                'image' => '/images/categorias/móviles.webp',
+                'image' => '/images/18.webp',
             ],
 
             [
                 'name' => 'Tablets',
                 'user_id' => 1,
-                'image' => '/images/categorias/tablets.webp',
+                'image' => '/images/21.webp',
             ],
 
             [

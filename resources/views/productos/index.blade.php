@@ -1,43 +1,7 @@
 @extends('plantilla')
 @section('content')
 
-<!-- Button trigger modal -->
-<button type="button" id="modal" class="btn btn-primary mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">form</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form id="formulario">
-            <label for="name">Nombre:</label>
-            <input type="text" name="name" id="name" class="form-control" required><br>
-
-            <label for="price">Precio:</label>
-            <input type="number" name="price" id="price" class="form-control" required><br>
-
-            <label for="description">Descripción:</label>
-            <textarea name="description" id="description" class="form-control" required></textarea><br>
-
-            <label for="brand">Marca:</label>
-            <input type="text" name="brand" id="brand" class="form-control" required><br>
-
-            <label for="cat_id">Categoría:</label>
-            <input type="number" name="cat_id" id="cat_id" class="form-control" required><br>
-
-            <input type="submit" value="Crear" class="btn btn-outline-success">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="row row-cols-1" id="contenido">
     <div class="col">
@@ -45,52 +9,8 @@
     </div>
 </div>
 
-<div class="container">
-  <div class="row producto-container">
-    <!-- La información del producto se agregará aquí -->
-  </div>
-</div>
 
-
-<!-- --------------------------------------------------   -->
-
-
-<!--div class="row mb-5">
-        <form id="formulario">
-            <label for="name">Nombre:</label>
-            <input type="text" name="name" id="name" class="form-control"><br>
-
-            <label for="price">Precio:</label>
-            <input type="number" name="price" id="price" class="form-control"><br>
-
-            <label for="description">Descripción:</label>
-            <textarea name="description" id="description" class="form-control"></textarea><br>
-
-            <label for="brand">Marca:</label>
-            <input type="text" name="brand" id="brand" class="form-control"><br>
-
-            <label for="cat_id">Categoría:</label>
-            <input type="number" name="cat_id" id="cat_id" class="form-control"><br>
-
-            <input type="submit" value="Crear" class="btn btn-outline-success">
-        </form>
-</div-->
-
-    <table id="productos" class="table table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Descripción</th>
-          <th>Marca</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Aquí van los datos de la tabla -->
-      </tbody>
-    </table>
+ 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -108,8 +28,7 @@
 
     }*/
         //SCRIPT PARA VISTA USUARIO NORMAL O NOT AUTH
-            document.getElementById('productos').style.display = 'none';
-            document.getElementById('modal').style.display = 'none';
+           
    
             
             // Obtener la lista de productos

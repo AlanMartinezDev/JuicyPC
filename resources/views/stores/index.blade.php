@@ -29,6 +29,11 @@
             <label for="contact">Contacto:</label>
             <input type="email" name="contact" id="contact" class="form-control" required><br>
 
+            <label for="producto_id">Productos:</label>
+            <select multiple name="producto_id" id="producto_id" class="form-control" required>
+              <option value="">Seleccionar productos</option>
+            </select><br>
+
             <input type="submit" value="Crear" class="btn btn-outline-success">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </form>
@@ -36,6 +41,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 <table id="stores" class="table table-striped">
       <thead class="table-dark">
@@ -99,6 +108,25 @@
                     });
                 }
             });
+
+
+            
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/productos",
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + getCookie('token')
+                },
+                success: function(data) {
+                    // Agregar las categorías al select
+                    $.each(data.data, function(index, producto) {
+                    var opcion = "<option value='" + producto.id + "'>" + producto.name + "</option>";
+                    $("#producto_id").append(opcion);
+                    });
+                }
+            });
+            
+
             // Enviar el formulario para crear un store
             $("#formulario").submit(function(event) {
                 event.preventDefault();
@@ -120,7 +148,7 @@
                             "<td>" + store.contact + "</td>" +
                             "<td>" +
                                 "<button class='btn btn-outline-primary' onclick='editarStore(" + store.id + ")' data-bs-toggle='modal' data-bs-target='#modalCrearProd'>Editar</button> " +
-                                "<button class='btn btn-outline-danger' onclick='eliminarStore(" + store.id + ")'>Eliminar</button>" + "</td>" + "</tr>";
+                                "<button class='btn btn-outline-danger' onclick='eliminarStore(" + store.id + ")'>Eliminar</button>" +"</td>" + "</tr>";
                         $("#stores tbody").append(fila);                    // Limpiar el formulario
                     $("#formulario")[0].reset();
                 }
@@ -210,6 +238,8 @@
             }
         });
     }
+
+
     function eliminarStore(id) {
         // Confirmar que se desea eliminar el producto
         if (confirm("¿Estás seguro de que deseas eliminar este almacen?")) {
@@ -228,6 +258,8 @@
             location.reload();
         }
     }
+
+
 </script>
 
 @endsection

@@ -9,9 +9,7 @@
     </div>
 </div>
 <div class="row row-cols-1 showcontent">
-    <div class="col">
-        
-    </div>
+    
 </div>
 
 
@@ -83,38 +81,33 @@
                 }
             });
             
-    function mostrarProducto(id) {
-        document.getElementById('contenido').style.display = 'none';
-            $.ajax({
-                url: "http://127.0.0.1:8000/api/productos/" + id,
-                method: "GET",
-                success: function(data) {
+            function mostrarProducto(id) {
+                document.getElementById('contenido').style.display = 'none';
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/productos/" + id,
+                    method: "GET",
+                    success: function(data) {
                     // Mostrar la información del producto en la vista
                     var producto = data.data;
                     var productosHTML = "";
                     productosHTML +=
-                        "<div class='col'>" +
-                        "<div class='card'>" +
-                        "<img src='" + producto.image + "' class='card-img-top' alt='...'>" +
-                        "<div class='card-body'>" +
-                        "<h5 class='card-title'><a href='/productos/show/" + producto.id + "' class='text-decoration-none'>" + producto.brand + " " + producto.name + "</a></h5>" +
-                        "<p class='card-text'>" + producto.description + "</p>" +
-                        "<p class='card-text fw-bold'>" + producto.price + "€</p>" +
-                        "<div class='row'>" +
-                        "<div class='col d-flex justify-content-end'>" +
+                        "<div class='col-6 mx-auto'>" +
+                        "<h2 class='text-center'>" + producto.brand + " " + producto.name + "</h2>" +
+                        "<img src='" + producto.image + "' class='img-fluid' alt='...'>" +
+                        "<p>" + producto.description + "</p>" +
+                        "<p class='fw-bold'>" + producto.price + "€</p>" +
+                        "<div class='d-flex justify-content-end'>" +
                         "<form action='/carrito/add' method='post'>" +
                         "<input type='hidden' name='id' value='" + producto.id + "'>" +
                         "@if(isset( auth::user()->id))<button type='submit' class='btn btn-outline-success btn-sm'>Añadir al carrito</button>@endif" +
                         "</form>" +
                         "</div>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>" +
                         "</div>";
                     $(".showcontent").html(productosHTML);
-                }
-        });
-    }
+                    }
+                });
+            }
+
 
         
     

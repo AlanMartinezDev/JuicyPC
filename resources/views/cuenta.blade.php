@@ -7,49 +7,89 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 mt-5">
             <div class="row justify-content-center fs-4 mb-4">Datos de tu cuenta</div>
-            <form class="row g-3" id="edit-form">
+            <form class="row g-3" action="/cuenta/{{ $user->id }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="col-md-6">
-                    <input class="form-control" type="text" name="name" placeholder="Nombre">
+                    <label for="inputName" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="inputName" name="name" value="{{ $user->name }}">
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="email" name="email" placeholder="Email">
+                    <label for="inputUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="inputUsername" name="username" value="{{ $user->username }}">
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="password" name="password" placeholder="Contraseña">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" value="{{ $user->email }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Tu email no es modificable una vez creada la cuenta." style="cursor:not-allowed;" disabled>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" name="username" placeholder="Nombre de usuario">
+                    <label for="inputState" class="form-label">Región</label>
+                    <select id="inputState" class="form-select" name="shippingRegion">
+                    @if($user->shippingRegion == 'España')
+                        <option>Escoge una región...</option>
+                        <option selected>España</option>
+                        <option>Portugal</option>
+                        <option>Andorra</option>
+                    @elseif ($user->shippingRegion == 'Portugal')
+                        <option>Escoge una región...</option>
+                        <option>España</option>
+                        <option selected>Portugal</option>
+                        <option>Andorra</option>
+                    @elseif ($user->shippingRegion == 'Andorra')
+                        <option>Escoge una región...</option>
+                        <option>España</option>
+                        <option>Portugal</option>
+                        <option selected>Andorra</option>
+                    @else
+                        <option selected>Escoge una región...</option>
+                        <option>España</option>
+                        <option>Portugal</option>
+                        <option>Andorra</option>
+                    @endif
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Dirección de envío</label>
+                    <input type="text" class="form-control" id="inputAddress" name="address" value="{{ $user->address }}">
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" name="address" placeholder="Dirección">
+                    <label for="inputPassword4" class="form-label">Nueva contraseña</label>
+                    <input type="password" class="form-control" id="inputPassword4" name="password">
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" name="accountBalance" placeholder="Saldo de cuenta">
+                    <label for="inputPassword3" class="form-label">Confirmar nueva contraseña</label>
+                    <input type="password" class="form-control" id="inputPassword3" name="cpassword">
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" name="shippingRegion" placeholder="Región de envío">
+                    <label for="formFileSm" class="form-label">Imagen</label>
+                    <input class="form-control form-control-sm" id="formFileSm" name="image" type="file">
                 </div>
-                <div class="col-md-6">
-                    <input class="btn btn-outline-success" type="submit" value="Guardar">
-                </div>  
-            </form>
-            <script>
-                $('#edit-form').on('submit', function(event) {
-                    event.preventDefault();
-                    var formData = $(this).serialize();
 
-                    $.ajax({
-                        url: "",
-                        type: "PUT",
-                        data: formData,
-                        success: function(data) {
-                            // actualizar la vista con los nuevos datos del usuario
-                            console.log(data);
-                        }
-                    });
-                });
-            </script>
-             </div>
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-outline-primary me-3">Actualizar datos</button>
+                    <!-- Modal -->
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar cuenta</button>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">¿Quieres eliminar tu cuenta?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Sentimos que te vayas, esta acción no es reversible y recuerda que cualquier problema puedes consultarlo por <a href="mailto:soporte@juicypc.com">correo</a>.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <a href="/eliminarCuenta/{{ $user->id }}" type="submit" class="btn btn-outline-danger">Eliminar cuenta</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de modal -->
+                </div>
+            </form>
+        </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 col-xxl-4 mt-5">
             <div class="row justify-content-center fs-4 mb-4">Mis pedidos</div>
             <div class="accordion" id="accordionExample">

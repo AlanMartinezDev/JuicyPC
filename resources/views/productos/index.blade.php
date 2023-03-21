@@ -8,6 +8,11 @@
         
     </div>
 </div>
+<div class="row row-cols-1 showcontent">
+    <div class="col">
+        
+    </div>
+</div>
 
 
  
@@ -106,7 +111,7 @@
                         "</div>" +
                         "</div>" +
                         "</div>";
-                    $(".producto-container").html(productosHTML);
+                    $(".showcontent").html(productosHTML);
                 }
         });
     }
